@@ -1004,9 +1004,232 @@ function renderMd(text) {
 }
 
 // ══════════════════════════════════════════════════════════════════════════════
+//  RAG AI AGENT COMPONENT
+// ══════════════════════════════════════════════════════════════════════════════
+function RAGAgent() {
+  const [input, setInput] = useState("");
+  const [modelName, setModelName] = useState("gemma3:1b");
+  const [folderPath, setFolderPath] = useState("D:\\Android Projects\\GitHub\\ThingworxAgent\\thingworx-agent\\thingworx_downloader\\thingworx_pdfs");
+  const [messages, setMessages] = useState([{
+    role: 'bot', 
+    text: "I am your AI Architect. Upload XML files or Documentation to train me, then ask me to generate ThingWorx artifacts."
+  }]);
+  const [loading, setLoading] = useState(false);
+  const [uploadStatus, setUploadStatus] = useState("");
+  const fileInputRef = useRef(null);
+  const messagesEndRef = useRef(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(scrollToBottom, [messages]);
+
+  const handleFileUpload = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    setUploadStatus("Uploading & Processing...");
+    setLoading(true);
+    const formData = new FormData();
+    formData.append('file', file);
+
+    try {
+      const res = await fetch('http://localhost:3001/api/ingest', {
+        method: 'POST',
+        body: formData,
+      });
+      const data = await res.json();
+      if (data.success) {
+        setUploadStatus(`Indexed ${data.count} chunks from ${file.name}`);
+        setMessages(prev => [...prev, { role: 'bot', text: `Successfully ingested ${file.name}. I can now use this knowledge.` }]);
+      } else {
+        setUploadStatus("Error uploading file.");
+      }
+    } catch (err) {
+      console.error(err);
+      setUploadStatus("Server error. Is the Node.js backend running?");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleFolderScan = async () => {
+    if (!folderPath.trim()) return;
+    setUploadStatus("Scanning folder...");
+    setLoading(true);
+    
+    try {
+      const res = await fetch('http://localhost:3001/api/scan', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ folderPath })
+      });
+      const data = await res.json();
+      if (data.success) {
+        setUploadStatus(`Scanned ${data.filesFound} files, ingested ${data.chunksIngested || data.count} chunks.`);
+        setMessages(prev => [...prev, { role: 'bot', text: `Successfully scanned folder: ${folderPath}.\nFound ${data.filesFound} files.\nIngested ${data.chunksIngested || data.count} chunks.` }]);
+      } else {
+        setUploadStatus("Error scanning folder.");
+      }
+    } catch (err) {
+      console.error(err);
+      setUploadStatus("Server error during scan.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleSend = async () => {
+    if (!input.trim()) return;
+    
+    const userMsg = { role: 'user', text: input };
+    setMessages(prev => [...prev, userMsg]);
+    setInput("");
+    setLoading(true);
+
+    try {
+      const res = await fetch('http://localhost:3001/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 
+          prompt: userMsg.text,
+          model: modelName
+        })
+      });
+      const data = await res.json();
+      
+      const botMsg = { 
+        role: 'bot', 
+        text: data.response, 
+        context: data.context 
+      };
+      setMessages(prev => [...prev, botMsg]);
+    } catch (err) {
+      setMessages(prev => [...prev, { role: 'bot', text: "Error connecting to AI Server. Make sure the backend is running on port 3001." }]);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', height: '100%', padding: '20px', color: '#e2e8f0', background: '#08090f' }}>
+      
+      {/* Header / Upload */}
+      <div style={{ marginBottom: '20px', padding: '15px', background: '#1e293b', borderRadius: '8px', border: '1px solid #334155' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
+          <h3 style={{ margin: 0, color: '#60a5fa' }}>Knowledge Base</h3>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <span style={{ fontSize: '11px', color: '#94a3b8' }}>Model:</span>
+            <input 
+              value={modelName}
+              onChange={e => setModelName(e.target.value)}
+              placeholder="e.g. gemma2:2b"
+              style={{ background: '#0f172a', border: '1px solid #334155', color: '#e2e8f0', padding: '4px 8px', borderRadius: '4px', fontSize: '11px', width: '100px' }}
+            />
+          </div>
+        </div>
+        <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+          <input 
+            type="file" 
+            ref={fileInputRef}
+            onChange={handleFileUpload} 
+            style={{ color: '#94a3b8' }}
+          />
+          <span style={{ fontSize: '0.9em', color: '#4ade80' }}>{uploadStatus}</span>
+        </div>
+        <p style={{ fontSize: '0.8em', color: '#64748b', marginTop: '5px' }}>
+          Upload ThingWorx XML exports or Documentation (PDF/MD) to enhance generation.
+        </p>
+        
+        <div style={{ marginTop: '10px', display: 'flex', gap: '8px', alignItems: 'center', borderTop: '1px solid #334155', paddingTop: '10px' }}>
+          <span style={{ fontSize: '11px', color: '#94a3b8' }}>Or scan local folder:</span>
+          <input 
+            value={folderPath}
+            onChange={e => setFolderPath(e.target.value)}
+            placeholder="D:\Path\To\PDFs"
+            style={{ flex: 1, background: '#0f172a', border: '1px solid #334155', color: '#e2e8f0', padding: '4px 8px', borderRadius: '4px', fontSize: '11px' }}
+          />
+          <button 
+            onClick={handleFolderScan}
+            disabled={loading || !folderPath}
+            style={{ background: '#3b82f6', border: 'none', borderRadius: '4px', color: 'white', padding: '4px 10px', fontSize: '11px', cursor: 'pointer' }}
+          >
+            Scan
+          </button>
+        </div>
+      </div>
+
+      {/* Chat Area */}
+      <div style={{ flex: 1, overflowY: 'auto', background: '#0f172a', borderRadius: '8px', padding: '20px', border: '1px solid #334155', marginBottom: '20px' }}>
+        {messages.map((m, i) => (
+          <div key={i} style={{ marginBottom: '20px', display: 'flex', flexDirection: 'column', alignItems: m.role === 'user' ? 'flex-end' : 'flex-start' }}>
+            <div style={{ 
+              maxWidth: '80%', 
+              padding: '12px 16px', 
+              borderRadius: '8px', 
+              background: m.role === 'user' ? '#2563eb' : '#1e293b',
+              color: '#fff',
+              whiteSpace: 'pre-wrap',
+              border: m.role === 'user' ? '1px solid #3b82f6' : '1px solid #334155'
+            }}>
+              {m.text}
+            </div>
+            {m.context && m.context.length > 0 && (
+              <div style={{ fontSize: '0.75em', color: '#64748b', marginTop: '5px', marginLeft: '5px', background: '#0f172a', padding: '4px 8px', borderRadius: '4px', border: '1px solid #1e293b' }}>
+                📚 Used context: {m.context.map(c => c.name).join(', ')}
+              </div>
+            )}
+          </div>
+        ))}
+        {loading && <div style={{ color: '#94a3b8' }}>Thinking...</div>}
+        <div ref={messagesEndRef} />
+      </div>
+
+      {/* Input Area */}
+      <div style={{ display: 'flex', gap: '10px' }}>
+        <textarea
+          value={input}
+          onChange={e => setInput(e.target.value)}
+          onKeyDown={e => { if(e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handleSend(); } }}
+          placeholder="Ask me to generate a ThingTemplate, Mashup, or explain a concept..."
+          style={{ 
+            flex: 1, 
+            padding: '12px', 
+            borderRadius: '6px', 
+            border: '1px solid #334155', 
+            background: '#1e293b', 
+            color: '#fff',
+            resize: 'none',
+            height: '60px',
+            fontFamily: 'inherit'
+          }}
+        />
+        <button 
+          onClick={handleSend}
+          disabled={loading}
+          style={{ 
+            padding: '0 25px', 
+            borderRadius: '6px', 
+            border: 'none', 
+            background: loading ? '#475569' : '#3b82f6', 
+            color: 'white', 
+            cursor: loading ? 'not-allowed' : 'pointer',
+            fontWeight: 'bold'
+          }}
+        >
+          Send
+        </button>
+      </div>
+    </div>
+  );
+}
+
+// ══════════════════════════════════════════════════════════════════════════════
 //  ROOT COMPONENT
 // ══════════════════════════════════════════════════════════════════════════════
 export default function ThingWorxAgentV2() {
+  const [appMode, setAppMode] = useState("generator");
   // ── Build wizard state ────────────────────────────────────────────
   const [wizMessages, setWizMessages] = useState([]);
   const [flowState,   setFlowState]   = useState(FLOW.IDLE);
@@ -1201,10 +1424,23 @@ Describe your use case or pick a quick start:`, "intro");
   };
 
   return (
-    <div style={S.root}>
+    <div style={{ ...S.root, flexDirection: 'column' }}>
+      
+      {/* ═══ TOP BAR ═══════════════════════════════════════════════════ */}
+      <div style={{ height: 48, background: '#0b0f1e', borderBottom: '1px solid #1a2540', display: 'flex', alignItems: 'center', padding: '0 16px', gap: 24, flexShrink: 0 }}>
+         <div style={{ fontWeight: 'bold', color: '#fff', fontSize: 14 }}>ThingWorx Agent</div>
+         <div style={{ display: 'flex', gap: 10 }}>
+           <button onClick={()=>setAppMode("generator")} style={{ background: 'transparent', border: 'none', borderBottom: appMode==='generator'?'2px solid #4a9eff':'2px solid transparent', color: appMode==='generator'?'#4a9eff':'#64748b', cursor: 'pointer', fontWeight: 600, padding: '8px 0', fontSize: 12 }}>Generator</button>
+           <button onClick={()=>setAppMode("agent")} style={{ background: 'transparent', border: 'none', borderBottom: appMode==='agent'?'2px solid #4a9eff':'2px solid transparent', color: appMode==='agent'?'#4a9eff':'#64748b', cursor: 'pointer', fontWeight: 600, padding: '8px 0', fontSize: 12 }}>AI Architect (RAG)</button>
+         </div>
+      </div>
 
-      {/* ═══ LEFT: Build Wizard ═══════════════════════════════════════ */}
-      <div style={{ ...S.panel, flex:"0 0 380px" }}>
+      {appMode === "agent" ? (
+        <RAGAgent />
+      ) : (
+        <div style={{ display: 'flex', flex: 1, overflow: 'hidden' }}>
+          {/* ═══ LEFT: Build Wizard ═══════════════════════════════════════ */}
+          <div style={{ ...S.panel, flex:"0 0 380px" }}>
         {/* Header */}
         <div style={S.hdr}>
           <div style={{ width:34,height:34,borderRadius:8,background:"linear-gradient(135deg,#1d4ed8,#7c3aed)",display:"flex",alignItems:"center",justifyContent:"center",fontSize:17,boxShadow:"0 0 12px #7c3aed44" }}>⚡</div>
@@ -1474,7 +1710,8 @@ Describe your use case or pick a quick start:`, "intro");
           </div>
         )}
       </div>
-
+      </div>
+      )}
       <style>{`
         @keyframes blink{0%,80%,100%{transform:scale(0.6);opacity:0.3}40%{transform:scale(1);opacity:1}}
         ::-webkit-scrollbar{width:5px;height:5px}
