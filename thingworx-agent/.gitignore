@@ -25,3 +25,5 @@ yarn-error.log*
 # RAG Data
 thingworx_downloader/thingworx_pdfs/
 server/data/lancedb/
+*.pdf
+*.PDF
