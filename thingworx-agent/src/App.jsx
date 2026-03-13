@@ -1009,7 +1009,7 @@ function renderMd(text) {
 function RAGAgent() {
   const [input, setInput] = useState("");
   const [modelName, setModelName] = useState("gemma3:1b");
-  const [folderPath, setFolderPath] = useState("D:\\Android Projects\\GitHub\\ThingworxAgent\\thingworx-agent\\server\\AI_KnowledgeBase");
+  const [folderPath, setFolderPath] = useState("D:\\Android Projects\\GitHub\\ThingworxAgent\\thingworx-agent\\thingworx docs\\thingworx_pdfs");
   const [messages, setMessages] = useState([{
     role: 'bot', 
     text: "I am your AI Architect. Upload XML files or Documentation to train me, then ask me to generate ThingWorx artifacts."
@@ -1163,13 +1163,14 @@ function RAGAgent() {
           const dataDocs = await resDocs.json();
           const docs = Array.isArray(dataDocs?.documents) ? dataDocs.documents : [];
           const n = typeof dataDocs?.count === 'number' ? dataDocs.count : docs.length;
+          const rootLabel = dataDocs?.root ? String(dataDocs.root) : "ThingWorx PDFs";
           if (n === 0) {
-            setMessages(prev => [...prev, { role: 'bot', text: "0 documents found in AI_KnowledgeBase/documentation." }]);
+            setMessages(prev => [...prev, { role: 'bot', text: `0 documents found in ${rootLabel}.` }]);
             return;
           }
           const maxList = wantsList ? 50 : 0;
           if (maxList === 0) {
-            setMessages(prev => [...prev, { role: 'bot', text: `${n} document${n > 1 ? 's' : ''} found in AI_KnowledgeBase/documentation.` }]);
+            setMessages(prev => [...prev, { role: 'bot', text: `${n} document${n > 1 ? 's' : ''} found in ${rootLabel}.` }]);
             return;
           }
           const shown = docs.slice(0, maxList);

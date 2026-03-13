@@ -114,6 +114,68 @@ function deriveEntityFolder(filePath) {
   return folder;
 }
 
+function resolveThingworxPdfsDir() {
+  const candidates = [
+    path.join(__dirname, '..', 'thingworx_pdfs'),
+    path.join(__dirname, '..', 'thingworx docs', 'thingworx_pdfs'),
+    path.join(__dirname, '..', 'thingworx_downloader', 'thingworx_pdfs'),
+  ];
+
+  for (const candidate of candidates) {
+    try {
+      if (fs.existsSync(candidate) && fs.statSync(candidate).isDirectory()) return candidate;
+    } catch {
+    }
+  }
+  return null;
+}
+
+async function scanAndIngestFolder(folderPath, blockedDirs = []) {
+  const files = [];
+  const resolvedBlocked = blockedDirs.map(d => path.resolve(d));
+
+  function isBlocked(p) {
+    const rp = path.resolve(p);
+    for (const b of resolvedBlocked) {
+      if (rp === b || rp.startsWith(b + path.sep)) return true;
+    }
+    return false;
+  }
+
+  function scan(dir) {
+    if (isBlocked(dir)) return;
+    const items = fs.readdirSync(dir);
+    for (const item of items) {
+      const fullPath = path.join(dir, item);
+      const stat = fs.statSync(fullPath);
+      if (stat.isDirectory()) {
+        scan(fullPath);
+      } else if (item.toLowerCase().endsWith('.pdf') || item.toLowerCase().endsWith('.xml') || item.toLowerCase().endsWith('.zip')) {
+        files.push(fullPath);
+      }
+    }
+  }
+
+  scan(folderPath);
+
+  let totalChunks = 0;
+  for (const file of files) {
+    let chunks = [];
+    try {
+      if (file.toLowerCase().endsWith('.pdf')) chunks = await processPDF(file);
+      else if (file.toLowerCase().endsWith('.zip')) chunks = await processZip(file);
+      else chunks = await processXML(file);
+
+      await storeChunks(chunks);
+      totalChunks += chunks.length;
+    } catch (err) {
+      console.error(`Error processing ${file}:`, err.message);
+    }
+  }
+
+  return { filesFound: files.length, chunksIngested: totalChunks };
+}
+
 function extractXmlFromModelOutput(text) {
   const raw = String(text || '').trim();
   const fenced = raw.match(/```(?:xml)?\s*([\s\S]*?)```/i);
@@ -390,6 +452,13 @@ app.post('/api/scan', async (req, res) => {
   // If folderPath is not provided, default to KNOWLEDGE_BASE_DIR
   let { folderPath } = req.body;
   if (!folderPath) folderPath = KNOWLEDGE_BASE_DIR;
+
+  const docsDir = path.join(KNOWLEDGE_BASE_DIR, 'documentation');
+  const resolvedFolderPath = path.resolve(folderPath);
+  const resolvedDocsDir = path.resolve(docsDir);
+  if (resolvedFolderPath === resolvedDocsDir || resolvedFolderPath.startsWith(resolvedDocsDir + path.sep)) {
+    return res.status(400).json({ error: 'Scanning AI_KnowledgeBase/documentation is disabled. Scan projects or ingest specific files instead.' });
+  }
   
   if (!fs.existsSync(folderPath)) {
     // If it doesn't exist, try creating it if it matches our KB dir
@@ -404,42 +473,23 @@ app.post('/api/scan', async (req, res) => {
 
   try {
     console.log(`Scanning folder: ${folderPath}`);
-    const files = [];
-    
-    function scan(dir) {
-      const items = fs.readdirSync(dir);
-      for (const item of items) {
-        const fullPath = path.join(dir, item);
-        const stat = fs.statSync(fullPath);
-        if (stat.isDirectory()) {
-          scan(fullPath);
-        } else if (item.toLowerCase().endsWith('.pdf') || item.toLowerCase().endsWith('.xml') || item.toLowerCase().endsWith('.zip')) {
-          files.push(fullPath);
-        }
-      }
-    }
-    scan(folderPath);
-    
-    console.log(`Found ${files.length} files. Processing...`);
-    let totalChunks = 0;
-    
-    for (const file of files) {
-      let chunks = [];
-      try {
-        if (file.toLowerCase().endsWith('.pdf')) chunks = await processPDF(file);
-        else if (file.toLowerCase().endsWith('.zip')) chunks = await processZip(file);
-        else chunks = await processXML(file);
-        
-        await storeChunks(chunks);
-        totalChunks += chunks.length;
-        
-        console.log(`Ingested ${path.basename(file)} (${chunks.length} chunks)`);
-      } catch (err) {
-        console.error(`Error processing ${file}:`, err.message);
-      }
-    }
-    
-    res.json({ success: true, filesFound: files.length, chunksIngested: totalChunks });
+    const result = await scanAndIngestFolder(folderPath, [docsDir]);
+    res.json({ success: true, ...result });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
+app.post('/api/scan-thingworx-pdfs', async (req, res) => {
+  const docsDir = path.join(KNOWLEDGE_BASE_DIR, 'documentation');
+  const target = resolveThingworxPdfsDir();
+  if (!target) {
+    return res.status(400).json({ error: 'thingworx_pdfs folder not found' });
+  }
+  try {
+    const result = await scanAndIngestFolder(target, [docsDir]);
+    res.json({ success: true, folderPath: target, ...result });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: error.message });
@@ -499,9 +549,9 @@ app.get('/api/projects', async (req, res) => {
 
 app.get('/api/documents', async (req, res) => {
   try {
-    const docsDir = path.join(KNOWLEDGE_BASE_DIR, 'documentation');
-    if (!fs.existsSync(docsDir)) {
-      return res.json({ count: 0, documents: [] });
+    const docsDir = resolveThingworxPdfsDir();
+    if (!docsDir || !fs.existsSync(docsDir)) {
+      return res.json({ count: 0, documents: [], root: docsDir || null });
     }
 
     const documents = [];
@@ -524,7 +574,7 @@ app.get('/api/documents', async (req, res) => {
 
     scan(docsDir);
     documents.sort((a, b) => a.localeCompare(b));
-    res.json({ count: documents.length, documents });
+    res.json({ count: documents.length, documents, root: docsDir });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: error.message });
@@ -541,7 +591,7 @@ app.post('/api/find-doc-folders', async (req, res) => {
     // Use LangChain Search
     const results = await searchLangChain(query, 'docs', 50);
     
-    const docsRoot = path.join(KNOWLEDGE_BASE_DIR, 'documentation');
+    const docsRoot = resolveThingworxPdfsDir() || path.join(KNOWLEDGE_BASE_DIR, 'documentation');
     const folders = new Set();
     const files = [];
     

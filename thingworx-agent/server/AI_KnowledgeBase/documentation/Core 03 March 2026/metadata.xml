@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<Entities>
-  <ExtensionPackages>
-    <ExtensionPackage dependsOn="CSVParser_Extensions:4.0.1" 
-                      description="HPMC Connect - Core Module" minimumThingWorxVersion="9.3.5" 
-                      name="hpmc_core" packageVersion="1.1.18" vendor="Voestalpine AG">
-    </ExtensionPackage>
-  </ExtensionPackages>
-</Entities>

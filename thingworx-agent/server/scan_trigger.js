@@ -2,13 +2,13 @@
 const http = require('http');
 
 const data = JSON.stringify({
-  folderPath: 'D:\\Android Projects\\GitHub\\ThingworxAgent\\thingworx-agent\\server\\AI_KnowledgeBase\\documentation'
+  folderPath: 'D:\\Android Projects\\GitHub\\ThingworxAgent\\thingworx-agent\\server\\AI_KnowledgeBase\\projects'
 });
 
 const options = {
   hostname: 'localhost',
   port: 3001,
-  path: '/api/scan',
+  path: '/api/scan-thingworx-pdfs',
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',

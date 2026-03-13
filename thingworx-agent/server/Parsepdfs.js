@@ -17,7 +17,7 @@ const { glob } = require("glob");
 // CONFIGURATION
 // ─────────────────────────────────────────────
 
-const INPUT_DIR = "./AI_KnowledgeBase/documentation";        // folder with your ThingWorx PDFs
+const INPUT_DIR = "./thingworx docs";                   // folder with your ThingWorx PDFs
 const OUTPUT_DIR = "./AI_KnowledgeBase/processed_json"; // parsed output goes here
 const MIN_TEXT_LENGTH = 30;            // skip near-empty pages
 
