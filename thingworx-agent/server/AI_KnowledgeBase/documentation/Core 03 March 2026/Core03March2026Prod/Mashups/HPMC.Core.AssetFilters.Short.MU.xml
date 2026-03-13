@@ -1,0 +1,1546 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Entities
+ majorVersion="9"
+ minorVersion="5"
+ universal="password">
+    <Mashups>
+        <Mashup
+         aspect.isExtension="true"
+         aspect.isFlex="true"
+         aspect.isResponsive="true"
+         aspect.mashupType="mashup"
+         columns="0.0"
+         description="DEPRECATED (HPMC.Core.AssetFilters.MU has same functionality)"
+         documentationContent=""
+         homeMashup=""
+         name="HPMC.Core.AssetFilters.Short.MU"
+         projectName="HPMC.Core"
+         rows="0.0"
+         tags="">
+            <avatar></avatar>
+            <DesignTimePermissions>
+                <Create></Create>
+                <Read>
+                    <Principal
+                     isPermitted="true"
+                     name="HPMC.Core.Users.UG"
+                     type="Group"></Principal>
+                </Read>
+                <Update></Update>
+                <Delete></Delete>
+                <Metadata></Metadata>
+            </DesignTimePermissions>
+            <RunTimePermissions></RunTimePermissions>
+            <VisibilityPermissions>
+                <Visibility>
+                    <Principal
+                     isPermitted="true"
+                     name="HPMC.Voestalpine.Orga"
+                     type="Organization"></Principal>
+                </Visibility>
+            </VisibilityPermissions>
+            <ConfigurationTableDefinitions></ConfigurationTableDefinitions>
+            <ConfigurationTables>
+                <ConfigurationTable
+                 dataShapeName=""
+                 description="Mashup Mobile Settings"
+                 isHidden="true"
+                 isMultiRow="false"
+                 name="MobileSettings"
+                 ordinal="0">
+                    <DataShape>
+                        <FieldDefinitions>
+                            <FieldDefinition
+                             aspect.defaultValue="false"
+                             aspect.friendlyName="Disable Zoom"
+                             baseType="BOOLEAN"
+                             description="Disables zooming in and out within the mashup"
+                             name="disableZoom"
+                             ordinal="0"></FieldDefinition>
+                            <FieldDefinition
+                             aspect.defaultValue="true"
+                             aspect.friendlyName="Full Screen Mode"
+                             baseType="BOOLEAN"
+                             description="Open the mashup in full screen mode"
+                             name="fullScreenMode"
+                             ordinal="0"></FieldDefinition>
+                            <FieldDefinition
+                             aspect.friendlyName="Height"
+                             baseType="STRING"
+                             description="The height of the mashup page"
+                             name="height"
+                             ordinal="0"></FieldDefinition>
+                            <FieldDefinition
+                             aspect.defaultValue="device-height"
+                             aspect.friendlyName="Height Type"
+                             baseType="STRING"
+                             description="Use the height of the device display, or a custom height (in px)"
+                             name="heightType"
+                             ordinal="0"></FieldDefinition>
+                            <FieldDefinition
+                             aspect.defaultValue="1.0"
+                             aspect.friendlyName="Initial Scale"
+                             baseType="NUMBER"
+                             description="The initial zoom scale when the mashup is loaded for the first time"
+                             name="initialScale"
+                             ordinal="0"></FieldDefinition>
+                            <FieldDefinition
+                             aspect.friendlyName="Shortcut Icon Title"
+                             baseType="STRING"
+                             description="A title for the mashup shortcut on the iOS home screen"
+                             name="iosShortcutIconTitle"
+                             ordinal="0"></FieldDefinition>
+                            <FieldDefinition
+                             aspect.defaultValue="black-translucent"
+                             aspect.friendlyName="Status Bar Appearance"
+                             baseType="STRING"
+                             description="The style of the iOS status bar"
+                             name="iosStatusBarAppearance"
+                             ordinal="0"></FieldDefinition>
+                            <FieldDefinition
+                             aspect.defaultValue="10.0"
+                             aspect.friendlyName="Maximum Scale"
+                             baseType="NUMBER"
+                             description="The maximum scale that users can zoom out to"
+                             name="maximumScale"
+                             ordinal="0"></FieldDefinition>
+                            <FieldDefinition
+                             aspect.defaultValue="0.1"
+                             aspect.friendlyName="Minimum Scale"
+                             baseType="NUMBER"
+                             description="The minimum scale that users can zoom out to"
+                             name="minimumScale"
+                             ordinal="0"></FieldDefinition>
+                            <FieldDefinition
+                             aspect.friendlyName="Width"
+                             baseType="STRING"
+                             description="The width of the mashup page"
+                             name="width"
+                             ordinal="0"></FieldDefinition>
+                            <FieldDefinition
+                             aspect.defaultValue="device-width"
+                             aspect.friendlyName="Width Type"
+                             baseType="STRING"
+                             description="Use the width of the device display, or a custom width (in px)"
+                             name="widthType"
+                             ordinal="0"></FieldDefinition>
+                        </FieldDefinitions>
+                    </DataShape>
+                    <Rows>
+                        <Row>
+                            <disableZoom>false</disableZoom>
+                            <fullScreenMode>true</fullScreenMode>
+                            <height>
+                            <![CDATA[
+                            device-height
+                            ]]>
+                            </height>
+                            <heightType>
+                            <![CDATA[
+                            device-height
+                            ]]>
+                            </heightType>
+                            <initialScale>1.0</initialScale>
+                            <iosShortcutIconTitle></iosShortcutIconTitle>
+                            <iosStatusBarAppearance>
+                            <![CDATA[
+                            black-translucent
+                            ]]>
+                            </iosStatusBarAppearance>
+                            <maximumScale>10.0</maximumScale>
+                            <minimumScale>0.1</minimumScale>
+                            <width>
+                            <![CDATA[
+                            device-width
+                            ]]>
+                            </width>
+                            <widthType>
+                            <![CDATA[
+                            device-width
+                            ]]>
+                            </widthType>
+                        </Row>
+                    </Rows>
+                </ConfigurationTable>
+            </ConfigurationTables>
+            <ParameterDefinitions>
+                <FieldDefinition
+                 aspect.bindingDirection="BOTH"
+                 aspect.isMandatory="false"
+                 baseType="STRING"
+                 description=""
+                 name="countryId"
+                 ordinal="0"></FieldDefinition>
+                <FieldDefinition
+                 aspect.bindingDirection="BOTH"
+                 aspect.isMandatory="false"
+                 baseType="STRING"
+                 description=""
+                 name="locId"
+                 ordinal="0"></FieldDefinition>
+                <FieldDefinition
+                 aspect.bindingDirection="IN"
+                 aspect.isMandatory="false"
+                 baseType="BOOLEAN"
+                 description=""
+                 name="showSearch"
+                 ordinal="0"></FieldDefinition>
+                <FieldDefinition
+                 aspect.bindingDirection="BOTH"
+                 aspect.isMandatory="false"
+                 baseType="STRING"
+                 description=""
+                 name="ucId"
+                 ordinal="0"></FieldDefinition>
+            </ParameterDefinitions>
+            <Things></Things>
+            <ThingShapes></ThingShapes>
+            <ThingTemplates></ThingTemplates>
+            <mashupContent>
+            <![CDATA[
+            {
+              "CustomMashupCss" : "",
+              "Data" : {
+                "Session" : {
+                  "DataName" : "Session",
+                  "EntityName" : "",
+                  "EntityType" : "Session",
+                  "Id" : "session",
+                  "Services" : [ {
+                    "APIMethod" : "post",
+                    "Characteristic" : "Services",
+                    "Id" : "SessionInterface",
+                    "Name" : "GetGlobalSessionValues",
+                    "Parameters" : { },
+                    "RefreshInterval" : 0,
+                    "Target" : "GetGlobalSessionValues"
+                  } ]
+                },
+                "Things_HPMC.Core.Manager" : {
+                  "DataName" : "Things_HPMC.Core.Manager",
+                  "EntityName" : "HPMC.Core.Manager",
+                  "EntityType" : "Things",
+                  "Id" : "3994cad8-4a2a-4449-b4ff-a202174b163e",
+                  "RefreshInterval" : 0,
+                  "Services" : [ {
+                    "APIMethod" : "post",
+                    "Characteristic" : "Services",
+                    "Id" : "0c351032-8087-45ad-ae5a-8b56c4a1883e",
+                    "Name" : "QueryAllCompaniesForDropdownData",
+                    "Parameters" : { },
+                    "RefreshInterval" : 0,
+                    "Target" : "QueryAllCompaniesForDropdownData"
+                  }, {
+                    "APIMethod" : "post",
+                    "Characteristic" : "Services",
+                    "Id" : "c485a0ef-adce-4dbe-8861-a6b60382fd30",
+                    "Name" : "QueryAllCountriesBasedOnLocationEntities",
+                    "Parameters" : { },
+                    "RefreshInterval" : 0,
+                    "Target" : "QueryAllCountriesBasedOnLocationEntities"
+                  }, {
+                    "APIMethod" : "post",
+                    "Characteristic" : "Services",
+                    "Id" : "be0190a0-2813-40c3-8234-726ee182f892",
+                    "Name" : "QueryAllLocationsForDropdownData",
+                    "Parameters" : { },
+                    "RefreshInterval" : 0,
+                    "Target" : "QueryAllLocationsForDropdownData"
+                  } ]
+                },
+                "UserExtensions" : {
+                  "DataName" : "UserExtensions",
+                  "EntityName" : "",
+                  "EntityType" : "UserExtensions",
+                  "Id" : "UserExtensions",
+                  "Services" : [ {
+                    "APIMethod" : "post",
+                    "Characteristic" : "Services",
+                    "Id" : "UserExtensionInterface",
+                    "Name" : "GetCurrentUserExtensionProperties",
+                    "Parameters" : { },
+                    "RefreshInterval" : 0,
+                    "Target" : "GetCurrentUserExtensionProperties"
+                  } ]
+                }
+              },
+              "DataBindings" : [ {
+                "Id" : "f0cb3977-d885-440d-9907-ecd4f0b57fdd",
+                "PropertyMaps" : [ {
+                  "SourceProperty" : "",
+                  "SourcePropertyBaseType" : "INFOTABLE",
+                  "SourcePropertyType" : "InfoTable",
+                  "TargetProperty" : "Data",
+                  "TargetPropertyBaseType" : "INFOTABLE",
+                  "TargetPropertyType" : "property"
+                } ],
+                "SourceArea" : "Data",
+                "SourceDetails" : "AllData",
+                "SourceId" : "QueryAllCompaniesForDropdownData",
+                "SourceSection" : "Things_HPMC.Core.Manager",
+                "TargetArea" : "UI",
+                "TargetId" : "ptcsdropdown-85",
+                "TargetSection" : ""
+              }, {
+                "Id" : "9d3b582a-1f43-43d8-8a7c-9fff05fbeb9f",
+                "PropertyMaps" : [ {
+                  "SourceProperty" : "",
+                  "SourcePropertyBaseType" : "INFOTABLE",
+                  "SourcePropertyType" : "InfoTable",
+                  "TargetProperty" : "Data",
+                  "TargetPropertyBaseType" : "INFOTABLE",
+                  "TargetPropertyType" : "property"
+                } ],
+                "SourceArea" : "Data",
+                "SourceDetails" : "AllData",
+                "SourceId" : "QueryAllLocationsForDropdownData",
+                "SourceName" : "QueryAllLocationsForDropdownData",
+                "SourceSection" : "Things_HPMC.Core.Manager",
+                "TargetArea" : "UI",
+                "TargetId" : "ptcsdropdown-87",
+                "TargetSection" : ""
+              }, {
+                "Id" : "9bb9c594-11a5-41f5-a18f-4fd54a885279",
+                "PropertyMaps" : [ {
+                  "SourceProperty" : "SelectedItems",
+                  "SourcePropertyBaseType" : "INFOTABLE",
+                  "SourcePropertyType" : "Property",
+                  "TargetProperty" : "selectedCompany",
+                  "TargetPropertyBaseType" : "INFOTABLE",
+                  "TargetPropertyType" : "Parameter"
+                } ],
+                "SourceArea" : "UI",
+                "SourceDetails" : "",
+                "SourceId" : "ptcsdropdown-85",
+                "SourceSection" : "",
+                "TargetArea" : "Data",
+                "TargetId" : "QueryAllLocationsForDropdownData",
+                "TargetSection" : "Things_HPMC.Core.Manager"
+              }, {
+                "Id" : "26de866e-d9d8-465f-975b-45c1c1ff8135",
+                "PropertyMaps" : [ {
+                  "SourceProperty" : "SelectedItems",
+                  "SourcePropertyBaseType" : "INFOTABLE",
+                  "SourcePropertyType" : "Property",
+                  "TargetProperty" : "selectedCountry",
+                  "TargetPropertyBaseType" : "INFOTABLE",
+                  "TargetPropertyType" : "Parameter"
+                } ],
+                "SourceArea" : "UI",
+                "SourceDetails" : "",
+                "SourceId" : "ptcsdropdown-83",
+                "SourceSection" : "",
+                "TargetArea" : "Data",
+                "TargetId" : "QueryAllCompaniesForDropdownData",
+                "TargetSection" : "Things_HPMC.Core.Manager"
+              }, {
+                "Id" : "9ece2190-b3fb-424f-ade7-3fa85e0a7733",
+                "PropertyMaps" : [ {
+                  "SourceProperty" : "SelectedText",
+                  "SourcePropertyBaseType" : "STRING",
+                  "SourcePropertyType" : "Property",
+                  "TargetProperty" : "selectedCompanyId",
+                  "TargetPropertyBaseType" : "STRING",
+                  "TargetPropertyType" : "Parameter"
+                } ],
+                "SourceArea" : "UI",
+                "SourceDetails" : "",
+                "SourceId" : "ptcsdropdown-85",
+                "SourceSection" : "",
+                "TargetArea" : "Data",
+                "TargetId" : "QueryAllAssetsForDropdownData",
+                "TargetSection" : "Things_HPMC.Core.Manager"
+              }, {
+                "Id" : "6c70f48a-2a55-4598-bfcf-ecbc6afc1692",
+                "PropertyMaps" : [ {
+                  "SourceProperty" : "countryId",
+                  "SourcePropertyBaseType" : "STRING",
+                  "SourcePropertyType" : "Field",
+                  "TargetProperty" : "SelectedText",
+                  "TargetPropertyBaseType" : "STRING",
+                  "TargetPropertyType" : "property"
+                } ],
+                "SourceArea" : "Session",
+                "SourceDetails" : "AllData",
+                "SourceId" : "Session",
+                "SourceSection" : "Session",
+                "TargetArea" : "UI",
+                "TargetId" : "ptcsdropdown-83",
+                "TargetSection" : ""
+              }, {
+                "Id" : "f2a9f837-5458-48f8-90d2-ef556a9bac0c",
+                "PropertyMaps" : [ {
+                  "SourceProperty" : "SelectedText",
+                  "SourcePropertyBaseType" : "STRING",
+                  "SourcePropertyType" : "property",
+                  "TargetProperty" : "countryId",
+                  "TargetPropertyBaseType" : "STRING",
+                  "TargetPropertyType" : "Field"
+                } ],
+                "SourceArea" : "UI",
+                "SourceId" : "ptcsdropdown-83",
+                "SourceSection" : "",
+                "TargetArea" : "Session",
+                "TargetId" : "Session",
+                "TargetSection" : "Session"
+              }, {
+                "Id" : "ef513c3b-8e7e-49ce-ad39-e794ca595fc0",
+                "PropertyMaps" : [ {
+                  "SourceProperty" : "ucId",
+                  "SourcePropertyBaseType" : "STRING",
+                  "SourcePropertyType" : "Field",
+                  "TargetProperty" : "SelectedText",
+                  "TargetPropertyBaseType" : "STRING",
+                  "TargetPropertyType" : "property"
+                } ],
+                "SourceArea" : "Session",
+                "SourceDetails" : "AllData",
+                "SourceId" : "Session",
+                "SourceSection" : "Session",
+                "TargetArea" : "UI",
+                "TargetId" : "ptcsdropdown-85",
+                "TargetSection" : ""
+              }, {
+                "Id" : "4e7def76-8f37-4a67-958d-5e871e3d1121",
+                "PropertyMaps" : [ {
+                  "SourceProperty" : "SelectedText",
+                  "SourcePropertyBaseType" : "STRING",
+                  "SourcePropertyType" : "property",
+                  "TargetProperty" : "ucId",
+                  "TargetPropertyBaseType" : "STRING",
+                  "TargetPropertyType" : "Field"
+                } ],
+                "SourceArea" : "UI",
+                "SourceId" : "ptcsdropdown-85",
+                "SourceSection" : "",
+                "TargetArea" : "Session",
+                "TargetId" : "Session",
+                "TargetSection" : "Session"
+              }, {
+                "Id" : "bdf43384-4f3b-4244-9a5e-3542129143b3",
+                "PropertyMaps" : [ {
+                  "SourceProperty" : "locId",
+                  "SourcePropertyBaseType" : "STRING",
+                  "SourcePropertyType" : "Field",
+                  "TargetProperty" : "SelectedText",
+                  "TargetPropertyBaseType" : "STRING",
+                  "TargetPropertyType" : "property"
+                } ],
+                "SourceArea" : "Session",
+                "SourceDetails" : "AllData",
+                "SourceId" : "Session",
+                "SourceSection" : "Session",
+                "TargetArea" : "UI",
+                "TargetId" : "ptcsdropdown-87",
+                "TargetSection" : ""
+              }, {
+                "Id" : "2c84657e-0f6c-4664-ad45-248385e9078c",
+                "PropertyMaps" : [ {
+                  "SourceProperty" : "SelectedText",
+                  "SourcePropertyBaseType" : "STRING",
+                  "SourcePropertyType" : "property",
+                  "TargetProperty" : "locId",
+                  "TargetPropertyBaseType" : "STRING",
+                  "TargetPropertyType" : "Field"
+                } ],
+                "SourceArea" : "UI",
+                "SourceId" : "ptcsdropdown-87",
+                "SourceSection" : "",
+                "TargetArea" : "Session",
+                "TargetId" : "Session",
+                "TargetSection" : "Session"
+              }, {
+                "Id" : "886e51ec-51bb-4f00-bab6-bf2394ec3b86",
+                "PropertyMaps" : [ {
+                  "SourceProperty" : "country_id",
+                  "SourcePropertyBaseType" : "INTEGER",
+                  "SourcePropertyType" : "Field",
+                  "TargetProperty" : "countryId",
+                  "TargetPropertyBaseType" : "STRING",
+                  "TargetPropertyType" : "property"
+                } ],
+                "SourceArea" : "Data",
+                "SourceDetails" : "SelectedRows",
+                "SourceId" : "QueryAllCountriesBasedOnLocationEntities",
+                "SourceSection" : "Things_HPMC.Core.Manager",
+                "TargetArea" : "Mashup",
+                "TargetId" : "mashup-root",
+                "TargetSection" : ""
+              }, {
+                "Id" : "39b0e661-8485-4711-b7b5-8675ce49642a",
+                "PropertyMaps" : [ {
+                  "SourceProperty" : "company_id",
+                  "SourcePropertyBaseType" : "STRING",
+                  "SourcePropertyType" : "Field",
+                  "TargetProperty" : "ucId",
+                  "TargetPropertyBaseType" : "STRING",
+                  "TargetPropertyType" : "property"
+                } ],
+                "SourceArea" : "Data",
+                "SourceDetails" : "SelectedRows",
+                "SourceId" : "QueryAllCompaniesForDropdownData",
+                "SourceSection" : "Things_HPMC.Core.Manager",
+                "TargetArea" : "Mashup",
+                "TargetId" : "mashup-root",
+                "TargetSection" : ""
+              }, {
+                "Id" : "7d28582e-1dde-40a5-8708-9283fbff0c5b",
+                "PropertyMaps" : [ {
+                  "SourceProperty" : "dropdown_id",
+                  "SourcePropertyBaseType" : "STRING",
+                  "SourcePropertyType" : "Field",
+                  "TargetProperty" : "locId",
+                  "TargetPropertyBaseType" : "STRING",
+                  "TargetPropertyType" : "property"
+                } ],
+                "SourceArea" : "Data",
+                "SourceDetails" : "SelectedRows",
+                "SourceId" : "QueryAllLocationsForDropdownData",
+                "SourceSection" : "Things_HPMC.Core.Manager",
+                "TargetArea" : "Mashup",
+                "TargetId" : "mashup-root",
+                "TargetSection" : ""
+              }, {
+                "Id" : "20629a33-b710-4fc8-b0ed-d59bab423af0",
+                "PropertyMaps" : [ {
+                  "SourceProperty" : "",
+                  "SourcePropertyBaseType" : "INFOTABLE",
+                  "SourcePropertyType" : "InfoTable",
+                  "TargetProperty" : "Data",
+                  "TargetPropertyBaseType" : "INFOTABLE",
+                  "TargetPropertyType" : "property"
+                } ],
+                "SourceArea" : "Data",
+                "SourceDetails" : "AllData",
+                "SourceId" : "QueryAllCountriesBasedOnLocationEntities",
+                "SourceSection" : "Things_HPMC.Core.Manager",
+                "TargetArea" : "UI",
+                "TargetId" : "ptcsdropdown-83",
+                "TargetSection" : ""
+              } ],
+              "DesignTimePermissions" : { },
+              "Events" : [ {
+                "EventHandlerArea" : "Data",
+                "EventHandlerId" : "Things_HPMC.Core.Manager",
+                "EventHandlerService" : "QueryAllCountriesBasedOnLocationEntities",
+                "EventTriggerArea" : "Mashup",
+                "EventTriggerEvent" : "Loaded",
+                "EventTriggerId" : "mashup-root",
+                "EventTriggerSection" : "",
+                "Id" : "efcdab5b-4793-4adc-af6b-a95f360f5af3"
+              }, {
+                "EventHandlerArea" : "Data",
+                "EventHandlerId" : "Things_HPMC.Core.Manager",
+                "EventHandlerService" : "QueryAllCompaniesForDropdownData",
+                "EventTriggerArea" : "UI",
+                "EventTriggerEvent" : "SelectedItemsChanged",
+                "EventTriggerId" : "ptcsdropdown-83",
+                "EventTriggerSection" : "",
+                "Id" : "2e5e7431-4dc2-40c8-84a2-d5df3cdca80f"
+              }, {
+                "EventHandlerArea" : "Data",
+                "EventHandlerId" : "Things_HPMC.Core.Manager",
+                "EventHandlerService" : "QueryAllLocationsForDropdownData",
+                "EventTriggerArea" : "UI",
+                "EventTriggerEvent" : "SelectedItemsChanged",
+                "EventTriggerId" : "ptcsdropdown-85",
+                "EventTriggerSection" : "",
+                "Id" : "2852d7bb-19e2-44ea-8850-616ef9509986"
+              } ],
+              "RunTimePermissions" : { },
+              "UI" : {
+                "Properties" : {
+                  "AddToDashboardButton" : "SimplePlus",
+                  "AddToDashboardButtonStyle" : "DefaultAddToDashboardButtonStyle",
+                  "Area" : "Mashup",
+                  "BGImage" : "",
+                  "BGImageRepeat" : "no-repeat",
+                  "BGImageSize" : "auto",
+                  "Columns" : 0,
+                  "ConfigureGadgetButton" : "SimpleGear",
+                  "ConfigureGadgetButtonStyle" : "DefaultConfigureGadgetButtonStyle",
+                  "DisplayName" : "Mashup",
+                  "EnableParameterEditing" : false,
+                  "Height" : 618,
+                  "Id" : "mashup-root",
+                  "IgnoreWarningsInViewMashup" : false,
+                  "IsPrintLayout" : false,
+                  "Left" : 0,
+                  "MashupResolution" : "FHD 1920x1080",
+                  "MashupToEditGadget" : "DefaultMashupToEditGadget",
+                  "MigratedOn" : "2022-04-14T08:32:21.000Z",
+                  "MinHeight" : 0,
+                  "MinWidth" : 0,
+                  "ResponsiveLayout" : true,
+                  "Rows" : 0,
+                  "ShowDataLoading" : true,
+                  "Style" : "DefaultMashupStyle",
+                  "StyleProperties" : {
+                    "data" : {
+                      "flexcontainer-10" : {
+                        "parts" : {
+                          "$" : {
+                            "$" : {
+                              "background" : "#0081b4"
+                            }
+                          }
+                        },
+                        "widget" : "flex-container"
+                      },
+                      "flexcontainer-106" : {
+                        "parts" : {
+                          "$" : {
+                            "$" : {
+                              "background" : "inherit"
+                            }
+                          }
+                        },
+                        "widget" : "flex-container"
+                      },
+                      "flexcontainer-109" : {
+                        "parts" : {
+                          "$" : {
+                            "$" : {
+                              "background" : "#f4f4fb"
+                            }
+                          }
+                        },
+                        "widget" : "flex-container"
+                      },
+                      "flexcontainer-111" : {
+                        "parts" : {
+                          "$" : {
+                            "$" : {
+                              "background" : "#f4f4fb"
+                            }
+                          }
+                        },
+                        "widget" : "flex-container"
+                      },
+                      "flexcontainer-118" : {
+                        "parts" : {
+                          "$" : {
+                            "$" : {
+                              "background" : "inherit"
+                            }
+                          }
+                        },
+                        "widget" : "flex-container"
+                      },
+                      "flexcontainer-124" : {
+                        "parts" : {
+                          "$" : {
+                            "$" : {
+                              "background" : "#f4f4fb"
+                            }
+                          }
+                        },
+                        "widget" : "flex-container"
+                      },
+                      "flexcontainer-125" : {
+                        "parts" : {
+                          "$" : {
+                            "$" : {
+                              "background" : "#f4f4fb"
+                            }
+                          }
+                        },
+                        "widget" : "flex-container"
+                      },
+                      "flexcontainer-126" : {
+                        "parts" : {
+                          "$" : {
+                            "$" : {
+                              "background" : "#f4f4fb"
+                            }
+                          }
+                        },
+                        "widget" : "flex-container"
+                      },
+                      "flexcontainer-134" : {
+                        "parts" : {
+                          "$" : {
+                            "$" : {
+                              "background" : "#f4f4fb"
+                            }
+                          }
+                        },
+                        "widget" : "flex-container"
+                      },
+                      "flexcontainer-139" : {
+                        "parts" : {
+                          "$" : {
+                            "$" : {
+                              "background" : "#f4f4fb"
+                            }
+                          }
+                        },
+                        "widget" : "flex-container"
+                      },
+                      "flexcontainer-15" : {
+                        "parts" : {
+                          "$" : {
+                            "$" : {
+                              "background" : "rgba(255,255,255,1)"
+                            }
+                          }
+                        },
+                        "widget" : "flex-container"
+                      },
+                      "flexcontainer-16" : {
+                        "parts" : {
+                          "$" : {
+                            "$" : {
+                              "background" : "#3E3E3E"
+                            }
+                          }
+                        },
+                        "widget" : "flex-container"
+                      },
+                      "flexcontainer-163" : {
+                        "parts" : {
+                          "$" : {
+                            "$" : {
+                              "background" : "#f4f4fb"
+                            }
+                          }
+                        },
+                        "widget" : "flex-container"
+                      },
+                      "flexcontainer-164" : {
+                        "parts" : {
+                          "$" : {
+                            "$" : {
+                              "background" : "rgba(244,244,251,1)"
+                            }
+                          }
+                        },
+                        "widget" : "flex-container"
+                      },
+                      "flexcontainer-165" : {
+                        "parts" : {
+                          "$" : {
+                            "$" : {
+                              "background" : "rgba(244,244,251,1)"
+                            }
+                          }
+                        },
+                        "widget" : "flex-container"
+                      },
+                      "flexcontainer-166" : {
+                        "parts" : {
+                          "$" : {
+                            "$" : {
+                              "background" : "rgba(244,244,251,1)"
+                            }
+                          }
+                        },
+                        "widget" : "flex-container"
+                      },
+                      "flexcontainer-17" : {
+                        "parts" : {
+                          "$" : {
+                            "$" : {
+                              "background" : "rgba(255,255,255,1)"
+                            }
+                          }
+                        },
+                        "widget" : "flex-container"
+                      },
+                      "flexcontainer-18" : {
+                        "parts" : {
+                          "$" : {
+                            "$" : {
+                              "background" : "#f4f4fb"
+                            }
+                          }
+                        },
+                        "widget" : "flex-container"
+                      },
+                      "flexcontainer-2" : {
+                        "parts" : {
+                          "$" : {
+                            "$" : {
+                              "background" : "#f4f4fb"
+                            }
+                          }
+                        },
+                        "widget" : "flex-container"
+                      },
+                      "flexcontainer-35" : {
+                        "parts" : {
+                          "$" : {
+                            "$" : {
+                              "background" : "#f4f4fb"
+                            }
+                          }
+                        },
+                        "widget" : "flex-container"
+                      },
+                      "flexcontainer-37" : {
+                        "parts" : {
+                          "$" : {
+                            "$" : {
+                              "background" : "#f4f4fb"
+                            }
+                          }
+                        },
+                        "widget" : "flex-container"
+                      },
+                      "flexcontainer-38" : {
+                        "parts" : {
+                          "$" : {
+                            "$" : {
+                              "background" : "#f4f4fb"
+                            }
+                          }
+                        },
+                        "widget" : "flex-container"
+                      },
+                      "flexcontainer-39" : {
+                        "parts" : {
+                          "$" : {
+                            "$" : {
+                              "background" : "#f4f4fb"
+                            }
+                          }
+                        },
+                        "widget" : "flex-container"
+                      },
+                      "flexcontainer-4" : {
+                        "parts" : {
+                          "$" : {
+                            "$" : {
+                              "background" : "#f4f4fb"
+                            }
+                          }
+                        },
+                        "widget" : "flex-container"
+                      },
+                      "flexcontainer-40" : {
+                        "parts" : {
+                          "$" : {
+                            "$" : {
+                              "background" : "#f4f4fb"
+                            }
+                          }
+                        },
+                        "widget" : "flex-container"
+                      },
+                      "flexcontainer-42" : {
+                        "parts" : {
+                          "$" : {
+                            "$" : {
+                              "background" : "#f4f4fb"
+                            }
+                          }
+                        },
+                        "widget" : "flex-container"
+                      },
+                      "flexcontainer-5" : {
+                        "parts" : {
+                          "$" : {
+                            "$" : {
+                              "border-color" : "#333333",
+                              "border-style" : "none",
+                              "border-width" : "1px"
+                            }
+                          }
+                        },
+                        "widget" : "flex-container"
+                      },
+                      "flexcontainer-51" : {
+                        "parts" : {
+                          "$" : {
+                            "$" : {
+                              "background" : "#3e3e3e"
+                            }
+                          }
+                        },
+                        "widget" : "flex-container"
+                      },
+                      "flexcontainer-53" : {
+                        "parts" : {
+                          "$" : {
+                            "$" : {
+                              "background" : "#f4f4fb"
+                            }
+                          }
+                        },
+                        "widget" : "flex-container"
+                      },
+                      "flexcontainer-54" : {
+                        "parts" : {
+                          "$" : {
+                            "$" : {
+                              "background" : "#f4f4fb"
+                            }
+                          }
+                        },
+                        "widget" : "flex-container"
+                      },
+                      "flexcontainer-55" : {
+                        "parts" : {
+                          "$" : {
+                            "$" : {
+                              "background" : "#f4f4fb"
+                            }
+                          }
+                        },
+                        "widget" : "flex-container"
+                      },
+                      "flexcontainer-56" : {
+                        "parts" : {
+                          "$" : {
+                            "$" : {
+                              "background" : "#f4f4fb"
+                            }
+                          }
+                        },
+                        "widget" : "flex-container"
+                      },
+                      "flexcontainer-57" : {
+                        "parts" : {
+                          "$" : {
+                            "$" : {
+                              "background" : "#f4f4fb"
+                            }
+                          }
+                        },
+                        "widget" : "flex-container"
+                      },
+                      "flexcontainer-58" : {
+                        "parts" : {
+                          "$" : {
+                            "$" : {
+                              "background" : "#f4f4fb"
+                            }
+                          }
+                        },
+                        "widget" : "flex-container"
+                      },
+                      "flexcontainer-6" : {
+                        "parts" : {
+                          "$" : {
+                            "$" : {
+                              "padding-top" : "20px"
+                            }
+                          }
+                        },
+                        "widget" : "flex-container"
+                      },
+                      "flexcontainer-68" : {
+                        "parts" : {
+                          "$" : {
+                            "$" : {
+                              "background" : "rgba(255,255,255,1)"
+                            }
+                          }
+                        },
+                        "widget" : "flex-container"
+                      },
+                      "flexcontainer-69" : {
+                        "parts" : {
+                          "$" : {
+                            "$" : {
+                              "background" : "#3E3E3E"
+                            }
+                          }
+                        },
+                        "widget" : "flex-container"
+                      },
+                      "flexcontainer-70" : {
+                        "parts" : {
+                          "$" : {
+                            "$" : {
+                              "background" : "rgba(255,255,255,1)"
+                            }
+                          }
+                        },
+                        "widget" : "flex-container"
+                      },
+                      "flexcontainer-71" : {
+                        "parts" : {
+                          "$" : {
+                            "$" : {
+                              "background" : "#f4f4fb"
+                            }
+                          }
+                        },
+                        "widget" : "flex-container"
+                      },
+                      "flexcontainer-8" : {
+                        "parts" : {
+                          "$" : {
+                            "$" : {
+                              "padding-top" : "20px"
+                            }
+                          }
+                        },
+                        "widget" : "flex-container"
+                      },
+                      "flexcontainer-80" : {
+                        "parts" : {
+                          "$" : {
+                            "$" : {
+                              "background" : "#f4f4fb"
+                            }
+                          }
+                        },
+                        "widget" : "flex-container"
+                      },
+                      "flexcontainer-95" : {
+                        "parts" : {
+                          "$" : {
+                            "$" : {
+                              "background" : "#f4f4fb"
+                            }
+                          }
+                        },
+                        "widget" : "flex-container"
+                      },
+                      "flexcontainer-96" : {
+                        "parts" : {
+                          "$" : {
+                            "$" : {
+                              "background" : "inherit"
+                            }
+                          }
+                        },
+                        "widget" : "flex-container"
+                      },
+                      "flexcontainer-98" : {
+                        "parts" : {
+                          "$" : {
+                            "$" : {
+                              "background" : "#f4f4fb"
+                            }
+                          }
+                        },
+                        "widget" : "flex-container"
+                      },
+                      "ptcsbutton-47" : {
+                        "parts" : {
+                          "$" : {
+                            "$" : {
+                              "background" : "#e3e3e3",
+                              "border-color" : "inherit",
+                              "border-radius" : "0px",
+                              "border-style" : "none",
+                              "border-width" : "0px",
+                              "color" : "#333333",
+                              "min-height" : "32px"
+                            },
+                            "hover" : {
+                              "background" : "#848399",
+                              "border-color" : "#0081b4",
+                              "border-radius" : "0px",
+                              "border-style" : "none"
+                            },
+                            "pressed" : {
+                              "background" : "#0081b4",
+                              "border-color" : "inherit",
+                              "border-radius" : "0px",
+                              "border-style" : "none"
+                            }
+                          },
+                          "label" : {
+                            "$" : {
+                              "font-size" : "22px"
+                            },
+                            "hover" : {
+                              "font-size" : "22px"
+                            },
+                            "pressed" : {
+                              "font-size" : "22px"
+                            }
+                          }
+                        },
+                        "widget" : "ptcs-button"
+                      },
+                      "ptcsbutton-60" : {
+                        "parts" : {
+                          "$" : {
+                            "$" : {
+                              "min-height" : "20px",
+                              "min-width" : "20px"
+                            }
+                          }
+                        },
+                        "widget" : "ptcs-button"
+                      },
+                      "ptcsbutton-61" : {
+                        "parts" : {
+                          "$" : {
+                            "$" : {
+                              "min-height" : "20px",
+                              "min-width" : "20px"
+                            }
+                          }
+                        },
+                        "widget" : "ptcs-button"
+                      },
+                      "ptcsbutton-62" : {
+                        "parts" : {
+                          "$" : {
+                            "$" : {
+                              "min-height" : "20px",
+                              "min-width" : "20px"
+                            }
+                          }
+                        },
+                        "widget" : "ptcs-button"
+                      },
+                      "ptcsdropdown-83" : {
+                        "parts" : {
+                          "filter" : {
+                            "pressed" : {
+                              "border-color" : "#000000"
+                            }
+                          },
+                          "label" : {
+                            "$" : {
+                              "font-size" : "20px"
+                            }
+                          },
+                          "select-box" : {
+                            "$" : {
+                              "background" : "#e3e3e3",
+                              "border-radius" : "5px",
+                              "border-style" : "none",
+                              "border-width" : "0px"
+                            },
+                            "disabled" : {
+                              "background" : "#e3e3e3"
+                            },
+                            "hover" : {
+                              "background" : "#e3e3e3",
+                              "border-color" : "#848399"
+                            },
+                            "pressed" : {
+                              "background" : "#e3e3e3",
+                              "border-color" : "#848399"
+                            },
+                            "selected" : {
+                              "background" : "#e3e3e3",
+                              "border-color" : "#0081b4"
+                            }
+                          }
+                        },
+                        "widget" : "ptcs-dropdown"
+                      },
+                      "ptcsdropdown-85" : {
+                        "parts" : {
+                          "filter" : {
+                            "pressed" : {
+                              "border-color" : "#000000"
+                            }
+                          },
+                          "label" : {
+                            "$" : {
+                              "font-size" : "20px"
+                            }
+                          },
+                          "select-box" : {
+                            "$" : {
+                              "background" : "#e3e3e3",
+                              "border-radius" : "5px",
+                              "border-style" : "none",
+                              "border-width" : "0px"
+                            },
+                            "disabled" : {
+                              "background" : "#e3e3e3"
+                            },
+                            "hover" : {
+                              "background" : "#e3e3e3",
+                              "border-color" : "#848399"
+                            },
+                            "pressed" : {
+                              "background" : "#e3e3e3",
+                              "border-color" : "#848399"
+                            },
+                            "selected" : {
+                              "background" : "#e3e3e3",
+                              "border-color" : "#0081b4"
+                            }
+                          }
+                        },
+                        "widget" : "ptcs-dropdown"
+                      },
+                      "ptcsdropdown-87" : {
+                        "parts" : {
+                          "filter" : {
+                            "pressed" : {
+                              "border-color" : "#000000"
+                            }
+                          },
+                          "label" : {
+                            "$" : {
+                              "font-size" : "20px"
+                            }
+                          },
+                          "select-box" : {
+                            "$" : {
+                              "background" : "#e3e3e3",
+                              "border-radius" : "5px",
+                              "border-style" : "none",
+                              "border-width" : "0px"
+                            },
+                            "disabled" : {
+                              "background" : "#e3e3e3"
+                            },
+                            "hover" : {
+                              "background" : "#e3e3e3",
+                              "border-color" : "#848399"
+                            },
+                            "pressed" : {
+                              "background" : "#e3e3e3",
+                              "border-color" : "#848399"
+                            },
+                            "selected" : {
+                              "background" : "#e3e3e3",
+                              "border-color" : "#0081b4"
+                            }
+                          }
+                        },
+                        "widget" : "ptcs-dropdown"
+                      },
+                      "ptcslabel-20" : {
+                        "parts" : {
+                          "$" : {
+                            "$" : {
+                              "color" : "#0081b4",
+                              "font-size" : "22px"
+                            }
+                          }
+                        },
+                        "widget" : "ptcs-label"
+                      }
+                    },
+                    "meta" : {
+                      "type" : "WidgetStyler",
+                      "version" : "1.0"
+                    }
+                  },
+                  "StyleTheme" : "HPMC.Core.Default.Black.Style",
+                  "Title" : "",
+                  "TitleBar" : false,
+                  "TitleBarStyle" : "DefaultTitleBarStyle",
+                  "TitleBarText" : "Gadget Title Here",
+                  "Top" : 0,
+                  "Type" : "mashup",
+                  "UseMasterTheme" : false,
+                  "UseTheme" : false,
+                  "UseThemeForHybrids" : false,
+                  "Visible" : true,
+                  "Width" : 1024,
+                  "Z-index" : 10,
+                  "__TypeDisplayName" : "Mashup",
+                  "_currentParameterDefs" : [ {
+                    "Aspects" : {
+                      "bindingDirection" : "BOTH",
+                      "isMandatory" : false
+                    },
+                    "BaseType" : "STRING",
+                    "DefaultValue" : "",
+                    "Description" : "",
+                    "ParameterName" : "ucId"
+                  }, {
+                    "Aspects" : {
+                      "bindingDirection" : "BOTH",
+                      "isMandatory" : false
+                    },
+                    "BaseType" : "STRING",
+                    "DefaultValue" : "",
+                    "Description" : "",
+                    "ParameterName" : "locId"
+                  }, {
+                    "Aspects" : {
+                      "bindingDirection" : "BOTH",
+                      "isMandatory" : false
+                    },
+                    "BaseType" : "STRING",
+                    "DefaultValue" : "",
+                    "Description" : "",
+                    "ParameterName" : "countryId"
+                  }, {
+                    "Aspects" : {
+                      "bindingDirection" : "IN",
+                      "isMandatory" : false
+                    },
+                    "BaseType" : "BOOLEAN",
+                    "DefaultValue" : false,
+                    "Description" : "",
+                    "ParameterName" : "showSearch"
+                  } ],
+                  "countryId" : "",
+                  "id_index" : 167,
+                  "locId" : "",
+                  "showSearch" : false,
+                  "supportsAutoResize" : true,
+                  "ucId" : ""
+                },
+                "Widgets" : [ {
+                  "Properties" : {
+                    "Area" : "UI",
+                    "DisplayName" : "container-2",
+                    "EnableExpandCollapse" : false,
+                    "ExpandCollapseTabLocation" : "inside",
+                    "Expanded" : true,
+                    "Id" : "flexcontainer-2",
+                    "LastContainer" : true,
+                    "Overlay" : false,
+                    "ResponsiveLayout" : true,
+                    "ShowDataLoading" : true,
+                    "ShowExpandCollapseTab" : false,
+                    "SourceURL" : "",
+                    "Style" : "DefaultContainerStyle",
+                    "StyleProperties" : { },
+                    "Type" : "flexcontainer",
+                    "UseTheme" : true,
+                    "Visible" : true,
+                    "Z-index" : 10,
+                    "__TypeDisplayName" : "Responsive Container",
+                    "align-content" : "flex-start",
+                    "align-items" : "center",
+                    "flex-basis" : "auto",
+                    "flex-direction" : "row",
+                    "flex-grow" : 1,
+                    "flex-max-height" : "",
+                    "flex-max-width" : "",
+                    "flex-min-height" : "",
+                    "flex-min-width" : "",
+                    "flex-shrink" : 1,
+                    "flex-size" : "default",
+                    "flex-wrap" : "nowrap",
+                    "iconClass" : "widgets-flexcontainer",
+                    "isLocked" : false,
+                    "justify-content" : "flex-start",
+                    "positioning" : "responsive",
+                    "prev-align" : "center",
+                    "userCannotRemove" : true
+                  },
+                  "Widgets" : [ {
+                    "Properties" : {
+                      "Area" : "UI",
+                      "DisclosureControl" : "show-more",
+                      "DisplayName" : "ptcs-label-82",
+                      "HorizontalAlignment" : "right",
+                      "Id" : "ptcslabel-82",
+                      "LabelText" : "[[HPMC.Country:]]",
+                      "LabelType" : "label",
+                      "LastContainer" : false,
+                      "Left" : 507.9921875,
+                      "Margin" : "0 5",
+                      "MultiLine" : true,
+                      "ResponsiveLayout" : false,
+                      "ShowDataLoading" : true,
+                      "Top" : 295.5859375,
+                      "Type" : "ptcslabel",
+                      "UseTheme" : true,
+                      "VerticalAlignment" : "flex-start",
+                      "Visible" : true,
+                      "Width" : 80,
+                      "Z-index" : 10,
+                      "__TypeDisplayName" : "Label",
+                      "overflowShowLessTxt" : "[[showLess]]",
+                      "overflowShowMoreTxt" : "[[showMore]]"
+                    },
+                    "Widgets" : [ ]
+                  }, {
+                    "Properties" : {
+                      "Alignment" : "left",
+                      "AllLabel" : "[[all]]",
+                      "Area" : "UI",
+                      "AutoSelectFirstRow" : true,
+                      "ClearSelectedItemsLabel" : "[[clearSelectedItems]]",
+                      "ClearSelectionItem" : false,
+                      "ClearSelectionLabel" : "(None)",
+                      "Disabled" : false,
+                      "DisplayField" : "country_name",
+                      "DisplayFieldBaseType" : "STRING",
+                      "DisplayName" : "country-dropdown",
+                      "FilterHintText" : "Filter",
+                      "HintText" : "[[HPMC.Dropdown.Select..]]",
+                      "Id" : "ptcsdropdown-83",
+                      "ItemMeta" : {
+                        "type" : "text"
+                      },
+                      "Label" : "",
+                      "LabelAlignment" : "left",
+                      "LastContainer" : false,
+                      "Left" : 557.9921875,
+                      "ListFormat_StateParameters" : [ ],
+                      "ListMarginTop" : 8,
+                      "Margin" : "0 5",
+                      "MultiSelect" : false,
+                      "ResponsiveLayout" : false,
+                      "RowHeight" : 34,
+                      "SelectAllLabel" : "[[selectAll]]",
+                      "SelectedLabel" : "[[selected]]",
+                      "ShowDataLoading" : false,
+                      "ShowListFilter" : false,
+                      "TabSequence" : 0,
+                      "Top" : 120.5859375,
+                      "Type" : "ptcsdropdown",
+                      "UseTheme" : true,
+                      "ValueField" : "country_id",
+                      "Visible" : true,
+                      "Width" : 150,
+                      "Z-index" : 10,
+                      "__TypeDisplayName" : "DropDown"
+                    },
+                    "Widgets" : [ ]
+                  }, {
+                    "Properties" : {
+                      "Area" : "UI",
+                      "DisclosureControl" : "show-more",
+                      "DisplayName" : "ptcs-label-84",
+                      "HorizontalAlignment" : "right",
+                      "Id" : "ptcslabel-84",
+                      "LabelText" : "[[HPMC.Company:]]",
+                      "LabelType" : "label",
+                      "LastContainer" : false,
+                      "Left" : 507.9921875,
+                      "Margin" : "0 5 0 10",
+                      "MultiLine" : true,
+                      "ResponsiveLayout" : false,
+                      "ShowDataLoading" : true,
+                      "Top" : 295.5859375,
+                      "Type" : "ptcslabel",
+                      "UseTheme" : true,
+                      "VerticalAlignment" : "flex-start",
+                      "Visible" : true,
+                      "Width" : 90,
+                      "Z-index" : 10,
+                      "__TypeDisplayName" : "Label",
+                      "overflowShowLessTxt" : "[[showLess]]",
+                      "overflowShowMoreTxt" : "[[showMore]]"
+                    },
+                    "Widgets" : [ ]
+                  }, {
+                    "Properties" : {
+                      "Alignment" : "left",
+                      "AllLabel" : "[[all]]",
+                      "Area" : "UI",
+                      "AutoSelectFirstRow" : true,
+                      "ClearSelectedItemsLabel" : "[[clearSelectedItems]]",
+                      "ClearSelectionItem" : false,
+                      "ClearSelectionLabel" : "(None)",
+                      "Disabled" : false,
+                      "DisplayField" : "company_name",
+                      "DisplayFieldBaseType" : "STRING",
+                      "DisplayName" : "company-dropdown",
+                      "FilterHintText" : "Filter",
+                      "HintText" : "[[HPMC.Dropdown.Select..]]",
+                      "Id" : "ptcsdropdown-85",
+                      "ItemMeta" : {
+                        "type" : "text"
+                      },
+                      "Label" : "",
+                      "LabelAlignment" : "left",
+                      "LastContainer" : false,
+                      "Left" : 557.9921875,
+                      "ListFormat_StateParameters" : [ ],
+                      "ListMarginTop" : 8,
+                      "Margin" : "0 5",
+                      "MultiSelect" : false,
+                      "ResponsiveLayout" : false,
+                      "RowHeight" : 34,
+                      "SelectAllLabel" : "[[selectAll]]",
+                      "SelectedLabel" : "[[selected]]",
+                      "ShowDataLoading" : false,
+                      "ShowListFilter" : false,
+                      "TabSequence" : 0,
+                      "Top" : 120.5859375,
+                      "Type" : "ptcsdropdown",
+                      "UseTheme" : true,
+                      "ValueField" : "company_id",
+                      "Visible" : true,
+                      "Width" : 150,
+                      "Z-index" : 10,
+                      "__TypeDisplayName" : "DropDown"
+                    },
+                    "Widgets" : [ ]
+                  }, {
+                    "Properties" : {
+                      "Area" : "UI",
+                      "DisclosureControl" : "show-more",
+                      "DisplayName" : "ptcs-label-86",
+                      "HorizontalAlignment" : "right",
+                      "Id" : "ptcslabel-86",
+                      "LabelText" : "[[HPMC.Location:]]",
+                      "LabelType" : "label",
+                      "LastContainer" : false,
+                      "Left" : 507.9921875,
+                      "Margin" : "5 5 5 10",
+                      "MultiLine" : true,
+                      "ResponsiveLayout" : false,
+                      "ShowDataLoading" : true,
+                      "Top" : 295.5859375,
+                      "Type" : "ptcslabel",
+                      "UseTheme" : true,
+                      "VerticalAlignment" : "flex-start",
+                      "Visible" : true,
+                      "Width" : 90,
+                      "Z-index" : 10,
+                      "__TypeDisplayName" : "Label",
+                      "overflowShowLessTxt" : "[[showLess]]",
+                      "overflowShowMoreTxt" : "[[showMore]]"
+                    },
+                    "Widgets" : [ ]
+                  }, {
+                    "Properties" : {
+                      "Alignment" : "left",
+                      "AllLabel" : "[[all]]",
+                      "Area" : "UI",
+                      "AutoSelectFirstRow" : true,
+                      "ClearSelectedItemsLabel" : "[[clearSelectedItems]]",
+                      "ClearSelectionItem" : false,
+                      "ClearSelectionLabel" : "(None)",
+                      "Disabled" : false,
+                      "DisplayField" : "dropdown_value",
+                      "DisplayFieldBaseType" : "STRING",
+                      "DisplayName" : "location-dropdown",
+                      "FilterHintText" : "Filter",
+                      "HintText" : "[[HPMC.Dropdown.Select..]]",
+                      "Id" : "ptcsdropdown-87",
+                      "ItemMeta" : {
+                        "type" : "text"
+                      },
+                      "Label" : "",
+                      "LabelAlignment" : "left",
+                      "LastContainer" : false,
+                      "Left" : 557.9921875,
+                      "ListFormat_StateParameters" : [ ],
+                      "ListMarginTop" : 8,
+                      "Margin" : "0 5",
+                      "MultiSelect" : false,
+                      "ResponsiveLayout" : false,
+                      "RowHeight" : 34,
+                      "SelectAllLabel" : "[[selectAll]]",
+                      "SelectedLabel" : "[[selected]]",
+                      "ShowDataLoading" : false,
+                      "ShowListFilter" : false,
+                      "TabSequence" : 0,
+                      "Top" : 120.5859375,
+                      "Type" : "ptcsdropdown",
+                      "UseTheme" : true,
+                      "ValueField" : "dropdown_id",
+                      "Visible" : true,
+                      "Width" : 150,
+                      "Z-index" : 10,
+                      "__TypeDisplayName" : "DropDown"
+                    },
+                    "Widgets" : [ ]
+                  } ]
+                } ]
+              },
+              "mashupType" : "mashup"
+            }
+            ]]>
+            </mashupContent>
+            <preview></preview>
+        </Mashup>
+    </Mashups>
+</Entities>

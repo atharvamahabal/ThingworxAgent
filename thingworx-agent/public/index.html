@@ -4,40 +4,390 @@
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
+    <meta name="theme-color" content="#0b1220" />
+    <meta name="description" content="ThingWorx AI Agent — local-first assistant to generate ThingWorx entities, Extension ZIPs, and answer project questions." />
+    <meta property="og:title" content="ThingWorx AI Agent" />
+    <meta property="og:description" content="Generate ThingWorx entities + Extension ZIPs, and chat with your documentation — local-first." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="%PUBLIC_URL%/logo512.png" />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
-
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
+    <title>ThingWorx AI Agent</title>
+    <style>
+      :root{
+        --bg:#070a12;
+        --panel:rgba(255,255,255,.06);
+        --panel2:rgba(255,255,255,.03);
+        --text:rgba(255,255,255,.92);
+        --muted:rgba(255,255,255,.70);
+        --muted2:rgba(255,255,255,.58);
+        --line:rgba(255,255,255,.10);
+        --brand1:#7c3aed;
+        --brand2:#22d3ee;
+        --good:#34d399;
+        --shadow:0 18px 55px rgba(0,0,0,.45);
+        --radius:20px;
+      }
+      *{box-sizing:border-box}
+      html,body{height:100%}
+      body{
+        margin:0;
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+        background:
+          radial-gradient(900px 480px at 12% 8%, rgba(124,58,237,.35), transparent 60%),
+          radial-gradient(800px 520px at 92% 18%, rgba(34,211,238,.25), transparent 55%),
+          radial-gradient(650px 520px at 60% 92%, rgba(34,211,238,.12), transparent 60%),
+          linear-gradient(180deg, #05060c 0%, #050915 45%, #070a12 100%);
+        color:var(--text);
+      }
+      a{color:inherit}
+      .wrap{max-width:1080px;margin:0 auto;padding:26px 18px 60px}
+      header{
+        display:flex;align-items:center;justify-content:space-between;gap:16px;
+        border:1px solid var(--line);
+        background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+        border-radius:999px;
+        padding:10px 14px 10px 12px;
+        backdrop-filter: blur(10px);
+      }
+      .brand{display:flex;align-items:center;gap:10px;min-width:0}
+      .logo{
+        width:34px;height:34px;border-radius:10px;
+        background:linear-gradient(135deg, var(--brand1), var(--brand2));
+        box-shadow:0 10px 30px rgba(124,58,237,.25);
+        flex:none;
+      }
+      .brand-title{font-weight:700;letter-spacing:.2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+      .nav{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+      .nav a{
+        text-decoration:none;
+        padding:8px 10px;
+        border-radius:999px;
+        color:var(--muted);
+        border:1px solid transparent;
+      }
+      .nav a:hover{border-color:var(--line);color:var(--text);background:rgba(255,255,255,.03)}
+      .cta{
+        text-decoration:none;
+        padding:9px 12px;
+        border-radius:999px;
+        border:1px solid rgba(34,211,238,.35);
+        background:linear-gradient(135deg, rgba(124,58,237,.45), rgba(34,211,238,.28));
+        color:var(--text);
+        box-shadow:0 16px 45px rgba(34,211,238,.08);
+      }
+      .cta:hover{filter:brightness(1.06)}
+      .hero{
+        margin-top:22px;
+        display:grid;
+        grid-template-columns: 1.25fr .75fr;
+        gap:18px;
+      }
+      @media (max-width: 900px){
+        .hero{grid-template-columns:1fr}
+      }
+      .card{
+        border:1px solid var(--line);
+        border-radius:var(--radius);
+        background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+        box-shadow:var(--shadow);
+      }
+      .hero-main{padding:22px 22px 18px}
+      .tag{
+        display:inline-flex;
+        align-items:center;
+        gap:8px;
+        padding:7px 10px;
+        border-radius:999px;
+        border:1px solid rgba(124,58,237,.35);
+        background:rgba(124,58,237,.12);
+        color:var(--muted);
+        font-size:12px;
+      }
+      .tag b{color:var(--text);font-weight:700}
+      h1{margin:14px 0 10px;font-size:40px;line-height:1.08;letter-spacing:-.4px}
+      @media (max-width: 460px){h1{font-size:34px}}
+      .lead{margin:0;color:var(--muted);font-size:15.5px;line-height:1.55}
+      .hero-actions{margin-top:16px;display:flex;gap:10px;flex-wrap:wrap}
+      .btn{
+        display:inline-flex;align-items:center;justify-content:center;
+        padding:10px 12px;border-radius:12px;text-decoration:none;
+        border:1px solid var(--line);
+        background:rgba(255,255,255,.03);
+        color:var(--text);
+      }
+      .btn:hover{background:rgba(255,255,255,.05)}
+      .btn.primary{
+        border-color:rgba(34,211,238,.35);
+        background:linear-gradient(135deg, rgba(124,58,237,.50), rgba(34,211,238,.28));
+      }
+      .hero-side{padding:18px}
+      .stat{
+        border:1px solid var(--line);
+        background:rgba(255,255,255,.03);
+        border-radius:16px;
+        padding:12px 12px;
+      }
+      .stat + .stat{margin-top:10px}
+      .k{font-size:12px;color:var(--muted2)}
+      .v{margin-top:4px;font-size:14px;color:var(--text);line-height:1.35}
+      section{margin-top:18px}
+      .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+      @media (max-width: 900px){.grid3{grid-template-columns:1fr}}
+      .grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+      @media (max-width: 900px){.grid2{grid-template-columns:1fr}}
+      .panel{padding:18px}
+      .title{
+        display:flex;align-items:flex-end;justify-content:space-between;gap:14px;flex-wrap:wrap;
+        margin-bottom:10px;
+      }
+      .title h2{margin:0;font-size:18px;letter-spacing:-.2px}
+      .title p{margin:0;color:var(--muted2);font-size:13px}
+      .feature{
+        border:1px solid var(--line);
+        background:rgba(255,255,255,.03);
+        border-radius:16px;
+        padding:14px 14px;
+      }
+      .feature b{display:block;font-size:14px;margin-bottom:6px}
+      .feature span{color:var(--muted);font-size:13px;line-height:1.45}
+      .steps{margin:0;padding-left:18px;color:var(--muted);line-height:1.6;font-size:13.5px}
+      .steps li{margin:6px 0}
+      .code{
+        margin:0;
+        padding:12px 12px;
+        border-radius:14px;
+        border:1px solid var(--line);
+        background:rgba(0,0,0,.26);
+        overflow:auto;
+        color:rgba(255,255,255,.86);
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        font-size:12px;
+        line-height:1.55;
+      }
+      .shots{
+        display:grid;
+        grid-template-columns:repeat(2,1fr);
+        gap:12px;
+      }
+      @media (max-width: 900px){.shots{grid-template-columns:1fr}}
+      figure{
+        margin:0;
+        border:1px solid var(--line);
+        background:rgba(255,255,255,.03);
+        border-radius:18px;
+        overflow:hidden;
+      }
+      .shot{
+        height:240px;
+        background:
+          linear-gradient(120deg, rgba(124,58,237,.28), rgba(34,211,238,.16)),
+          radial-gradient(600px 280px at 20% 20%, rgba(255,255,255,.12), transparent 55%),
+          radial-gradient(600px 280px at 80% 40%, rgba(0,0,0,.2), transparent 55%),
+          linear-gradient(180deg, rgba(0,0,0,.20), rgba(0,0,0,.35));
+        display:flex;
+        align-items:flex-end;
+        padding:14px;
+      }
+      .shot .label{
+        border:1px solid rgba(255,255,255,.16);
+        background:rgba(0,0,0,.28);
+        padding:8px 10px;
+        border-radius:14px;
+        max-width:100%;
+      }
+      .shot .label b{display:block;font-size:13px}
+      .shot .label span{display:block;color:var(--muted);font-size:12px;margin-top:2px;line-height:1.25}
+      figcaption{
+        padding:10px 12px;
+        color:var(--muted);
+        font-size:12.5px;
+        border-top:1px solid var(--line);
+      }
+      footer{
+        margin-top:16px;
+        padding:14px 2px 0;
+        color:var(--muted2);
+        font-size:12px;
+      }
+      .pill{
+        display:inline-flex;
+        align-items:center;
+        gap:8px;
+        border-radius:999px;
+        border:1px solid var(--line);
+        padding:6px 10px;
+        background:rgba(255,255,255,.03);
+        color:var(--muted);
+      }
+      .pill i{
+        width:8px;height:8px;border-radius:999px;background:var(--good);
+        box-shadow:0 0 0 4px rgba(52,211,153,.18);
+      }
+    </style>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div class="wrap">
+      <header>
+        <div class="brand">
+          <div class="logo" aria-hidden="true"></div>
+          <div class="brand-title">ThingWorx AI Agent</div>
+        </div>
+        <nav class="nav" aria-label="Primary">
+          <a href="#features">Features</a>
+          <a href="#why">Why it helps</a>
+          <a href="#how">How to use</a>
+          <a href="#screens">Screenshots</a>
+          <a class="cta" href="#run">Run locally</a>
+        </nav>
+      </header>
+
+      <div class="hero">
+        <div class="card hero-main">
+          <div class="tag"><b>Local-first</b> • generates ThingWorx entities + Extension ZIPs</div>
+          <h1>Build ThingWorx faster with one focused tool.</h1>
+          <p class="lead">
+            This UI helps you generate common ThingWorx entities (Projects, Things, ThingTemplates, DataShapes, Mashups) and package them
+            into a valid Extension ZIP. It also includes a documentation + project Q&amp;A flow so you can search context and chat with it.
+          </p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#run">Get started</a>
+            <a class="btn" href="#screens">See UI</a>
+            <span class="pill"><i aria-hidden="true"></i> Runs on your machine</span>
+          </div>
+        </div>
+
+        <aside class="card hero-side" aria-label="At a glance">
+          <div class="stat">
+            <div class="k">What it replaces</div>
+            <div class="v">Manual entity XML + zip structure guesswork</div>
+          </div>
+          <div class="stat">
+            <div class="k">What you get</div>
+            <div class="v">Entities/ + metadata/ packaged as an Extension ZIP</div>
+          </div>
+          <div class="stat">
+            <div class="k">Built-in assistance</div>
+            <div class="v">Search + chat over docs and imported projects</div>
+          </div>
+        </aside>
+      </div>
+
+      <section id="features" class="card panel">
+        <div class="title">
+          <h2>Features</h2>
+          <p>Designed like a simple “one clear action” flow</p>
+        </div>
+        <div class="grid3">
+          <div class="feature">
+            <b>Entity generator</b>
+            <span>Generate Project, DataShape, ThingTemplate, Thing, Mashup XML in a consistent export format.</span>
+          </div>
+          <div class="feature">
+            <b>Extension ZIP output</b>
+            <span>Bundles Entities/ and metadata into a valid Extension ZIP you can import into ThingWorx.</span>
+          </div>
+          <div class="feature">
+            <b>Search + Q&amp;A</b>
+            <span>Ask questions, retrieve relevant context, and get concise answers grounded in your docs.</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="why" class="card panel">
+        <div class="title">
+          <h2>Why it helps</h2>
+          <p>Less guessing, more shipping</p>
+        </div>
+        <div class="grid2">
+          <div class="feature">
+            <b>Consistency beats complexity</b>
+            <span>Instead of maintaining ad-hoc XML snippets, you start from a predictable structure and iterate.</span>
+          </div>
+          <div class="feature">
+            <b>Small wins add up</b>
+            <span>Generate one entity, download one ZIP, import, verify. Repeat until your model is complete.</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="how" class="card panel">
+        <div class="title">
+          <h2>How to use</h2>
+          <p>A quick, repeatable loop</p>
+        </div>
+        <ol class="steps">
+          <li>Describe what you want to build (use case + entities).</li>
+          <li>Generate entities and review the produced XML.</li>
+          <li>Download the Extension ZIP and import into ThingWorx.</li>
+          <li>Use search + chat to verify details and find references in your docs.</li>
+        </ol>
+      </section>
+
+      <section id="run" class="card panel">
+        <div class="title">
+          <h2>Run locally</h2>
+          <p>Typical local dev flow</p>
+        </div>
+        <pre class="code">cd thingworx-agent
+npm install
+npm start</pre>
+        <p class="lead" style="margin-top:10px">
+          The app starts a local dev server. Replace the screenshots below with real captures from your environment when ready.
+        </p>
+      </section>
+
+      <section id="screens" class="card panel">
+        <div class="title">
+          <h2>Screenshots</h2>
+          <p>Preview the flow</p>
+        </div>
+        <div class="shots" role="list">
+          <figure role="listitem">
+            <div class="shot">
+              <div class="label">
+                <b>Entity builder</b>
+                <span>Generate XML for Things, Templates, DataShapes</span>
+              </div>
+            </div>
+            <figcaption>Entity generation and validation view.</figcaption>
+          </figure>
+          <figure role="listitem">
+            <div class="shot">
+              <div class="label">
+                <b>ZIP packaging</b>
+                <span>Entities/ + metadata/ bundled correctly</span>
+              </div>
+            </div>
+            <figcaption>Download a ready-to-import Extension ZIP.</figcaption>
+          </figure>
+          <figure role="listitem">
+            <div class="shot">
+              <div class="label">
+                <b>Docs search</b>
+                <span>Retrieve the right references quickly</span>
+              </div>
+            </div>
+            <figcaption>Search over local documentation and project imports.</figcaption>
+          </figure>
+          <figure role="listitem">
+            <div class="shot">
+              <div class="label">
+                <b>Chat</b>
+                <span>Ask, cite context, get a concise answer</span>
+              </div>
+            </div>
+            <figcaption>Streaming answers with context grounding.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <footer>
+        <div>Tip: keep this page as a lightweight overview; the actual UI renders below inside the app root.</div>
+      </footer>
+    </div>
+
+    <noscript>This site works best with JavaScript enabled.</noscript>
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
   </body>
 </html>

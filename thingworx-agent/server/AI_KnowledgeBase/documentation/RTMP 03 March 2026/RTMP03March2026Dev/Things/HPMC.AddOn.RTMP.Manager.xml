@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Entities
+ majorVersion="9"
+ minorVersion="5"
+ universal="password">
+    <Things>
+        <Thing
+         description=""
+         documentationContent=""
+         effectiveThingPackage="ConfiguredThing"
+         enabled="true"
+         homeMashup=""
+         identifier=""
+         inheritedValueStream=""
+         name="HPMC.AddOn.RTMP.Manager"
+         projectName="HPMC.AddOn.RTMP"
+         published="false"
+         tags=""
+         thingTemplate="HPMC.AddOn.RTMP.Manager.TT"
+         valueStream="">
+            <avatar></avatar>
+            <DesignTimePermissions>
+                <Create></Create>
+                <Read></Read>
+                <Update></Update>
+                <Delete></Delete>
+                <Metadata></Metadata>
+            </DesignTimePermissions>
+            <RunTimePermissions></RunTimePermissions>
+            <VisibilityPermissions>
+                <Visibility></Visibility>
+            </VisibilityPermissions>
+            <ConfigurationTableDefinitions></ConfigurationTableDefinitions>
+            <ConfigurationTables></ConfigurationTables>
+            <ThingShape>
+                <PropertyDefinitions>
+                    <PropertyDefinition
+                     aspect.dataChangeType="VALUE"
+                     aspect.dataShape="HPMC.AddOn.RTMP.EmailDataFields.DS"
+                     aspect.isIndexed="false"
+                     aspect.isPersistent="true"
+                     baseType="INFOTABLE"
+                     category=""
+                     description=""
+                     isLocalOnly="false"
+                     name="MachineEmailAlertLog"
+                     ordinal="2"></PropertyDefinition>
+                    <PropertyDefinition
+                     aspect.dataChangeType="VALUE"
+                     aspect.dataShape="HPMC.AddOn.RTMP.TriggeredEmailLogs.DS"
+                     aspect.isIndexed="false"
+                     aspect.isPersistent="true"
+                     baseType="INFOTABLE"
+                     category=""
+                     description=""
+                     isLocalOnly="false"
+                     name="TriggeredEmailsLog"
+                     ordinal="3"></PropertyDefinition>
+                </PropertyDefinitions>
+                <ServiceDefinitions>
+                    <ServiceDefinition
+                     aspect.isAsync="false"
+                     category=""
+                     description=""
+                     isAllowOverride="false"
+                     isLocalOnly="false"
+                     isOpen="false"
+                     isPrivate="false"
+                     name="resetEmailLogs">
+                        <ResultType
+                         baseType="NOTHING"
+                         description=""
+                         name="result"
+                         ordinal="0"></ResultType>
+                        <ParameterDefinitions></ParameterDefinitions>
+                    </ServiceDefinition>
+                    <ServiceDefinition
+                     aspect.isAsync="false"
+                     category=""
+                     description=""
+                     isAllowOverride="false"
+                     isLocalOnly="false"
+                     isOpen="false"
+                     isPrivate="false"
+                     name="Test">
+                        <ResultType
+                         baseType="NOTHING"
+                         description=""
+                         name="result"
+                         ordinal="0"></ResultType>
+                        <ParameterDefinitions></ParameterDefinitions>
+                    </ServiceDefinition>
+                </ServiceDefinitions>
+                <EventDefinitions></EventDefinitions>
+                <ServiceMappings></ServiceMappings>
+                <ServiceImplementations>
+                    <ServiceImplementation
+                     description=""
+                     handlerName="Script"
+                     name="resetEmailLogs">
+                        <ConfigurationTables>
+                            <ConfigurationTable
+                             dataShapeName=""
+                             description=""
+                             isMultiRow="false"
+                             name="Script"
+                             ordinal="0">
+                                <DataShape>
+                                    <FieldDefinitions>
+                                        <FieldDefinition
+                                         baseType="STRING"
+                                         description="code"
+                                         name="code"
+                                         ordinal="0"></FieldDefinition>
+                                        <FieldDefinition
+                                         baseType="JSON"
+                                         description=""
+                                         name="editorSettings"
+                                         ordinal="0"></FieldDefinition>
+                                    </FieldDefinitions>
+                                </DataShape>
+                                <Rows>
+                                    <Row>
+                                        <code>
+                                        <![CDATA[
+                                        // Create a new empty infotable with the same DataShape
+                                        var params = {
+                                            infoTableName : "InfoTable",
+                                            dataShapeName : "YourDataShapeName" // replace with your property's DataShape
+                                        };
+                                        var emptyTable = Resources["InfoTableFunctions"].CreateInfoTable(params);
+                                        
+                                        // Set the property value to the empty table
+                                        Things["HPMC.AddOn.RTMP.Manager"].TriggeredEmailsLog = emptyTable;
+                                        ]]>
+                                        </code>
+                                        <editorSettings>
+                                            <json>
+                                            <![CDATA[
+                                            {"viewState":{"viewState":{"firstPositionDeltaTop":0,"scrollLeft":0,"firstPosition":{"column":1,"lineNumber":1}},"cursorState":[{"inSelectionMode":false,"selectionStart":{"column":67,"lineNumber":9},"position":{"column":67,"lineNumber":9}}],"contributionsState":{"editor.contrib.wordHighlighter":false,"editor.contrib.folding":{"provider":"indent","lineCount":9,"foldedImports":false}}}}
+                                            ]]>
+                                            </json>
+                                        </editorSettings>
+                                    </Row>
+                                </Rows>
+                            </ConfigurationTable>
+                        </ConfigurationTables>
+                    </ServiceImplementation>
+                    <ServiceImplementation
+                     description=""
+                     handlerName="Script"
+                     name="Test">
+                        <ConfigurationTables>
+                            <ConfigurationTable
+                             dataShapeName=""
+                             description=""
+                             isMultiRow="false"
+                             name="Script"
+                             ordinal="0">
+                                <DataShape>
+                                    <FieldDefinitions>
+                                        <FieldDefinition
+                                         baseType="STRING"
+                                         description="code"
+                                         name="code"
+                                         ordinal="0"></FieldDefinition>
+                                        <FieldDefinition
+                                         baseType="JSON"
+                                         description=""
+                                         name="editorSettings"
+                                         ordinal="0"></FieldDefinition>
+                                    </FieldDefinitions>
+                                </DataShape>
+                                <Rows>
+                                    <Row>
+                                        <code>
+                                        <![CDATA[
+                                        // Things["HPMC.Addon.RTMP.Management.MailExtension.Helper"].SendMessage({
+                                        //     cc: "atharva.mahabal@voestalpine.com",
+                                        //     bcc: undefined,
+                                        //     subject: undefined,
+                                        //     from: "CLC_vHPMP@voestalpine.com",
+                                        //     to: "atharva.mahabal@voestalpine.com",
+                                        //     body: undefined
+                                        // });
+                                        
+                                        
+                                        // Create a new empty infotable with the same DataShape
+                                        var params = {
+                                            infoTableName : "InfoTable",
+                                            dataShapeName : "YourDataShapeName" // replace with your property's DataShape
+                                        };
+                                        var emptyTable = Resources["InfoTableFunctions"].CreateInfoTable(params);
+                                        
+                                        // Set the property value to the empty table
+                                        Things["HPMC.AddOn.RTMP.Manager"].TriggeredEmailsLog = emptyTable;
+                                        ]]>
+                                        </code>
+                                        <editorSettings>
+                                            <json>
+                                            <![CDATA[
+                                            {"viewState":{"viewState":{"firstPositionDeltaTop":0,"scrollLeft":0,"firstPosition":{"column":1,"lineNumber":1}},"cursorState":[{"inSelectionMode":true,"selectionStart":{"column":67,"lineNumber":19},"position":{"column":1,"lineNumber":11}}],"contributionsState":{"editor.contrib.wordHighlighter":false,"editor.contrib.folding":{"provider":"indent","lineCount":19,"foldedImports":false}}}}
+                                            ]]>
+                                            </json>
+                                        </editorSettings>
+                                    </Row>
+                                </Rows>
+                            </ConfigurationTable>
+                        </ConfigurationTables>
+                    </ServiceImplementation>
+                </ServiceImplementations>
+                <Subscriptions></Subscriptions>
+            </ThingShape>
+            <PropertyBindings></PropertyBindings>
+            <RemotePropertyBindings></RemotePropertyBindings>
+            <RemoteServiceBindings></RemoteServiceBindings>
+            <RemoteEventBindings></RemoteEventBindings>
+            <AlertConfigurations>
+                <AlertDefinitions
+                 name="MachineEmailAlertLog"></AlertDefinitions>
+                <AlertDefinitions
+                 name="TriggeredEmailsLog"></AlertDefinitions>
+            </AlertConfigurations>
+            <ImplementedShapes></ImplementedShapes>
+            <ThingProperties>
+                <TriggeredEmailsLog>
+                    <Value>
+                        <infoTable>
+                            <DataShape>
+                                <FieldDefinitions></FieldDefinitions>
+                            </DataShape>
+                            <Rows></Rows>
+                        </infoTable>
+                    </Value>
+                    <Timestamp>2025-11-19T11:54:14.295Z</Timestamp>
+                    <Quality>GOOD</Quality>
+                </TriggeredEmailsLog>
+                <MachineEmailAlertLog>
+                    <Value>
+                        <infoTable>
+                            <DataShape>
+                                <FieldDefinitions>
+                                    <FieldDefinition
+                                     aspect.isPrimaryKey="false"
+                                     baseType="STRING"
+                                     description=""
+                                     name="email"
+                                     ordinal="5"></FieldDefinition>
+                                    <FieldDefinition
+                                     aspect.isPrimaryKey="false"
+                                     baseType="STRING"
+                                     description=""
+                                     name="LowerBound"
+                                     ordinal="6"></FieldDefinition>
+                                    <FieldDefinition
+                                     aspect.isPrimaryKey="false"
+                                     baseType="STRING"
+                                     description=""
+                                     name="MachineId"
+                                     ordinal="2"></FieldDefinition>
+                                    <FieldDefinition
+                                     aspect.isPrimaryKey="false"
+                                     baseType="STRING"
+                                     description=""
+                                     name="name"
+                                     ordinal="4"></FieldDefinition>
+                                    <FieldDefinition
+                                     aspect.isPrimaryKey="true"
+                                     baseType="NUMBER"
+                                     description=""
+                                     name="No"
+                                     ordinal="1"></FieldDefinition>
+                                    <FieldDefinition
+                                     aspect.isPrimaryKey="false"
+                                     baseType="NUMBER"
+                                     description=""
+                                     name="ParameterId"
+                                     ordinal="3"></FieldDefinition>
+                                    <FieldDefinition
+                                     aspect.isPrimaryKey="false"
+                                     baseType="NUMBER"
+                                     description=""
+                                     name="parameterValue"
+                                     ordinal="7"></FieldDefinition>
+                                    <FieldDefinition
+                                     aspect.isPrimaryKey="false"
+                                     baseType="STRING"
+                                     description=""
+                                     name="UpperBound"
+                                     ordinal="8"></FieldDefinition>
+                                </FieldDefinitions>
+                            </DataShape>
+                            <Rows></Rows>
+                        </infoTable>
+                    </Value>
+                    <Timestamp>2026-03-03T04:45:00.034Z</Timestamp>
+                    <Quality>GOOD</Quality>
+                </MachineEmailAlertLog>
+            </ThingProperties>
+        </Thing>
+    </Things>
+</Entities>

@@ -1009,7 +1009,7 @@ function renderMd(text) {
 function RAGAgent() {
   const [input, setInput] = useState("");
   const [modelName, setModelName] = useState("gemma3:1b");
-  const [folderPath, setFolderPath] = useState("D:\\Android Projects\\GitHub\\ThingworxAgent\\thingworx-agent\\thingworx_downloader\\thingworx_pdfs");
+  const [folderPath, setFolderPath] = useState("D:\\Android Projects\\GitHub\\ThingworxAgent\\thingworx-agent\\server\\AI_KnowledgeBase");
   const [messages, setMessages] = useState([{
     role: 'bot', 
     text: "I am your AI Architect. Upload XML files or Documentation to train me, then ask me to generate ThingWorx artifacts."
@@ -1019,6 +1019,52 @@ function RAGAgent() {
   const fileInputRef = useRef(null);
   const messagesEndRef = useRef(null);
 
+  const [sources, setSources] = useState([]);
+  const [selectedSource, setSelectedSource] = useState('all');
+  const [useKB, setUseKB] = useState(true);
+  const [models, setModels] = useState([]);
+  const [projects, setProjects] = useState([]);
+
+  // Fetch available sources and models on mount
+  const fetchData = async () => {
+    try {
+      // Sources
+      const resSources = await fetch('http://localhost:3001/api/sources');
+      const dataSources = await resSources.json();
+      if (Array.isArray(dataSources)) setSources(dataSources);
+      else if (dataSources && Array.isArray(dataSources.sources)) setSources(dataSources.sources);
+      
+      // Models
+      const resModels = await fetch('http://localhost:3001/api/models');
+      const dataModels = await resModels.json();
+      if (Array.isArray(dataModels)) {
+        // Filter out embedding models
+        const chatModels = dataModels.filter(m => !m.name.includes('embed'));
+        setModels(chatModels);
+        
+        // Auto-select valid model if current one is missing
+        if (chatModels.length > 0) {
+           const currentExists = chatModels.find(m => m.name === modelName);
+           if (!currentExists) {
+             const fallback = chatModels.find(m => m.name === 'gemma3:1b') || chatModels[0];
+             setModelName(fallback.name);
+           }
+        }
+      }
+
+      // Projects
+      const resProjects = await fetch('http://localhost:3001/api/projects');
+      const dataProjects = await resProjects.json();
+      if (Array.isArray(dataProjects)) setProjects(dataProjects);
+    } catch (err) {
+      console.error("Failed to fetch data:", err);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
@@ -1026,32 +1072,43 @@ function RAGAgent() {
   useEffect(scrollToBottom, [messages]);
 
   const handleFileUpload = async (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
+    const files = e.target.files;
+    if (!files || files.length === 0) return;
 
-    setUploadStatus("Uploading & Processing...");
     setLoading(true);
-    const formData = new FormData();
-    formData.append('file', file);
+    let successCount = 0;
+    let totalChunks = 0;
 
-    try {
-      const res = await fetch('http://localhost:3001/api/ingest', {
-        method: 'POST',
-        body: formData,
-      });
-      const data = await res.json();
-      if (data.success) {
-        setUploadStatus(`Indexed ${data.count} chunks from ${file.name}`);
-        setMessages(prev => [...prev, { role: 'bot', text: `Successfully ingested ${file.name}. I can now use this knowledge.` }]);
-      } else {
-        setUploadStatus("Error uploading file.");
+    for (let i = 0; i < files.length; i++) {
+      const file = files[i];
+      setUploadStatus(`Processing ${file.name} (${i + 1}/${files.length})...`);
+      
+      const formData = new FormData();
+      formData.append('file', file);
+
+      try {
+        const res = await fetch('http://localhost:3001/api/ingest', {
+          method: 'POST',
+          body: formData,
+        });
+        const data = await res.json();
+        if (data.success) {
+          successCount++;
+          totalChunks += data.count;
+        }
+      } catch (err) {
+        console.error(`Error uploading ${file.name}:`, err);
       }
-    } catch (err) {
-      console.error(err);
-      setUploadStatus("Server error. Is the Node.js backend running?");
-    } finally {
-      setLoading(false);
     }
+
+    setUploadStatus(`Indexed ${totalChunks} chunks from ${successCount} files.`);
+    if (successCount > 0) {
+      setMessages(prev => [...prev, { role: 'bot', text: `Successfully ingested ${successCount} files (${totalChunks} chunks). I can now use this knowledge.` }]);
+      fetchData(); // Refresh source list
+    } else {
+      setUploadStatus("Error uploading files.");
+    }
+    setLoading(false);
   };
 
   const handleFolderScan = async () => {
@@ -1069,6 +1126,7 @@ function RAGAgent() {
       if (data.success) {
         setUploadStatus(`Scanned ${data.filesFound} files, ingested ${data.chunksIngested || data.count} chunks.`);
         setMessages(prev => [...prev, { role: 'bot', text: `Successfully scanned folder: ${folderPath}.\nFound ${data.filesFound} files.\nIngested ${data.chunksIngested || data.count} chunks.` }]);
+        fetchData();
       } else {
         setUploadStatus("Error scanning folder.");
       }
@@ -1089,22 +1147,178 @@ function RAGAgent() {
     setLoading(true);
 
     try {
+      const promptLower = userMsg.text.toLowerCase();
+      const isCountQuery = promptLower.includes('how many') || promptLower.includes('count');
+      if (isCountQuery) {
+        let requestedType = 'all';
+        if (promptLower.includes('thingtemplate') || promptLower.includes('thing template') || promptLower.includes('thing templates')) requestedType = 'ThingTemplate';
+        else if (promptLower.includes('datashape') || promptLower.includes('data shape') || promptLower.includes('data shapes')) requestedType = 'DataShape';
+        else if (promptLower.includes('mashup') || promptLower.includes('mashups')) requestedType = 'Mashup';
+        else if (promptLower.includes('thing') || promptLower.includes('things')) requestedType = 'Thing';
+
+        const asksDocuments = /(document|documentation|\bdocs\b)/i.test(userMsg.text) && requestedType === 'all';
+        if (asksDocuments) {
+          const wantsList = /\blist\b|\bshow\b|\bnames?\b|\bwhich\b/i.test(userMsg.text);
+          const resDocs = await fetch('http://localhost:3001/api/documents');
+          const dataDocs = await resDocs.json();
+          const docs = Array.isArray(dataDocs?.documents) ? dataDocs.documents : [];
+          const n = typeof dataDocs?.count === 'number' ? dataDocs.count : docs.length;
+          if (n === 0) {
+            setMessages(prev => [...prev, { role: 'bot', text: "0 documents found in AI_KnowledgeBase/documentation." }]);
+            return;
+          }
+          const maxList = wantsList ? 50 : 0;
+          if (maxList === 0) {
+            setMessages(prev => [...prev, { role: 'bot', text: `${n} document${n > 1 ? 's' : ''} found in AI_KnowledgeBase/documentation.` }]);
+            return;
+          }
+          const shown = docs.slice(0, maxList);
+          const more = n - shown.length;
+          const lines = [`${n} document${n > 1 ? 's' : ''}:`, ...shown.map(d => `- ${d}`)];
+          if (more > 0) lines.push(`... +${more} more`);
+          setMessages(prev => [...prev, { role: 'bot', text: lines.join('\n') }]);
+          return;
+        }
+
+        const wantsDocFolderSearch = /find\s+folder/i.test(userMsg.text);
+        if (wantsDocFolderSearch) {
+          const resFind = await fetch('http://localhost:3001/api/find-doc-folders', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ query: userMsg.text })
+          });
+          const dataFind = await resFind.json();
+          const folders = Array.isArray(dataFind?.folders) ? dataFind.folders : [];
+          const files = Array.isArray(dataFind?.files) ? dataFind.files : [];
+          if (folders.length === 0 && files.length === 0) {
+            setMessages(prev => [...prev, { role: 'bot', text: "No matching documentation folders found." }]);
+            return;
+          }
+          const lines = [];
+          if (folders.length > 0) {
+            lines.push(`Folders:`);
+            folders.slice(0, 20).forEach(f => lines.push(`- ${f}`));
+            if (folders.length > 20) lines.push(`... +${folders.length - 20} more`);
+          }
+          if (files.length > 0) {
+            lines.push(`Files:`);
+            files.slice(0, 20).forEach(f => lines.push(`- ${f}`));
+            if (files.length > 20) lines.push(`... +${files.length - 20} more`);
+          }
+          setMessages(prev => [...prev, { role: 'bot', text: lines.join('\n') }]);
+          return;
+        }
+
+        const asksProjects = (promptLower.includes('project') || promptLower.includes('projects')) && requestedType === 'all';
+        if (asksProjects) {
+          const resProjects = await fetch('http://localhost:3001/api/projects');
+          const list = await resProjects.json();
+          const names = Array.isArray(list) ? list.filter(Boolean) : [];
+          const unique = [...new Set(names.map(n => String(n)))];
+          const n = unique.length;
+          const text = n === 0 ? "0 projects loaded." : `${n} project${n > 1 ? 's' : ''}: ${unique.join(', ')}`;
+          setMessages(prev => [...prev, { role: 'bot', text }]);
+          return;
+        }
+
+        let requestedProject = 'all';
+        const inProjectMatch = userMsg.text.match(/in\s+(.+?)\s+project/i);
+        if (inProjectMatch && inProjectMatch[1]) {
+          const raw = inProjectMatch[1].trim();
+          const direct = projects.find(p => p === raw);
+          if (direct) requestedProject = direct;
+          else {
+            const lowerRaw = raw.toLowerCase();
+            const fuzzy = projects.find(p => String(p).toLowerCase() === lowerRaw) || projects.find(p => String(p).toLowerCase().includes(lowerRaw));
+            if (fuzzy) requestedProject = fuzzy;
+            else requestedProject = raw;
+          }
+        }
+
+        const resCount = await fetch('http://localhost:3001/api/count-entities', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ project: requestedProject, type: requestedType })
+        });
+        const dataCount = await resCount.json();
+        let countText;
+        if (typeof dataCount?.count === 'number') {
+          let scopeLabel = dataCount.project === 'all' ? 'All projects' : dataCount.project;
+          if (dataCount.project === 'all' && requestedType !== 'all' && Array.isArray(projects) && projects.length === 1) {
+            scopeLabel = projects[0];
+          }
+          const typeLabel = dataCount.type === 'all' ? 'entities' : `${dataCount.type}${dataCount.count === 1 ? '' : 's'}`;
+          countText = `${scopeLabel}: ${dataCount.count} ${typeLabel}.`;
+        } else {
+          countText = `Could not count entities. ${dataCount?.error ? `Error: ${dataCount.error}` : ''}`.trim();
+        }
+
+        setMessages(prev => [...prev, { role: 'bot', text: countText }]);
+        return;
+      }
+
       const res = await fetch('http://localhost:3001/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 
           prompt: userMsg.text,
-          model: modelName
+          model: modelName,
+          source: selectedSource,
+          useKB: useKB
         })
       });
-      const data = await res.json();
+
+      const reader = res.body.getReader();
+      const decoder = new TextDecoder();
+      let buffer = '';
+      let isContextLoaded = false;
+      let fullText = '';
+      const botMsgId = Date.now();
       
-      const botMsg = { 
-        role: 'bot', 
-        text: data.response, 
-        context: data.context 
-      };
-      setMessages(prev => [...prev, botMsg]);
+      setMessages(prev => [...prev, { role: 'bot', text: '', id: botMsgId, isLoading: true }]);
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        
+        const chunk = decoder.decode(value, { stream: true });
+        
+        if (!isContextLoaded) {
+          buffer += chunk;
+          const splitIndex = buffer.indexOf('__CTX_END__');
+          if (splitIndex !== -1) {
+            const contextStr = buffer.substring(0, splitIndex);
+            let contextData = null;
+            try {
+               contextData = JSON.parse(contextStr);
+            } catch (e) { console.error("Failed to parse context", e); }
+            
+            const remainder = buffer.substring(splitIndex + "__CTX_END__".length).trimStart();
+            fullText = remainder;
+            isContextLoaded = true;
+            buffer = '';
+            
+            setMessages(prev => prev.map(msg => 
+              msg.id === botMsgId 
+                ? { ...msg, context: contextData, text: fullText } 
+                : msg
+            ));
+          }
+        } else {
+           fullText += chunk;
+           setMessages(prev => prev.map(msg => 
+              msg.id === botMsgId 
+                ? { ...msg, text: fullText } 
+                : msg
+            ));
+        }
+      }
+      
+      setMessages(prev => prev.map(msg => 
+          msg.id === botMsgId 
+            ? { ...msg, isLoading: false } 
+            : msg
+        ));
     } catch (err) {
       setMessages(prev => [...prev, { role: 'bot', text: "Error connecting to AI Server. Make sure the backend is running on port 3001." }]);
     } finally {
@@ -1120,18 +1334,25 @@ function RAGAgent() {
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
           <h3 style={{ margin: 0, color: '#60a5fa' }}>Knowledge Base</h3>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <span style={{ fontSize: '11px', color: '#94a3b8' }}>Model:</span>
-            <input 
+            <span style={{ fontSize: '11px', color: '#94a3b8' }}>Model ({models.length}):</span>
+            <select 
               value={modelName}
               onChange={e => setModelName(e.target.value)}
-              placeholder="e.g. gemma2:2b"
-              style={{ background: '#0f172a', border: '1px solid #334155', color: '#e2e8f0', padding: '4px 8px', borderRadius: '4px', fontSize: '11px', width: '100px' }}
-            />
+              style={{ background: '#0f172a', border: '1px solid #334155', color: '#e2e8f0', padding: '4px 8px', borderRadius: '4px', fontSize: '11px', maxWidth: '220px' }}
+            >
+              {models.length > 0 ? (
+                models.map(m => <option key={m.name} value={m.name}>{m.name}</option>)
+              ) : (
+                <option value="gemma3:1b">gemma3:1b</option>
+              )}
+            </select>
           </div>
         </div>
         <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
           <input 
             type="file" 
+            multiple
+            accept=".zip,.xml,.pdf"
             ref={fileInputRef}
             onChange={handleFileUpload} 
             style={{ color: '#94a3b8' }}
@@ -1142,21 +1363,25 @@ function RAGAgent() {
           Upload ThingWorx XML exports or Documentation (PDF/MD) to enhance generation.
         </p>
         
-        <div style={{ marginTop: '10px', display: 'flex', gap: '8px', alignItems: 'center', borderTop: '1px solid #334155', paddingTop: '10px' }}>
-          <span style={{ fontSize: '11px', color: '#94a3b8' }}>Or scan local folder:</span>
-          <input 
-            value={folderPath}
-            onChange={e => setFolderPath(e.target.value)}
-            placeholder="D:\Path\To\PDFs"
-            style={{ flex: 1, background: '#0f172a', border: '1px solid #334155', color: '#e2e8f0', padding: '4px 8px', borderRadius: '4px', fontSize: '11px' }}
-          />
-          <button 
-            onClick={handleFolderScan}
-            disabled={loading || !folderPath}
-            style={{ background: '#3b82f6', border: 'none', borderRadius: '4px', color: 'white', padding: '4px 10px', fontSize: '11px', cursor: 'pointer' }}
-          >
-            Scan
-          </button>
+        <div style={{ marginTop: '10px', display: 'flex', flexDirection: 'column', gap: '10px', borderTop: '1px solid #334155', paddingTop: '10px' }}>
+          
+          {/* Scan Folder (Default: Knowledge Base) */}
+          <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+            <span style={{ fontSize: '11px', color: '#94a3b8' }}>Scan Folder:</span>
+            <input 
+              value={folderPath}
+              onChange={e => setFolderPath(e.target.value)}
+              placeholder="D:\Path\To\KnowledgeBase"
+              style={{ flex: 1, background: '#0f172a', border: '1px solid #334155', color: '#e2e8f0', padding: '4px 8px', borderRadius: '4px', fontSize: '11px' }}
+            />
+            <button 
+              onClick={handleFolderScan}
+              disabled={loading || !folderPath}
+              style={{ background: '#3b82f6', border: 'none', borderRadius: '4px', color: 'white', padding: '4px 10px', fontSize: '11px', cursor: 'pointer' }}
+            >
+              Scan
+            </button>
+          </div>
         </div>
       </div>
 
@@ -1188,6 +1413,35 @@ function RAGAgent() {
 
       {/* Input Area */}
       <div style={{ display: 'flex', gap: '10px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
+          <select 
+              value={selectedSource} 
+              onChange={(e) => setSelectedSource(e.target.value)}
+              disabled={!useKB}
+              style={{
+                padding: '8px',
+                borderRadius: '8px',
+                border: '1px solid #334155',
+                background: useKB ? '#1e293b' : '#334155',
+                color: useKB ? '#fff' : '#94a3b8',
+                maxWidth: '150px',
+                fontSize: '11px'
+              }}
+            >
+              <option value="all">All Sources</option>
+              {sources.map(s => (
+                <option key={s} value={s}>{s.length > 20 ? s.substring(0, 17) + '...' : s}</option>
+              ))}
+          </select>
+          <label style={{ display: 'flex', alignItems: 'center', gap: '5px', fontSize: '11px', color: '#94a3b8', cursor: 'pointer' }}>
+            <input 
+              type="checkbox" 
+              checked={useKB} 
+              onChange={e => setUseKB(e.target.checked)}
+            />
+            Use Knowledge Base
+          </label>
+        </div>
         <textarea
           value={input}
           onChange={e => setInput(e.target.value)}

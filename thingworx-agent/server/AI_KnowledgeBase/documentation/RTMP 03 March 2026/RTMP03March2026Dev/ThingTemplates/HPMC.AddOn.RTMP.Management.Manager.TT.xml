@@ -1,0 +1,2405 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Entities
+ majorVersion="9"
+ minorVersion="5"
+ universal="password">
+    <ThingTemplates>
+        <ThingTemplate
+         baseThingTemplate="HPMC.Core.CommonManager.TT"
+         description=""
+         documentationContent=""
+         effectiveThingPackage="ConfiguredThing"
+         homeMashup=""
+         inheritedValueStream=""
+         name="HPMC.AddOn.RTMP.Management.Manager.TT"
+         projectName="HPMC.AddOn.RTMP"
+         tags=""
+         thingPackage=""
+         valueStream="">
+            <avatar></avatar>
+            <DesignTimePermissions>
+                <Create></Create>
+                <Read></Read>
+                <Update></Update>
+                <Delete></Delete>
+                <Metadata></Metadata>
+            </DesignTimePermissions>
+            <RunTimePermissions></RunTimePermissions>
+            <VisibilityPermissions>
+                <Visibility></Visibility>
+            </VisibilityPermissions>
+            <ConfigurationTableDefinitions></ConfigurationTableDefinitions>
+            <ConfigurationTables></ConfigurationTables>
+            <PropertyBindings></PropertyBindings>
+            <RemotePropertyBindings></RemotePropertyBindings>
+            <RemoteServiceBindings></RemoteServiceBindings>
+            <RemoteEventBindings></RemoteEventBindings>
+            <AlertConfigurations></AlertConfigurations>
+            <ThingShape>
+                <PropertyDefinitions></PropertyDefinitions>
+                <ServiceDefinitions>
+                    <ServiceDefinition
+                     aspect.isAsync="false"
+                     category=""
+                     description=""
+                     isAllowOverride="false"
+                     isLocalOnly="false"
+                     isOpen="false"
+                     isPrivate="false"
+                     name="DeleteRTMPDataUserRelation">
+                        <ResultType
+                         baseType="NUMBER"
+                         description=""
+                         name="result"
+                         ordinal="0"></ResultType>
+                        <ParameterDefinitions>
+                            <FieldDefinition
+                             baseType="INTEGER"
+                             description=""
+                             name="parameter_id"
+                             ordinal="1"></FieldDefinition>
+                        </ParameterDefinitions>
+                    </ServiceDefinition>
+                    <ServiceDefinition
+                     aspect.isAsync="false"
+                     category=""
+                     description=""
+                     isAllowOverride="false"
+                     isLocalOnly="false"
+                     isOpen="false"
+                     isPrivate="false"
+                     name="FilterMachineParameterByName">
+                        <ResultType
+                         aspect.dataShape="HPMC.AddOn.RTMP.Management.DS"
+                         baseType="INFOTABLE"
+                         description=""
+                         name="result"
+                         ordinal="0"></ResultType>
+                        <ParameterDefinitions>
+                            <FieldDefinition
+                             aspect.dataShape="HPMC.AddOn.RTMP.Management.DS"
+                             baseType="INFOTABLE"
+                             description=""
+                             name="machineParameterData"
+                             ordinal="1"></FieldDefinition>
+                            <FieldDefinition
+                             baseType="STRING"
+                             description=""
+                             name="nameFilter"
+                             ordinal="2"></FieldDefinition>
+                        </ParameterDefinitions>
+                    </ServiceDefinition>
+                    <ServiceDefinition
+                     aspect.isAsync="false"
+                     category=""
+                     description=""
+                     isAllowOverride="false"
+                     isLocalOnly="false"
+                     isOpen="false"
+                     isPrivate="false"
+                     name="GetDefaultMachineName">
+                        <ResultType
+                         aspect.dataShape="HPMC.Core.DropdownData.DS"
+                         baseType="INFOTABLE"
+                         description=""
+                         name="result"
+                         ordinal="0"></ResultType>
+                        <ParameterDefinitions>
+                            <FieldDefinition
+                             baseType="STRING"
+                             description=""
+                             name="machineName"
+                             ordinal="2"></FieldDefinition>
+                            <FieldDefinition
+                             baseType="INFOTABLE"
+                             description=""
+                             name="machineNameList"
+                             ordinal="1"></FieldDefinition>
+                        </ParameterDefinitions>
+                    </ServiceDefinition>
+                    <ServiceDefinition
+                     aspect.isAsync="false"
+                     category=""
+                     description=""
+                     isAllowOverride="false"
+                     isLocalOnly="false"
+                     isOpen="false"
+                     isPrivate="false"
+                     name="GetLastMachineParameterPIC">
+                        <ResultType
+                         aspect.dataShape="HPMC.Core.DropdownData.DS"
+                         baseType="INFOTABLE"
+                         description=""
+                         name="result"
+                         ordinal="0"></ResultType>
+                        <ParameterDefinitions>
+                            <FieldDefinition
+                             baseType="INFOTABLE"
+                             description=""
+                             name="machineParameterPIC"
+                             ordinal="1"></FieldDefinition>
+                            <FieldDefinition
+                             baseType="STRING"
+                             description=""
+                             name="selectedPIC"
+                             ordinal="2"></FieldDefinition>
+                        </ParameterDefinitions>
+                    </ServiceDefinition>
+                    <ServiceDefinition
+                     aspect.isAsync="false"
+                     category=""
+                     description=""
+                     isAllowOverride="false"
+                     isLocalOnly="false"
+                     isOpen="false"
+                     isPrivate="false"
+                     name="GetLastMachineParameterStatus">
+                        <ResultType
+                         aspect.dataShape="HPMC.AddOn.RTMP.Management.DropdownData.DS"
+                         baseType="INFOTABLE"
+                         description=""
+                         name="result"
+                         ordinal="0"></ResultType>
+                        <ParameterDefinitions>
+                            <FieldDefinition
+                             baseType="STRING"
+                             description=""
+                             name="lastParameterStatus"
+                             ordinal="1"></FieldDefinition>
+                            <FieldDefinition
+                             baseType="INFOTABLE"
+                             description=""
+                             name="machineParameterStatus"
+                             ordinal="2"></FieldDefinition>
+                        </ParameterDefinitions>
+                    </ServiceDefinition>
+                    <ServiceDefinition
+                     aspect.isAsync="false"
+                     category=""
+                     description=""
+                     isAllowOverride="false"
+                     isLocalOnly="false"
+                     isOpen="false"
+                     isPrivate="false"
+                     name="GetMachineParameter">
+                        <ResultType
+                         aspect.dataShape="HPMC.AddOn.RTMP.Management.DS"
+                         baseType="INFOTABLE"
+                         description=""
+                         name="result"
+                         ordinal="0"></ResultType>
+                        <ParameterDefinitions>
+                            <FieldDefinition
+                             aspect.dataShape="HPMC.Core.Asset.Base.DS"
+                             baseType="INFOTABLE"
+                             description=""
+                             name="selectedMachineIds"
+                             ordinal="1"></FieldDefinition>
+                        </ParameterDefinitions>
+                    </ServiceDefinition>
+                    <ServiceDefinition
+                     aspect.isAsync="false"
+                     category=""
+                     description=""
+                     isAllowOverride="false"
+                     isLocalOnly="false"
+                     isOpen="false"
+                     isPrivate="false"
+                     name="GetMachineParameterDataForExport">
+                        <ResultType
+                         aspect.dataShape="HPMC.AddOn.RTMP.Management.Export.DS"
+                         baseType="INFOTABLE"
+                         description=""
+                         name="result"
+                         ordinal="0"></ResultType>
+                        <ParameterDefinitions>
+                            <FieldDefinition
+                             aspect.dataShape="HPMC.AddOn.RTMP.Management.DS"
+                             baseType="INFOTABLE"
+                             description=""
+                             name="rawData"
+                             ordinal="1"></FieldDefinition>
+                        </ParameterDefinitions>
+                    </ServiceDefinition>
+                    <ServiceDefinition
+                     aspect.isAsync="false"
+                     category=""
+                     description=""
+                     isAllowOverride="false"
+                     isLocalOnly="false"
+                     isOpen="false"
+                     isPrivate="false"
+                     name="GetMachineParameterPIC">
+                        <ResultType
+                         aspect.dataShape="HPMC.Core.DropdownData.DS"
+                         baseType="INFOTABLE"
+                         description=""
+                         name="result"
+                         ordinal="0"></ResultType>
+                        <ParameterDefinitions>
+                            <FieldDefinition
+                             baseType="STRING"
+                             description=""
+                             name="locId"
+                             ordinal="1"></FieldDefinition>
+                            <FieldDefinition
+                             baseType="STRING"
+                             description=""
+                             name="ucId"
+                             ordinal="2"></FieldDefinition>
+                        </ParameterDefinitions>
+                    </ServiceDefinition>
+                    <ServiceDefinition
+                     aspect.isAsync="false"
+                     category=""
+                     description=""
+                     isAllowOverride="false"
+                     isLocalOnly="false"
+                     isOpen="false"
+                     isPrivate="false"
+                     name="GetMachineParameterSorted">
+                        <ResultType
+                         aspect.dataShape="HPMC.AddOn.RTMP.Management.DS"
+                         baseType="INFOTABLE"
+                         description=""
+                         name="result"
+                         ordinal="0"></ResultType>
+                        <ParameterDefinitions>
+                            <FieldDefinition
+                             aspect.dataShape="HPMC.AddOn.RTMP.Management.DS"
+                             baseType="INFOTABLE"
+                             description=""
+                             name="gridData"
+                             ordinal="1"></FieldDefinition>
+                            <FieldDefinition
+                             baseType="QUERY"
+                             description=""
+                             name="queryFilter"
+                             ordinal="2"></FieldDefinition>
+                        </ParameterDefinitions>
+                    </ServiceDefinition>
+                    <ServiceDefinition
+                     aspect.isAsync="false"
+                     category=""
+                     description=""
+                     isAllowOverride="false"
+                     isLocalOnly="false"
+                     isOpen="false"
+                     isPrivate="false"
+                     name="GetMachineParameterStatus">
+                        <ResultType
+                         aspect.dataShape="HPMC.AddOn.RTMP.Management.DropdownData.DS"
+                         baseType="INFOTABLE"
+                         description=""
+                         name="result"
+                         ordinal="0"></ResultType>
+                        <ParameterDefinitions></ParameterDefinitions>
+                    </ServiceDefinition>
+                    <ServiceDefinition
+                     aspect.isAsync="false"
+                     category=""
+                     description=""
+                     isAllowOverride="false"
+                     isLocalOnly="false"
+                     isOpen="false"
+                     isPrivate="false"
+                     name="GetUniqueMachineName">
+                        <ResultType
+                         aspect.dataShape="HPMC.Core.DropdownData.DS"
+                         baseType="INFOTABLE"
+                         description=""
+                         name="result"
+                         ordinal="0"></ResultType>
+                        <ParameterDefinitions>
+                            <FieldDefinition
+                             baseType="STRING"
+                             description=""
+                             name="parameterName"
+                             ordinal="2"></FieldDefinition>
+                            <FieldDefinition
+                             aspect.dataShape="HPMC.Core.DropdownData.DS"
+                             baseType="INFOTABLE"
+                             description=""
+                             name="parameterTable"
+                             ordinal="1"></FieldDefinition>
+                        </ParameterDefinitions>
+                    </ServiceDefinition>
+                    <ServiceDefinition
+                     aspect.isAsync="false"
+                     category=""
+                     description=""
+                     isAllowOverride="false"
+                     isLocalOnly="false"
+                     isOpen="false"
+                     isPrivate="false"
+                     name="InsertRTMPDataUserRelation">
+                        <ResultType
+                         baseType="NOTHING"
+                         description=""
+                         name="result"
+                         ordinal="0"></ResultType>
+                        <ParameterDefinitions>
+                            <FieldDefinition
+                             baseType="INTEGER"
+                             description=""
+                             name="parameter_id"
+                             ordinal="1"></FieldDefinition>
+                            <FieldDefinition
+                             baseType="STRING"
+                             description=""
+                             name="pic_name"
+                             ordinal="2"></FieldDefinition>
+                        </ParameterDefinitions>
+                    </ServiceDefinition>
+                    <ServiceDefinition
+                     aspect.isAsync="false"
+                     category=""
+                     description=""
+                     isAllowOverride="false"
+                     isLocalOnly="false"
+                     isOpen="false"
+                     isPrivate="false"
+                     name="IsParameterManagementSelected">
+                        <ResultType
+                         baseType="BOOLEAN"
+                         description=""
+                         name="result"
+                         ordinal="0"></ResultType>
+                        <ParameterDefinitions>
+                            <FieldDefinition
+                             aspect.dataShape="HPMC.AddOn.RTMP.Management.DS"
+                             baseType="INFOTABLE"
+                             description=""
+                             name="selectedParameter"
+                             ordinal="1"></FieldDefinition>
+                        </ParameterDefinitions>
+                    </ServiceDefinition>
+                    <ServiceDefinition
+                     aspect.isAsync="false"
+                     category=""
+                     description=""
+                     isAllowOverride="false"
+                     isLocalOnly="false"
+                     isOpen="false"
+                     isPrivate="false"
+                     name="QueryMachineParameter">
+                        <ResultType
+                         baseType="INFOTABLE"
+                         description=""
+                         name="result"
+                         ordinal="0"></ResultType>
+                        <ParameterDefinitions>
+                            <FieldDefinition
+                             baseType="STRING"
+                             description=""
+                             name="machineIdList"
+                             ordinal="1"></FieldDefinition>
+                        </ParameterDefinitions>
+                    </ServiceDefinition>
+                    <ServiceDefinition
+                     aspect.isAsync="false"
+                     category=""
+                     description=""
+                     isAllowOverride="false"
+                     isLocalOnly="false"
+                     isOpen="false"
+                     isPrivate="false"
+                     name="UpdateMachineParameter">
+                        <ResultType
+                         aspect.dataShape="HPMC.AddOn.RTMP.Management.DS"
+                         baseType="INFOTABLE"
+                         description=""
+                         name="result"
+                         ordinal="0"></ResultType>
+                        <ParameterDefinitions>
+                            <FieldDefinition
+                             baseType="BOOLEAN"
+                             description=""
+                             name="lowerBoundCheck"
+                             ordinal="5"></FieldDefinition>
+                            <FieldDefinition
+                             baseType="STRING"
+                             description=""
+                             name="lowerBoundValue"
+                             ordinal="6"></FieldDefinition>
+                            <FieldDefinition
+                             baseType="STRING"
+                             description=""
+                             name="message"
+                             ordinal="7"></FieldDefinition>
+                            <FieldDefinition
+                             baseType="STRING"
+                             description=""
+                             name="parameterDesc"
+                             ordinal="8"></FieldDefinition>
+                            <FieldDefinition
+                             baseType="INTEGER"
+                             description=""
+                             name="parameterId"
+                             ordinal="10"></FieldDefinition>
+                            <FieldDefinition
+                             aspect.dataShape="HPMC.AddOn.RTMP.Management.DropdownData.DS"
+                             baseType="INFOTABLE"
+                             description=""
+                             name="parameterStatus"
+                             ordinal="2"></FieldDefinition>
+                            <FieldDefinition
+                             aspect.dataShape="HPMC.Core.DropdownData.DS"
+                             baseType="INFOTABLE"
+                             description=""
+                             name="pic"
+                             ordinal="9"></FieldDefinition>
+                            <FieldDefinition
+                             baseType="STRING"
+                             description=""
+                             name="unit"
+                             ordinal="1"></FieldDefinition>
+                            <FieldDefinition
+                             baseType="BOOLEAN"
+                             description=""
+                             name="upperBoundCheck"
+                             ordinal="3"></FieldDefinition>
+                            <FieldDefinition
+                             baseType="STRING"
+                             description=""
+                             name="upperBoundValue"
+                             ordinal="4"></FieldDefinition>
+                        </ParameterDefinitions>
+                    </ServiceDefinition>
+                    <ServiceDefinition
+                     aspect.isAsync="false"
+                     category=""
+                     description=""
+                     isAllowOverride="false"
+                     isLocalOnly="false"
+                     isOpen="false"
+                     isPrivate="false"
+                     name="UpdateMachineParameter1">
+                        <ResultType
+                         aspect.dataShape="HPMC.AddOn.RTMP.Management.DS"
+                         baseType="INFOTABLE"
+                         description=""
+                         name="result"
+                         ordinal="0"></ResultType>
+                        <ParameterDefinitions>
+                            <FieldDefinition
+                             baseType="BOOLEAN"
+                             description=""
+                             name="lowerBoundCheck"
+                             ordinal="5"></FieldDefinition>
+                            <FieldDefinition
+                             baseType="STRING"
+                             description=""
+                             name="lowerBoundValue"
+                             ordinal="7"></FieldDefinition>
+                            <FieldDefinition
+                             baseType="STRING"
+                             description=""
+                             name="message"
+                             ordinal="8"></FieldDefinition>
+                            <FieldDefinition
+                             baseType="STRING"
+                             description=""
+                             name="parameterDesc"
+                             ordinal="9"></FieldDefinition>
+                            <FieldDefinition
+                             baseType="INTEGER"
+                             description=""
+                             name="parameterId"
+                             ordinal="10"></FieldDefinition>
+                            <FieldDefinition
+                             aspect.dataShape="HPMC.AddOn.RTMP.Management.DropdownData.DS"
+                             baseType="INFOTABLE"
+                             description=""
+                             name="parameterStatus"
+                             ordinal="2"></FieldDefinition>
+                            <FieldDefinition
+                             baseType="STRING"
+                             description=""
+                             name="pic"
+                             ordinal="3"></FieldDefinition>
+                            <FieldDefinition
+                             baseType="STRING"
+                             description=""
+                             name="unit"
+                             ordinal="3"></FieldDefinition>
+                            <FieldDefinition
+                             baseType="BOOLEAN"
+                             description=""
+                             name="upperBoundCheck"
+                             ordinal="4"></FieldDefinition>
+                            <FieldDefinition
+                             baseType="STRING"
+                             description=""
+                             name="upperBoundValue"
+                             ordinal="6"></FieldDefinition>
+                        </ParameterDefinitions>
+                    </ServiceDefinition>
+                    <ServiceDefinition
+                     aspect.isAsync="false"
+                     category=""
+                     description=""
+                     isAllowOverride="false"
+                     isLocalOnly="false"
+                     isOpen="false"
+                     isPrivate="false"
+                     name="UpdateMachineParameterConnector">
+                        <ResultType
+                         baseType="NOTHING"
+                         description=""
+                         name="result"
+                         ordinal="0"></ResultType>
+                        <ParameterDefinitions>
+                            <FieldDefinition
+                             baseType="NUMBER"
+                             description=""
+                             name="lower_bound"
+                             ordinal="5"></FieldDefinition>
+                            <FieldDefinition
+                             baseType="STRING"
+                             description=""
+                             name="message"
+                             ordinal="6"></FieldDefinition>
+                            <FieldDefinition
+                             baseType="STRING"
+                             description=""
+                             name="parameter_desc"
+                             ordinal="1"></FieldDefinition>
+                            <FieldDefinition
+                             baseType="INTEGER"
+                             description=""
+                             name="parameter_id"
+                             ordinal="7"></FieldDefinition>
+                            <FieldDefinition
+                             baseType="STRING"
+                             description=""
+                             name="pic"
+                             ordinal="8"></FieldDefinition>
+                            <FieldDefinition
+                             baseType="STRING"
+                             description=""
+                             name="status"
+                             ordinal="3"></FieldDefinition>
+                            <FieldDefinition
+                             baseType="STRING"
+                             description=""
+                             name="unit"
+                             ordinal="2"></FieldDefinition>
+                            <FieldDefinition
+                             baseType="NUMBER"
+                             description=""
+                             name="upper_bound"
+                             ordinal="4"></FieldDefinition>
+                        </ParameterDefinitions>
+                    </ServiceDefinition>
+                    <ServiceDefinition
+                     aspect.isAsync="false"
+                     category=""
+                     description=""
+                     isAllowOverride="false"
+                     isLocalOnly="false"
+                     isOpen="false"
+                     isPrivate="false"
+                     name="UpdateMachineParameterList">
+                        <ResultType
+                         baseType="NUMBER"
+                         description=""
+                         name="result"
+                         ordinal="0"></ResultType>
+                        <ParameterDefinitions>
+                            <FieldDefinition
+                             baseType="BOOLEAN"
+                             description=""
+                             name="lowerBoundCheck"
+                             ordinal="5"></FieldDefinition>
+                            <FieldDefinition
+                             baseType="STRING"
+                             description=""
+                             name="lowerBoundValue"
+                             ordinal="6"></FieldDefinition>
+                            <FieldDefinition
+                             baseType="STRING"
+                             description=""
+                             name="message"
+                             ordinal="7"></FieldDefinition>
+                            <FieldDefinition
+                             baseType="STRING"
+                             description=""
+                             name="parameterDesc"
+                             ordinal="8"></FieldDefinition>
+                            <FieldDefinition
+                             baseType="STRING"
+                             description=""
+                             name="parameterName"
+                             ordinal="11"></FieldDefinition>
+                            <FieldDefinition
+                             aspect.dataShape="HPMC.AddOn.RTMP.Management.DropdownData.DS"
+                             baseType="INFOTABLE"
+                             description=""
+                             name="parameterStatus"
+                             ordinal="2"></FieldDefinition>
+                            <FieldDefinition
+                             aspect.dataShape="HPMC.AddOn.RTMP.Management.DS"
+                             baseType="INFOTABLE"
+                             description=""
+                             name="parameterTable"
+                             ordinal="12"></FieldDefinition>
+                            <FieldDefinition
+                             baseType="STRING"
+                             description=""
+                             name="pic"
+                             ordinal="9"></FieldDefinition>
+                            <FieldDefinition
+                             aspect.dataShape="HPMC.Core.DropdownData.DS"
+                             baseType="INFOTABLE"
+                             description=""
+                             name="selectedMachineName"
+                             ordinal="10"></FieldDefinition>
+                            <FieldDefinition
+                             baseType="STRING"
+                             description=""
+                             name="unit"
+                             ordinal="1"></FieldDefinition>
+                            <FieldDefinition
+                             baseType="BOOLEAN"
+                             description=""
+                             name="upperBoundCheck"
+                             ordinal="3"></FieldDefinition>
+                            <FieldDefinition
+                             baseType="STRING"
+                             description=""
+                             name="upperBoundValue"
+                             ordinal="4"></FieldDefinition>
+                        </ParameterDefinitions>
+                    </ServiceDefinition>
+                </ServiceDefinitions>
+                <EventDefinitions></EventDefinitions>
+                <ServiceMappings></ServiceMappings>
+                <ServiceImplementations>
+                    <ServiceImplementation
+                     description=""
+                     handlerName="Script"
+                     name="DeleteRTMPDataUserRelation">
+                        <ConfigurationTables>
+                            <ConfigurationTable
+                             dataShapeName=""
+                             description=""
+                             isMultiRow="false"
+                             name="Script"
+                             ordinal="0">
+                                <DataShape>
+                                    <FieldDefinitions>
+                                        <FieldDefinition
+                                         baseType="STRING"
+                                         description="code"
+                                         name="code"
+                                         ordinal="0"></FieldDefinition>
+                                    </FieldDefinitions>
+                                </DataShape>
+                                <Rows>
+                                    <Row>
+                                        <code>
+                                        <![CDATA[
+                                        // result: NUMBER
+                                        const DB_Thing=Things["HPMC.Core.Manager"].GetDatabaseConnector();
+                                        let result = Things[DB_Thing].DeleteRTMPDataUserRelation({
+                                        	parameter_id: parameter_id /* INTEGER */
+                                        });
+                                        ]]>
+                                        </code>
+                                    </Row>
+                                </Rows>
+                            </ConfigurationTable>
+                        </ConfigurationTables>
+                    </ServiceImplementation>
+                    <ServiceImplementation
+                     description=""
+                     handlerName="Script"
+                     name="FilterMachineParameterByName">
+                        <ConfigurationTables>
+                            <ConfigurationTable
+                             dataShapeName=""
+                             description=""
+                             isMultiRow="false"
+                             name="Script"
+                             ordinal="0">
+                                <DataShape>
+                                    <FieldDefinitions>
+                                        <FieldDefinition
+                                         baseType="STRING"
+                                         description="code"
+                                         name="code"
+                                         ordinal="0"></FieldDefinition>
+                                        <FieldDefinition
+                                         baseType="JSON"
+                                         description=""
+                                         name="editorSettings"
+                                         ordinal="0"></FieldDefinition>
+                                    </FieldDefinitions>
+                                </DataShape>
+                                <Rows>
+                                    <Row>
+                                        <code>
+                                        <![CDATA[
+                                        /*
+                                        * @name FilterMachineParameterByName
+                                        * @date 14.10.2022
+                                        * @author Wilfrid Azariah CAD-IT
+                                        * @param textFilter	STRING
+                                        * @param machineParameterData	INFOTABLE "HPMC.AddOn.RTMP.Management.DS"
+                                        * @return infotable "HPMC.AddOn.RTMP.Management.DS"
+                                        * info : service to filter machine parameter data based on the parameter name
+                                        *
+                                        * [14.10.2022] [Wilfrid Azariah] initial development
+                                        */
+                                        var debugging = 0;
+                                        var result;
+                                        var loggerBeginning = "["+me.name+":FilterMachineParameterByName]";
+                                         logger.info(loggerBeginning + " machineParameterData length is  "+machineParameterData.length);
+                                        (function(){
+                                            "use strict";
+                                            logger.info(loggerBeginning + " start to get filtered machine parameter data. ");
+                                            try{
+                                                //debugging only
+                                                if (debugging) {
+                                                    //locations = Things["HPMC.WorldMap.Helper"].QueryAllLocation();
+                                                }
+                                                if (nameFilter===undefined || nameFilter===null){
+                                                    nameFilter='';
+                                                }
+                                        
+                                                result = Resources["InfoTableFunctions"].Query({
+                                                    t: machineParameterData /* INFOTABLE */ ,
+                                                    query: 
+                                                    {
+                                                        "filters": {
+                                                                "type": "LIKE",
+                                                                "fieldName": "ParameterName",
+                                                                "value": "*"+nameFilter+"*"
+                                                        }	
+                                                    } /* QUERY */
+                                                });
+                                                //Replace value in no column
+                                                for (var i=0; i<result.length;i++) {
+                                                    result.rows[i].No = i+1;
+                                                }
+                                                logger.info(loggerBeginning + " FilterMachineParameterByName Result length is  "+result.length);
+                                            	logger.info(loggerBeginning + " success to get filtered machine parameter data. ");
+                                            } catch(error){
+                                            	logger.error(loggerBeginning + " failed to get filtered machine parameter data - [ERROR]: " + error);
+                                            }
+                                        }());
+                                        ]]>
+                                        </code>
+                                        <editorSettings>
+                                            <json>
+                                            <![CDATA[
+                                            {"viewState":{"viewState":{"firstPositionDeltaTop":-21,"scrollLeft":0,"firstPosition":{"column":1,"lineNumber":31}},"cursorState":[{"inSelectionMode":false,"selectionStart":{"column":1,"lineNumber":1},"position":{"column":1,"lineNumber":1}}],"contributionsState":{"editor.contrib.wordHighlighter":false,"editor.contrib.folding":{"provider":"indent","lineCount":48,"foldedImports":false}}}}
+                                            ]]>
+                                            </json>
+                                        </editorSettings>
+                                    </Row>
+                                </Rows>
+                            </ConfigurationTable>
+                        </ConfigurationTables>
+                    </ServiceImplementation>
+                    <ServiceImplementation
+                     description=""
+                     handlerName="Script"
+                     name="GetDefaultMachineName">
+                        <ConfigurationTables>
+                            <ConfigurationTable
+                             dataShapeName=""
+                             description=""
+                             isMultiRow="false"
+                             name="Script"
+                             ordinal="0">
+                                <DataShape>
+                                    <FieldDefinitions>
+                                        <FieldDefinition
+                                         baseType="STRING"
+                                         description="code"
+                                         name="code"
+                                         ordinal="0"></FieldDefinition>
+                                    </FieldDefinitions>
+                                </DataShape>
+                                <Rows>
+                                    <Row>
+                                        <code>
+                                        <![CDATA[
+                                        /*
+                                        * @name GetDefaultMachineName
+                                        * @date 31.10.2022
+                                        * @author Wilfrid Azariah CAD-IT
+                                        * @param machineNameList	INFOTABLE "HPMC.AddOn.DropdownData.DS"
+                                        * @param machineName		STRING
+                                        * @return INFOTABLE "HPMC.AddOn.DropdownData.DS"
+                                        * info : service to get default machine name
+                                        *
+                                        * [31.10.2022] [Wilfrid Azariah] initial development
+                                        */
+                                         
+                                        var result;
+                                        var loggerBeginning = "["+me.name+":GetDefaultMachineName]";
+                                        (function(){
+                                            "use strict";
+                                            logger.info(loggerBeginning + " start to get default machine name. ");
+                                            try{
+                                                // CreateInfoTableFromDataShape(infoTableName:STRING("InfoTable"), dataShapeName:STRING):INFOTABLE(HPMC.AddOn.RTMP.Management.DS)
+                                                let data = Resources["InfoTableFunctions"].CreateInfoTableFromDataShape({
+                                                    infoTableName: "InfoTable",
+                                                    dataShapeName: "HPMC.Core.DropdownData.DS"
+                                                });
+                                        
+                                                // Find machines that has specific parameter name
+                                                data = Resources["InfoTableFunctions"].Query({
+                                                    t: machineNameList /* INFOTABLE */ ,
+                                                    query: 
+                                                    {
+                                                        "filters": {
+                                                                "type": "EQ",
+                                                                "fieldName": "dropdown_value",
+                                                                "value": machineName
+                                                        }	
+                                                    } /* QUERY */
+                                                });
+                                                
+                                                result = data;
+                                                
+                                            	logger.info(loggerBeginning + " success to get default machine name. ");
+                                            } catch(error){
+                                            	logger.error(loggerBeginning + " failed to get default machine name - [ERROR]: " + error);
+                                            }
+                                        }());
+                                        ]]>
+                                        </code>
+                                    </Row>
+                                </Rows>
+                            </ConfigurationTable>
+                        </ConfigurationTables>
+                    </ServiceImplementation>
+                    <ServiceImplementation
+                     description=""
+                     handlerName="Script"
+                     name="GetLastMachineParameterPIC">
+                        <ConfigurationTables>
+                            <ConfigurationTable
+                             dataShapeName=""
+                             description=""
+                             isMultiRow="false"
+                             name="Script"
+                             ordinal="0">
+                                <DataShape>
+                                    <FieldDefinitions>
+                                        <FieldDefinition
+                                         baseType="STRING"
+                                         description="code"
+                                         name="code"
+                                         ordinal="0"></FieldDefinition>
+                                    </FieldDefinitions>
+                                </DataShape>
+                                <Rows>
+                                    <Row>
+                                        <code>
+                                        <![CDATA[
+                                        /*
+                                        * @name GetLastMachineParameterPIC
+                                        * @date 17.10.2022
+                                        * @author Wilfrid Azariah CAD-IT
+                                        * @param selectedPIC	STRING 
+                                        * @param machineParameterPIC	INFOTABLE "HPMC.AddOn.DropdownData.DS"
+                                        * @return INFOTABLE "HPMC.AddOn.DropdownData.DS"
+                                        * info : service to get select machine parameter PIC(s) from the list
+                                        *
+                                        * [17.10.2022] [Wilfrid Azariah] initial development
+                                        */
+                                        var result;
+                                        var loggerBeginning = "["+me.name+":GetLastMachineParameterPIC]";
+                                        (function(){
+                                            "use strict";
+                                            logger.info(loggerBeginning + " start to get list of selected machine parameter PIC.");
+                                            try{
+                                                // CreateInfoTableFromDataShape(infoTableName:STRING("InfoTable"), dataShapeName:STRING):INFOTABLE(HPMC.AddOn.DropdownData.DS)
+                                                let data = Resources["InfoTableFunctions"].CreateInfoTableFromDataShape({
+                                                    infoTableName: "InfoTable",
+                                                    dataShapeName: "HPMC.Core.DropdownData.DS"
+                                                });
+                                        
+                                        		var nameArr = selectedPIC.split(',');
+                                                var onePIC;
+                                                let newEntry = new Object();
+                                                for (var i = 0; i < nameArr.length; i++) {
+                                                    if (nameArr[i].charAt(0) === " ") {
+                                                        nameArr[i] = nameArr[i].slice(1);
+                                                    }
+                                                    onePIC = Resources["InfoTableFunctions"].Query({
+                                                        t: machineParameterPIC /* INFOTABLE */ ,
+                                                        query: 
+                                                        {
+                                                            "filters": {
+                                                                    "type": "LIKE",
+                                                                    "fieldName": "dropdown_value",
+                                                                    "value": "*"+nameArr[i]+"*"
+                                                            }	
+                                                        } /* QUERY */
+                                                    });
+                                                    newEntry.dropdown_id = onePIC[0].dropdown_id;
+                                                    newEntry.dropdown_value = onePIC[0].dropdown_value;
+                                                    data.AddRow(newEntry);
+                                                }
+                                                
+                                                result = data;
+                                                
+                                            	logger.info(loggerBeginning + " success to get list of selected machine parameter PIC.");
+                                            } catch(error){
+                                            	logger.error(loggerBeginning + " failed to get list of selected machine parameter PIC - [ERROR]: " + error);
+                                            }
+                                        }());
+                                        ]]>
+                                        </code>
+                                    </Row>
+                                </Rows>
+                            </ConfigurationTable>
+                        </ConfigurationTables>
+                    </ServiceImplementation>
+                    <ServiceImplementation
+                     description=""
+                     handlerName="Script"
+                     name="GetLastMachineParameterStatus">
+                        <ConfigurationTables>
+                            <ConfigurationTable
+                             dataShapeName=""
+                             description=""
+                             isMultiRow="false"
+                             name="Script"
+                             ordinal="0">
+                                <DataShape>
+                                    <FieldDefinitions>
+                                        <FieldDefinition
+                                         baseType="STRING"
+                                         description="code"
+                                         name="code"
+                                         ordinal="0"></FieldDefinition>
+                                    </FieldDefinitions>
+                                </DataShape>
+                                <Rows>
+                                    <Row>
+                                        <code>
+                                        <![CDATA[
+                                        /*
+                                        * @name GetLastMachineParameterStatus
+                                        * @date 17.10.2022
+                                        * @author Wilfrid Azariah CAD-IT
+                                        * @param lastParameterStatus	STRING
+                                        * @param machineParameterStatus	INFOTABLE "HPMC.AddOn.RTMP.Management.DropdownData.DS"
+                                        * @return INFOTABLE "HPMC.AddOn.RTMP.Management.DropdownData.DS"
+                                        * info : service to get last machine parameter status
+                                        *
+                                        * [17.10.2022] [Wilfrid Azariah] initial development
+                                        */
+                                        var result;
+                                        var loggerBeginning = "["+me.name+":GetLastMachineParameterStatus]";
+                                        (function(){
+                                            "use strict";
+                                            logger.info(loggerBeginning + " start to get last machine parameter status.");
+                                            try{
+                                                result = Resources["InfoTableFunctions"].Query({
+                                                    t: machineParameterStatus /* INFOTABLE */ ,
+                                                    query: 
+                                                    {
+                                                        "filters": {
+                                                                "type": "LIKE",
+                                                                "fieldName": "dropdown_display",
+                                                                "value": lastParameterStatus
+                                                        }	
+                                                    } /* QUERY */
+                                                });
+                                                
+                                            	logger.info(loggerBeginning + " success to get last machine parameter status.");
+                                            } catch(error){
+                                            	logger.error(loggerBeginning + " failed to get last machine parameter status - [ERROR]: " + error);
+                                            }
+                                        }());
+                                        ]]>
+                                        </code>
+                                    </Row>
+                                </Rows>
+                            </ConfigurationTable>
+                        </ConfigurationTables>
+                    </ServiceImplementation>
+                    <ServiceImplementation
+                     description=""
+                     handlerName="Script"
+                     name="GetMachineParameter">
+                        <ConfigurationTables>
+                            <ConfigurationTable
+                             dataShapeName=""
+                             description=""
+                             isMultiRow="false"
+                             name="Script"
+                             ordinal="0">
+                                <DataShape>
+                                    <FieldDefinitions>
+                                        <FieldDefinition
+                                         baseType="STRING"
+                                         description="code"
+                                         name="code"
+                                         ordinal="0"></FieldDefinition>
+                                        <FieldDefinition
+                                         baseType="JSON"
+                                         description=""
+                                         name="editorSettings"
+                                         ordinal="0"></FieldDefinition>
+                                    </FieldDefinitions>
+                                </DataShape>
+                                <Rows>
+                                    <Row>
+                                        <code>
+                                        <![CDATA[
+                                        /*
+                                        * @name GetMachineParameter
+                                        * @date 18.10.2022
+                                        * @author Wilfrid Azariah CAD-IT
+                                        * @param selectedMachineIds	INFOTABLE "HPMC.AddOn.Asset.Saw.Complete.DS"
+                                        * @return infotable "HPMC.AddOn.RTMP.Management.DS"
+                                        * info : service to get machine parameter data
+                                        *
+                                        * [18.10.2022] [Wilfrid Azariah] initial development
+                                        */
+                                         
+                                        var result;
+                                        var loggerBeginning = "["+me.name+":GetMachineParameter]";
+                                        logger.info(loggerBeginning + " GetMachineParameter selectedMachineIds are length . "+selectedMachineIds.length);
+                                        (function(){
+                                            "use strict";
+                                            logger.info(loggerBeginning + " start to get machine parameter data. ");
+                                            try{
+                                                // CreateInfoTableFromDataShape(infoTableName:STRING("InfoTable"), dataShapeName:STRING):INFOTABLE(HPMC.AddOn.RTMP.Management.DS)
+                                                let data = Resources["InfoTableFunctions"].CreateInfoTableFromDataShape({
+                                                    infoTableName: "InfoTable",
+                                                    dataShapeName: "HPMC.AddOn.RTMP.Management.DS"
+                                                });
+                                        
+                                        
+                                                let machineIdList = "''";
+                                                
+                                                // Convert selectedMachineIds to machineIdList
+                                                selectedMachineIds = (selectedMachineIds === null || selectedMachineIds === undefined) ? "" : selectedMachineIds;
+                                                if (selectedMachineIds.length > 0) {
+                                                    for (var i = 0; i < selectedMachineIds.length; i++) {
+                                                        machineIdList += ", '" + selectedMachineIds.rows[i].machineId + "'";
+                                        			}
+                                                }
+                                        
+                                                // let MachineInfo = Resources["InfoTableFunctions"].CreateInfoTableFromDataShape({
+                                                //     infoTableName: "EmailData",
+                                                //     dataShapeName: "HPMC.AddOn.RTMP.EmailDataFields.DS"
+                                                // });
+                                                
+                                                
+                                                // // Add the new row
+                                                // MachineInfo.AddRow({
+                                                //     MachineId: machineId,          // STRING
+                                                //     ParameterId: parameterId,      // STRING
+                                                // //  name: nameString,                    // STRING
+                                                //     email: email,                  // STRING
+                                                //     UpperBound: upperBound,        // NUMBER
+                                                //     LowerBound: lowerBound,        // NUMBER
+                                                //     parameterValue: machineRow.parameter_value || 0  // NUMBER
+                                                // });
+                                        
+                                        		const temp = me.QueryMachineParameter({
+                                                    machineIdList: machineIdList /* STRING */
+                                                });
+                                                
+                                                // HPMC.Management.RTMP.DS entry object
+                                                let newEntry = new Object();
+                                                for (var i = 0; i < temp.length; i++) {
+                                                    newEntry.No = i + 1; // INTEGER
+                                                    newEntry.MachineName = temp.rows[i].machine_id.split("_")[1] + '-' + temp.rows[i].machine_name; // STRING
+                                                    newEntry.ParameterName = temp.rows[i].parameter_name; // STRING
+                                                    newEntry.Unit = temp.rows[i].unit; // STRING
+                                                    newEntry.Description = temp.rows[i].parameter_desc; // STRING
+                                                    newEntry.Status = temp.rows[i].status; // STRING
+                                                    newEntry.UpperBound = temp.rows[i].upper_bound;
+                                                    newEntry.LowerBound = temp.rows[i].lower_bound;
+                                                    newEntry.ParameterId = temp.rows[i].rtmp_master_id;
+                                                    newEntry.PIC = temp.rows[i].pic;
+                                                  //  newEntry.PIC = email;
+                                                    newEntry.Message = temp.rows[i].message; // STRING
+                                                    data.AddRow(newEntry);
+                                                }
+                                                        
+                                                for (let i =0;i<data.length;i++){
+                                                    let rowData = data.rows[i];
+                                                    //get language from user config
+                                                    let currentLanguage = Resources['CurrentSessionInfo'].GetCurrentUserLanguage();
+                                                    if (rowData.Status!=="" && rowData.Status!==null && rowData.Status!==undefined){
+                                                        // get token value from language
+                                                        let token = Resources['RuntimeLocalizationFunctions'].GetEffectiveTokenForLanguage({
+                                                            language: currentLanguage /* STRING */ ,
+                                                            token: "HPMC.ParameterStatus." + rowData.Status.split(" ").join("") /* STRING */ ,
+                                                        });
+                                                        data.rows[i].Status = token ;//+ data.dropdown_value;
+                                                    }
+                                                    if (rowData.ParameterName!=="" && rowData.ParameterName!==null && rowData.ParameterName!==undefined){
+                                                        // get token value from language
+                                                        let token = Resources['RuntimeLocalizationFunctions'].GetEffectiveTokenForLanguage({
+                                                            language: currentLanguage /* STRING */ ,
+                                                            token: "HPMC.Parameter." + rowData.ParameterName.split(" ").join("") /* STRING */ ,
+                                                        });
+                                                        data.rows[i].ParameterName = token ;//+ data.dropdown_value;
+                                                    }
+                                                }
+                                                
+                                                result = data;
+                                                
+                                            	logger.info(loggerBeginning + " success to get machine parameter data. ");
+                                            } catch(error){
+                                            	logger.error(loggerBeginning + " failed to get machine parameter data - [ERROR]: " + error);
+                                            }
+                                        }());
+                                        ]]>
+                                        </code>
+                                        <editorSettings>
+                                            <json>
+                                            <![CDATA[
+                                            {"viewState":{"viewState":{"firstPositionDeltaTop":-13,"scrollLeft":0,"firstPosition":{"column":1,"lineNumber":45}},"cursorState":[{"inSelectionMode":true,"selectionStart":{"column":19,"lineNumber":53},"position":{"column":40,"lineNumber":53}}],"contributionsState":{"editor.contrib.wordHighlighter":true,"editor.contrib.folding":{"provider":"indent","lineCount":103,"foldedImports":false}}}}
+                                            ]]>
+                                            </json>
+                                        </editorSettings>
+                                    </Row>
+                                </Rows>
+                            </ConfigurationTable>
+                        </ConfigurationTables>
+                    </ServiceImplementation>
+                    <ServiceImplementation
+                     description=""
+                     handlerName="Script"
+                     name="GetMachineParameterDataForExport">
+                        <ConfigurationTables>
+                            <ConfigurationTable
+                             dataShapeName=""
+                             description=""
+                             isMultiRow="false"
+                             name="Script"
+                             ordinal="0">
+                                <DataShape>
+                                    <FieldDefinitions>
+                                        <FieldDefinition
+                                         baseType="STRING"
+                                         description="code"
+                                         name="code"
+                                         ordinal="0"></FieldDefinition>
+                                    </FieldDefinitions>
+                                </DataShape>
+                                <Rows>
+                                    <Row>
+                                        <code>
+                                        <![CDATA[
+                                        /*
+                                         * @name GetMachineParameterDataForExport
+                                         * @date 24.10.2022
+                                         * @author Wilfrid Azariah CAD-IT
+                                         * @param rawData	INFOTABLE "HPMC.AddOn.RTMP.Management.DS"
+                                         * @return infotable "HPMC.AddOn.RTMP.Management.Export.DS"
+                                         * info : service to get machine parameter data for export
+                                         *
+                                         * [24.10.2022] [Wilfrid Azariah] initial development
+                                         */
+                                        
+                                        var result;
+                                        var loggerBeginning = "["+me.name+":GetMachineParameterDataForExport]";
+                                        (function(){
+                                            "use strict";
+                                            logger.info(loggerBeginning + " start to get machine Parameter Data For Export. ");
+                                            try{
+                                                
+                                                var params = {
+                                                    t1: rawData
+                                                };
+                                        		var data = Resources["InfoTableFunctions"].Clone(params);
+                                                
+                                                data.RemoveField("ParameterId");
+                                        
+                                                result = data;
+                                        
+                                                logger.info(loggerBeginning + " success to get machine Parameter Data For Export. ");
+                                            } catch(error){
+                                                logger.error(loggerBeginning + " failed to get machine Parameter Data For Export - [ERROR]: " + error);
+                                            }
+                                        }());
+                                        ]]>
+                                        </code>
+                                    </Row>
+                                </Rows>
+                            </ConfigurationTable>
+                        </ConfigurationTables>
+                    </ServiceImplementation>
+                    <ServiceImplementation
+                     description=""
+                     handlerName="Script"
+                     name="GetMachineParameterPIC">
+                        <ConfigurationTables>
+                            <ConfigurationTable
+                             dataShapeName=""
+                             description=""
+                             isMultiRow="false"
+                             name="Script"
+                             ordinal="0">
+                                <DataShape>
+                                    <FieldDefinitions>
+                                        <FieldDefinition
+                                         baseType="STRING"
+                                         description="code"
+                                         name="code"
+                                         ordinal="0"></FieldDefinition>
+                                    </FieldDefinitions>
+                                </DataShape>
+                                <Rows>
+                                    <Row>
+                                        <code>
+                                        <![CDATA[
+                                        /*
+                                        * @name GetMachineParameterPIC
+                                        * @date 17.10.2022
+                                        * @author Wilfrid Azariah CAD-IT
+                                        * @return infotable "HPMC.AddOn.DropdownData.DS"
+                                        * info : service to get list of machine parameter PIC
+                                        *
+                                        * [17.10.2022] [Wilfrid Azariah] initial development
+                                        */
+                                        var result;
+                                        var loggerBeginning = "["+me.name+":GetMachineParameterPIC]";
+                                        (function(){
+                                            "use strict";
+                                            logger.info(loggerBeginning + " start to get list of machine parameter PIC.");
+                                            try{
+                                                locId = (locId != null || locId != undefined) ? locId : "626";
+                                                ucId = (ucId != null || ucId != undefined) ? ucId : '2371';
+                                                // CreateInfoTableFromDataShape(infoTableName:STRING("InfoTable"), dataShapeName:STRING):INFOTABLE(HPMC.AddOn.RTMP.Management.DropdownData.DS)
+                                                let data = Resources["InfoTableFunctions"].CreateInfoTableFromDataShape({
+                                                    infoTableName: "InfoTable",
+                                                    dataShapeName: "HPMC.Core.DropdownData.DS"
+                                                });
+                                                
+                                                // result: INFOTABLE dataShape: ""
+                                        //        let picNames = Things["HPMC.AddOn.RTMP.Manager.TT"].GetAllPICName({
+                                        //            uc_id: ucId /* STRING */,
+                                        //            loc_id: locId /* STRING */
+                                        //        });
+                                                	// result: INFOTABLE dataShape: ""
+                                                let picNames = Things["HPMC.AddOn.RTMP.Manager"].GetAllPICName({
+                                                	uc_id: ucId /* STRING */,
+                                                	loc_id: locId /* STRING */
+                                                });
+                                                
+                                        		picNames = Resources["InfoTableFunctions"].Sort( {
+                                                    sortColumn: "name", t: picNames, ascending: true
+                                                } );
+                                                
+                                                // entry object
+                                                for (var i = 0; i < picNames.length; i++) {
+                                                    data.AddRow({
+                                                        dropdown_id: i,// STRING [Primary Key]
+                                                        dropdown_value: picNames[i].name// STRING
+                                                    });
+                                                }
+                                        
+                                                result = data;
+                                                
+                                            	logger.info(loggerBeginning + " success to get list of machine parameter PIC.");
+                                            } catch(error){
+                                            	logger.error(loggerBeginning + " failed to get list of machine parameter PIC - [ERROR]: " + error);
+                                            }
+                                        }());
+                                        ]]>
+                                        </code>
+                                    </Row>
+                                </Rows>
+                            </ConfigurationTable>
+                        </ConfigurationTables>
+                    </ServiceImplementation>
+                    <ServiceImplementation
+                     description=""
+                     handlerName="Script"
+                     name="GetMachineParameterSorted">
+                        <ConfigurationTables>
+                            <ConfigurationTable
+                             dataShapeName=""
+                             description=""
+                             isMultiRow="false"
+                             name="Script"
+                             ordinal="0">
+                                <DataShape>
+                                    <FieldDefinitions>
+                                        <FieldDefinition
+                                         baseType="STRING"
+                                         description="code"
+                                         name="code"
+                                         ordinal="0"></FieldDefinition>
+                                        <FieldDefinition
+                                         baseType="JSON"
+                                         description=""
+                                         name="editorSettings"
+                                         ordinal="0"></FieldDefinition>
+                                    </FieldDefinitions>
+                                </DataShape>
+                                <Rows>
+                                    <Row>
+                                        <code>
+                                        <![CDATA[
+                                        /*
+                                        * @name GetMachineParameterSorted
+                                        * @date 17.10.2022
+                                        * @author Wilfrid Azariah CAD-IT
+                                        * @param queryFilter	QUERY
+                                        * @param gridData		INFOTABLE "HPMC.AddOn.RTMP.Management.DS"
+                                        * @return infotable "HPMC.AddOn.RTMP.Management.DS"
+                                        * info : service to sort machine parameter data
+                                        *
+                                        * [17.10.2022] [Wilfrid Azariah] initial development
+                                        */
+                                        
+                                        var result;
+                                        var loggerBeginning = "["+me.name+":GetMachineParameterSorted]";
+                                        (function(){
+                                            "use strict";
+                                            logger.info(loggerBeginning + " start to sort machine parameter data. ");
+                                            logger.info(loggerBeginning + " input in gridData "+gridData.length);
+                                            try{
+                                                let tempTable = gridData; // dataShape: "HPMC.AddOn.RTMP.Management.DS"
+                                                
+                                                result = tempTable;
+                                                if (queryFilter==null || queryFilter==undefined ||queryFilter=="")
+                                                	result.Sort({name:"MachineName",ascending:true});
+                                                else {
+                                                	result = Resources["InfoTableFunctions"].Query({
+                                                        t: tempTable /* INFOTABLE */,
+                                                        query: {"sorts":queryFilter.sorts}
+                                                    });
+                                                }
+                                                for (let i = 0; i < result.length; i++) {
+                                                    result[i].No = i + 1;
+                                                }
+                                                
+                                            	logger.info(loggerBeginning + " success to sort machine parameter data. ");
+                                            } catch(error){
+                                            	logger.error(loggerBeginning + " failed to sort machine parameter data - [ERROR]: " + error);
+                                            }
+                                        }());
+                                        ]]>
+                                        </code>
+                                        <editorSettings>
+                                            <json>
+                                            <![CDATA[
+                                            {"viewState":{"viewState":{"firstPositionDeltaTop":0,"scrollLeft":0,"firstPosition":{"column":1,"lineNumber":1}},"cursorState":[{"inSelectionMode":false,"selectionStart":{"column":1,"lineNumber":1},"position":{"column":1,"lineNumber":1}}],"contributionsState":{"editor.contrib.wordHighlighter":false,"editor.contrib.folding":{"provider":"indent","lineCount":39,"foldedImports":false}}}}
+                                            ]]>
+                                            </json>
+                                        </editorSettings>
+                                    </Row>
+                                </Rows>
+                            </ConfigurationTable>
+                        </ConfigurationTables>
+                    </ServiceImplementation>
+                    <ServiceImplementation
+                     description=""
+                     handlerName="Script"
+                     name="GetMachineParameterStatus">
+                        <ConfigurationTables>
+                            <ConfigurationTable
+                             dataShapeName=""
+                             description=""
+                             isMultiRow="false"
+                             name="Script"
+                             ordinal="0">
+                                <DataShape>
+                                    <FieldDefinitions>
+                                        <FieldDefinition
+                                         baseType="STRING"
+                                         description="code"
+                                         name="code"
+                                         ordinal="0"></FieldDefinition>
+                                    </FieldDefinitions>
+                                </DataShape>
+                                <Rows>
+                                    <Row>
+                                        <code>
+                                        <![CDATA[
+                                        /*
+                                        * @name GetMachineParameterStatus
+                                        * @date 17.10.2022
+                                        * @author Wilfrid Azariah CAD-IT
+                                        * @return infotable "HPMC.AddOn.RTMP.Management.DropdownData.DS"
+                                        * info : service to get list of machine parameter status
+                                        *
+                                        * [17.10.2022] [Wilfrid Azariah] initial development
+                                        */
+                                        var result;
+                                        var loggerBeginning = "["+me.name+":GetMachineParameterStatus]";
+                                        (function(){
+                                            "use strict";
+                                            logger.info(loggerBeginning + " start to get list of machine parameter status.");
+                                            try{
+                                                // CreateInfoTableFromDataShape(infoTableName:STRING("InfoTable"), dataShapeName:STRING):INFOTABLE(HPMC.AddOn.RTMP.Management.DropdownData.DS)
+                                                let data = Resources["InfoTableFunctions"].CreateInfoTableFromDataShape({
+                                                    infoTableName: "InfoTable",
+                                                    dataShapeName: "HPMC.AddOn.RTMP.Management.DropdownData.DS"
+                                                });
+                                                
+                                                //get language from user config
+                                                let currentLanguage = Resources['CurrentSessionInfo'].GetCurrentUserLanguage();
+                                                
+                                                // get token value from language
+                                                let token = Resources['RuntimeLocalizationFunctions'].GetEffectiveTokenForLanguage({
+                                                    language: currentLanguage /* STRING */ ,
+                                                    token: "HPMC.ParameterStatus.Showed" /* STRING */ 
+                                                });
+                                        
+                                                // HPMC.AddOns.APAC.CM.Management.RTMP.DropdownData.DS entry object
+                                                data.AddRow({
+                                                    dropdown_id: 0,// STRING [Primary Key]
+                                                    dropdown_value: "Showed",// STRING
+                                                    dropdown_display: token// STRING
+                                                });
+                                                
+                                                // get token value from language
+                                                token = Resources['RuntimeLocalizationFunctions'].GetEffectiveTokenForLanguage({
+                                                    language: currentLanguage /* STRING */ ,
+                                                    token: "HPMC.ParameterStatus.NotShowed" /* STRING */ 
+                                                });
+                                        
+                                                data.AddRow({
+                                                    dropdown_id: 1,// STRING [Primary Key]
+                                                    dropdown_value: "Not Showed",// STRING
+                                                    dropdown_display: token// STRING
+                                                });
+                                        
+                                                result = data;
+                                                
+                                            	logger.info(loggerBeginning + " success to get list of machine parameter status.");
+                                            } catch(error){
+                                            	logger.error(loggerBeginning + " failed to get list of machine parameter status - [ERROR]: " + error);
+                                            }
+                                        }());
+                                        ]]>
+                                        </code>
+                                    </Row>
+                                </Rows>
+                            </ConfigurationTable>
+                        </ConfigurationTables>
+                    </ServiceImplementation>
+                    <ServiceImplementation
+                     description=""
+                     handlerName="Script"
+                     name="GetUniqueMachineName">
+                        <ConfigurationTables>
+                            <ConfigurationTable
+                             dataShapeName=""
+                             description=""
+                             isMultiRow="false"
+                             name="Script"
+                             ordinal="0">
+                                <DataShape>
+                                    <FieldDefinitions>
+                                        <FieldDefinition
+                                         baseType="STRING"
+                                         description="code"
+                                         name="code"
+                                         ordinal="0"></FieldDefinition>
+                                    </FieldDefinitions>
+                                </DataShape>
+                                <Rows>
+                                    <Row>
+                                        <code>
+                                        <![CDATA[
+                                        /*
+                                        * @name GetUniqueMachineName
+                                        * @date 31.10.2022
+                                        * @author Wilfrid Azariah CAD-IT
+                                        * @param parameterTable	INFOTABLE "HPMC.AddOn.RTMP.Management.DS"
+                                        * @param parameterName	STRING
+                                        * @return INFOTABLE "HPMC.AddOn.DropdownData.DS"
+                                        * info : service to get unique machine name from parameter data
+                                        *
+                                        * [31.10.2022] [Wilfrid Azariah] initial development
+                                        */
+                                         
+                                        var result;
+                                        var loggerBeginning = "["+me.name+":GetUniqueMachineName]";
+                                        (function(){
+                                            "use strict";
+                                            logger.info(loggerBeginning + " start to get unique machine name from parameter data. ");
+                                            try{
+                                                // CreateInfoTableFromDataShape(infoTableName:STRING("InfoTable"), dataShapeName:STRING):INFOTABLE(HPMC.AddOn.RTMP.Management.DS)
+                                                let data = Resources["InfoTableFunctions"].CreateInfoTableFromDataShape({
+                                                    infoTableName: "InfoTable",
+                                                    dataShapeName: "HPMC.Core.DropdownData.DS"
+                                                });
+                                        
+                                                // Find machines that has specific parameter name
+                                                let filteredTable = Resources["InfoTableFunctions"].Query({
+                                                    t: parameterTable /* INFOTABLE */ ,
+                                                    query: 
+                                                    {
+                                                        "filters": {
+                                                                "type": "EQ",
+                                                                "fieldName": "ParameterName",
+                                                                "value": parameterName
+                                                        }	
+                                                    } /* QUERY */
+                                                });
+                                                
+                                                // HPMC.AddOns.APAC.DropdownData.DS entry object
+                                                let newEntry = new Object();
+                                                for (var i = 0; i < filteredTable.length; i++) {
+                                                    newEntry.dropdown_id = i + 1; // INTEGER
+                                                    newEntry.dropdown_value = filteredTable.rows[i].MachineName; // STRING
+                                                    data.AddRow(newEntry);
+                                                }
+                                                
+                                                result = data;
+                                                
+                                                result.Sort({name:"dropdown_value",ascending:true});
+                                                
+                                            	logger.info(loggerBeginning + " success to get unique machine name from parameter data. ");
+                                            } catch(error){
+                                            	logger.error(loggerBeginning + " failed to get unique machine name from parameter data - [ERROR]: " + error);
+                                            }
+                                        }());
+                                        ]]>
+                                        </code>
+                                    </Row>
+                                </Rows>
+                            </ConfigurationTable>
+                        </ConfigurationTables>
+                    </ServiceImplementation>
+                    <ServiceImplementation
+                     description=""
+                     handlerName="Script"
+                     name="InitializeModule">
+                        <ConfigurationTables>
+                            <ConfigurationTable
+                             dataShapeName=""
+                             description=""
+                             isMultiRow="false"
+                             name="Script"
+                             ordinal="0">
+                                <DataShape>
+                                    <FieldDefinitions>
+                                        <FieldDefinition
+                                         baseType="STRING"
+                                         description="code"
+                                         name="code"
+                                         ordinal="0"></FieldDefinition>
+                                        <FieldDefinition
+                                         baseType="JSON"
+                                         description=""
+                                         name="editorSettings"
+                                         ordinal="0"></FieldDefinition>
+                                    </FieldDefinitions>
+                                </DataShape>
+                                <Rows>
+                                    <Row>
+                                        <code>
+                                        <![CDATA[
+                                        // Overwrite to implement init logic of module (i.e. Setup user permissions, create Things etc.)
+                                        
+                                        /* **************************** Helper functions **************************** */
+                                        const getModuleUserGroupName = () => {
+                                            const nameArr = me.name.split(".");
+                                            return nameArr[0] + "." + nameArr[1] + "." + nameArr[2] + ".Users.UG";
+                                        };
+                                        const addVisibilityPermission = (entityType, entityName, principal, principalType) => {
+                                            entityType[entityName].AddVisibilityPermission({
+                                                principal: principal /* STRING */,
+                                                principalType: principalType /* STRING */
+                                            });
+                                        };
+                                        const addInstanceVisibilityPermission = (entityType, entityName, principal, principalType) => {
+                                            entityType[entityName].AddInstanceVisibilityPermission({
+                                                principal: principal /* STRING */,
+                                                principalType: principalType /* STRING */
+                                            });
+                                        };
+                                        const addRunTimePermission = (entityType, entityName, principal, resource, type, principalType) => {
+                                            entityType[entityName].AddRunTimePermission({
+                                                principal: principal /* STRING */,
+                                                allow: true /* BOOLEAN */,
+                                                resource: resource /* STRING */,
+                                                type: type /* STRING */,
+                                                principalType: principalType /* STRING */
+                                            });
+                                        };
+                                        const addInstanceRunTimePermission = (entityType, entityName, principal, resource, type, principalType) => {
+                                            entityType[entityName].AddInstanceRunTimePermission({
+                                                principal: principal /* STRING */,
+                                                allow: true /* BOOLEAN */,
+                                                resource: resource /* STRING */,
+                                                type: type /* STRING */,
+                                                principalType: principalType /* STRING */
+                                            });
+                                        };
+                                        const addDesignTimePermission = (entityType, entityName, principal, type, principalType) => {
+                                            entityType[entityName].AddDesignTimePermission({
+                                                principal: principal /* STRING */,
+                                                allow: true /* BOOLEAN */,
+                                                type: type /* STRING */,
+                                                principalType: principalType /* STRING */
+                                            });
+                                        };
+                                        const addModuleToNavigationMenu = () => {
+                                            const navigationEntry = Resources["InfoTableFunctions"].CreateInfoTableFromDataShape({
+                                                dataShapeName: "HPMC.Core.ModuleNavigation.DS"
+                                            });
+                                            navigationEntry.AddRow({
+                                                TileOrder: 15, // INTEGER [Primary Key]
+                                                TileMashupOrURL: "HPMC.AddOn.RTMP.Management.MU", // STRING
+                                                TileIcon:  "RTMP_Management_icon", // STRING
+                                                OpenInNewWindow: false, // BOOLEAN
+                                                LocalizedTooltip: "[[HPMC.InfoMsg.]]", // TEXT
+                                                LocalizedLabel: "[[HPMC.]]", // TEXT
+                                                LocalizedDescription: undefined, // TEXT
+                                                Section: undefined, // STRING
+                                                ModuleManager: me.name // THINGNAME
+                                            });
+                                        
+                                            Things["HPMC.Core.Manager"].SetConfigurationTableRows({
+                                              values: navigationEntry /* INFOTABLE */,
+                                              persistent: true /* BOOLEAN {"defaultValue":true} */,
+                                              tableName: "NavigationEntries" /* STRING */
+                                            });
+                                        };
+                                        const addModuleToAdministrationMenu = () => {
+                                            try {
+                                                const isAdminManagerAvailable = Things[Things["HPMC.Core.Manager"].GetManagerEntity({ moduleName: "Admin" })].name;
+                                            } catch (err) {
+                                                return;
+                                            }
+                                            const administrationEntry = Resources["InfoTableFunctions"].CreateInfoTableFromDataShape({
+                                                dataShapeName: "HPMC.Core.Administration.Menu.DS"
+                                            });
+                                            administrationEntry.AddRow({
+                                                isDefault: false, // BOOLEAN
+                                                linkType: "Menu", // STRING
+                                                menuId: undefined, // STRING
+                                                parentMenuId: "Main", // STRING
+                                                title: undefined, // STRING
+                                                entityId: undefined // NUMBER [Primary Key]
+                                            });
+                                            administrationEntry.AddRow({
+                                                isDefault: false, // BOOLEAN
+                                                targetMashup: undefined, // STRING
+                                                linkType: "Mashup", // STRING
+                                                menuId: undefined, // STRING
+                                                parentMenuId: undefined, // STRING
+                                                title: undefined, // STRING
+                                                entityId: undefined // NUMBER [Primary Key]
+                                            });
+                                        
+                                            Things[Things["HPMC.Core.Manager"].GetManagerEntity({moduleName: "Admin" })].SetConfigurationTableRows({
+                                              values: administrationEntry /* INFOTABLE */,
+                                              persistent: true /* BOOLEAN {"defaultValue":true} */,
+                                              tableName: "menuEntities" /* STRING */
+                                            });
+                                        };
+                                        
+                                        /* **************************** Constants **************************** */
+                                        // Extract the module name from the manager template naming scheme. I.e.
+                                        const ORGANIZATION_NAME = "HPMC.Voestalpine.Orga";
+                                        const USER_GROUP = getModuleUserGroupName();
+                                        const MANAGER_THING = me.name;
+                                        
+                                        // **************************** INSERT CUSTOM LOGIC HERE **************************** //
+                                        let result = false;
+                                        try {
+                                            // Create component usergroup and add it as member to the Core usergroup
+                                            if (!Groups[USER_GROUP]) {
+                                                Resources["EntityServices"].CreateGroup({
+                                                    name: USER_GROUP /* STRING */,
+                                                    description: "Core usergroup that contains the usergroup for each HPMC module." /* STRING */,
+                                                    projectName: "HPMC.DynamicData" /* PROJECTNAME */,
+                                                    tags: undefined /* TAGS */
+                                                });
+                                            }
+                                            Groups["HPMC.Core.Users.UG"].AddMember({
+                                                member: USER_GROUP /* STRING */,
+                                                type: "Group" /* STRING */
+                                            });
+                                          /* **************************** Set permissions for project entities **************************** */
+                                            /* THINGS */
+                                            addVisibilityPermission(Things, MANAGER_THING, ORGANIZATION_NAME, "Organization");
+                                            addRunTimePermission(Things, MANAGER_THING, USER_GROUP, "*", "PropertyRead", "Group");
+                                            addRunTimePermission(Things, MANAGER_THING, USER_GROUP, "*", "ServiceInvoke", "Group");
+                                        
+                                            //Add module to Navigation Menu
+                                            addModuleToNavigationMenu();
+                                        
+                                            //Add module to Administration Menu
+                                            // addModuleToAdministrationMenu();
+                                        
+                                            /* MASHUPS, STYLE DEFINITION, STYLE THEMES, DATA SHAPES, MEDIA OF PROJECT*/
+                                            let entities = Projects[me.GetProjectName()].GetEntities();
+                                            const entityTypeArr = ["Mashup", "DataShape", "MediaEntity", "StateDefinition", "StyleDefinition", "StyleTheme"];
+                                        
+                                            entities = Resources["InfoTableFunctions"].Query({
+                                                t: entities /* INFOTABLE */,
+                                                query: { filters: { type: "IN", fieldName: "type", values: entityTypeArr } } /* QUERY */
+                                            });
+                                            entities.rows.toArray().forEach((row) => {
+                                                const entityType = row.type === "MediaEntity" ? MediaEntities : eval(row.type + "s");
+                                                addVisibilityPermission(entityType, row.name, ORGANIZATION_NAME, "Organization");
+                                                addDesignTimePermission(entityType, row.name, USER_GROUP, "Read", "Group");
+                                            });
+                                        
+                                            result = true;
+                                        } catch (err) {
+                                            logger.error(me.name + ".InitializeModule: " + err.message + " - Line#" + err.lineNumber);
+                                            Subsystems["PlatformSubsystem"].DeleteGhostEntities({
+                                                deleteGhostEntitiesInAllInstances: true /* BOOLEAN {"defaultValue":false} */
+                                            });
+                                        }
+                                        ]]>
+                                        </code>
+                                        <editorSettings>
+                                            <json>
+                                            <![CDATA[
+                                            {"viewState":{"viewState":{"firstPositionDeltaTop":-2,"scrollLeft":0,"firstPosition":{"column":1,"lineNumber":55}},"cursorState":[{"inSelectionMode":false,"selectionStart":{"column":6,"lineNumber":73},"position":{"column":6,"lineNumber":73}}],"contributionsState":{"editor.contrib.wordHighlighter":false,"editor.contrib.folding":{"provider":"indent","lineCount":156,"foldedImports":false}}}}
+                                            ]]>
+                                            </json>
+                                        </editorSettings>
+                                    </Row>
+                                </Rows>
+                            </ConfigurationTable>
+                        </ConfigurationTables>
+                    </ServiceImplementation>
+                    <ServiceImplementation
+                     description=""
+                     handlerName="Script"
+                     name="InsertRTMPDataUserRelation">
+                        <ConfigurationTables>
+                            <ConfigurationTable
+                             dataShapeName=""
+                             description=""
+                             isMultiRow="false"
+                             name="Script"
+                             ordinal="0">
+                                <DataShape>
+                                    <FieldDefinitions>
+                                        <FieldDefinition
+                                         baseType="STRING"
+                                         description="code"
+                                         name="code"
+                                         ordinal="0"></FieldDefinition>
+                                        <FieldDefinition
+                                         baseType="JSON"
+                                         description=""
+                                         name="editorSettings"
+                                         ordinal="0"></FieldDefinition>
+                                    </FieldDefinitions>
+                                </DataShape>
+                                <Rows>
+                                    <Row>
+                                        <code>
+                                        <![CDATA[
+                                        // result: NUMBER
+                                        
+                                        const DB_Thing=Things["HPMC.Core.Manager"].GetDatabaseConnector();
+                                        let result = Things[DB_Thing].InsertRTMPDataUserRelation({
+                                        	parameter_id: parameter_id /* INTEGER */,
+                                        	pic_name: pic_name /* STRING */
+                                        });
+                                        ]]>
+                                        </code>
+                                        <editorSettings>
+                                            <json>
+                                            <![CDATA[
+                                            {"viewState":{"viewState":{"firstPositionDeltaTop":0,"scrollLeft":0,"firstPosition":{"column":1,"lineNumber":1}},"cursorState":[{"inSelectionMode":false,"selectionStart":{"column":4,"lineNumber":7},"position":{"column":4,"lineNumber":7}}],"contributionsState":{"editor.contrib.wordHighlighter":false,"editor.contrib.folding":{"provider":"indent","lineCount":7,"foldedImports":false}}}}
+                                            ]]>
+                                            </json>
+                                        </editorSettings>
+                                    </Row>
+                                </Rows>
+                            </ConfigurationTable>
+                        </ConfigurationTables>
+                    </ServiceImplementation>
+                    <ServiceImplementation
+                     description=""
+                     handlerName="Script"
+                     name="IsParameterManagementSelected">
+                        <ConfigurationTables>
+                            <ConfigurationTable
+                             dataShapeName=""
+                             description=""
+                             isMultiRow="false"
+                             name="Script"
+                             ordinal="0">
+                                <DataShape>
+                                    <FieldDefinitions>
+                                        <FieldDefinition
+                                         baseType="STRING"
+                                         description="code"
+                                         name="code"
+                                         ordinal="0"></FieldDefinition>
+                                    </FieldDefinitions>
+                                </DataShape>
+                                <Rows>
+                                    <Row>
+                                        <code>
+                                        <![CDATA[
+                                        /*
+                                        * @name IsParameterManagementSelected
+                                        * @date 17.10.2022
+                                        * @author Wilfrid Azariah CAD-IT
+                                        * @param selectedParameter	INFOTABLE "HPMC.AddOn.RTMP.Management.DS"
+                                        * @return BOOLEAN
+                                        * info : service to determine if parameter is selected when edit button is pressed
+                                        *
+                                        * [17.10.2022] [Wilfrid Azariah] initial development
+                                        */
+                                        var result;
+                                        var loggerBeginning = "["+me.name+":IsParameterManagementSelected]";
+                                        (function(){
+                                            "use strict";
+                                            logger.info(loggerBeginning + " start to determine if parameter is selected when edit button is pressed.");
+                                            try{
+                                                if (selectedParameter.getRowCount() > 0){
+                                                    result = true;   
+                                                } else {
+                                                    result = false;
+                                                }
+                                                
+                                            	logger.info(loggerBeginning + " success to determine if parameter is selected when edit button is pressed.");
+                                            } catch(error){
+                                            	logger.error(loggerBeginning + " failed to determine if parameter is selected when edit button is pressed - [ERROR]: " + error);
+                                            }
+                                        }());
+                                        ]]>
+                                        </code>
+                                    </Row>
+                                </Rows>
+                            </ConfigurationTable>
+                        </ConfigurationTables>
+                    </ServiceImplementation>
+                    <ServiceImplementation
+                     description=""
+                     handlerName="Script"
+                     name="QueryMachineParameter">
+                        <ConfigurationTables>
+                            <ConfigurationTable
+                             dataShapeName=""
+                             description=""
+                             isMultiRow="false"
+                             name="Script"
+                             ordinal="0">
+                                <DataShape>
+                                    <FieldDefinitions>
+                                        <FieldDefinition
+                                         baseType="STRING"
+                                         description="code"
+                                         name="code"
+                                         ordinal="0"></FieldDefinition>
+                                        <FieldDefinition
+                                         baseType="JSON"
+                                         description=""
+                                         name="editorSettings"
+                                         ordinal="0"></FieldDefinition>
+                                    </FieldDefinitions>
+                                </DataShape>
+                                <Rows>
+                                    <Row>
+                                        <code>
+                                        <![CDATA[
+                                        //let dbConnectorThing = Things["HPMC.Core.Manager"].GetDatabaseConnector();
+                                        
+                                        
+                                        // result: INFOTABLE dataShape: ""
+                                        //let result = Things["HPMC.Core.DBConnector"].GetRTMPMasterData({
+                                        const DB_CONNECTOR= Things["HPMC.Core.Manager"].GetDatabaseConnector();
+                                        let result = Things[DB_CONNECTOR].GetRTMPMasterData({
+                                        	machineIdList: machineIdList /* STRING */
+                                        });
+                                        ]]>
+                                        </code>
+                                        <editorSettings>
+                                            <json>
+                                            <![CDATA[
+                                            {"viewState":{"viewState":{"firstPositionDeltaTop":0,"scrollLeft":0,"firstPosition":{"column":1,"lineNumber":1}},"cursorState":[{"inSelectionMode":false,"selectionStart":{"column":4,"lineNumber":9},"position":{"column":4,"lineNumber":9}}],"contributionsState":{"editor.contrib.wordHighlighter":false,"editor.contrib.folding":{"provider":"indent","lineCount":9,"foldedImports":false}}}}
+                                            ]]>
+                                            </json>
+                                        </editorSettings>
+                                    </Row>
+                                </Rows>
+                            </ConfigurationTable>
+                        </ConfigurationTables>
+                    </ServiceImplementation>
+                    <ServiceImplementation
+                     description=""
+                     handlerName="Script"
+                     name="UpdateMachineParameter">
+                        <ConfigurationTables>
+                            <ConfigurationTable
+                             dataShapeName=""
+                             description=""
+                             isMultiRow="false"
+                             name="Script"
+                             ordinal="0">
+                                <DataShape>
+                                    <FieldDefinitions>
+                                        <FieldDefinition
+                                         baseType="STRING"
+                                         description="code"
+                                         name="code"
+                                         ordinal="0"></FieldDefinition>
+                                        <FieldDefinition
+                                         baseType="JSON"
+                                         description=""
+                                         name="editorSettings"
+                                         ordinal="0"></FieldDefinition>
+                                    </FieldDefinitions>
+                                </DataShape>
+                                <Rows>
+                                    <Row>
+                                        <code>
+                                        <![CDATA[
+                                        /*
+                                        * @name UpdateMachineParameter
+                                        * @date 17.10.2022
+                                        * @author Wilfrid Azariah CAD-IT
+                                        * @param parameterId		STRING
+                                        * @param machineId			STRING
+                                        * @param machineName		STRING
+                                        * @param parameterName		STRING
+                                        * @param unit				STRING
+                                        * @param parameterStatus	INFOTABLE "HPMC.AddOn.RTMP.Management.DropdownData.DS"
+                                        * @param upperBoundCheck	BOOLEAN
+                                        * @param upperBoundValue	STRING
+                                        * @param lowerBoundCheck	BOOLEAN
+                                        * @param lowerBoundValue	STRING
+                                        * @param message			STRING
+                                        * @param parameterDesc		STRING
+                                        * @param pic				INFOTABLE "HPMC.AddOn.DropdownData.DS"
+                                        * @return INFOTABLE "HPMC.AddOn.RTMP.Management.DS"
+                                        * info : service to update machine parameter
+                                        *
+                                        * [17.10.2022] [Wilfrid Azariah] initial development
+                                        */
+                                        
+                                        var result;
+                                        var loggerBeginning = "["+me.name+":UpdateMachineParameter]";
+                                        (function(){
+                                            "use strict";
+                                            logger.info(loggerBeginning + "start to update machine parameter data. ");
+                                            try{
+                                                if (upperBoundCheck === false) {
+                                                    upperBoundValue = null;
+                                                }
+                                                if (lowerBoundCheck === false) {
+                                                    lowerBoundValue = null;
+                                                }
+                                                if (upperBoundValue === undefined || upperBoundValue === "") {
+                                                    upperBoundValue = null;
+                                                }
+                                                if (lowerBoundValue === undefined || lowerBoundValue === "") {
+                                                    lowerBoundValue = null;
+                                                }
+                                                if (upperBoundValue !== null) {
+                                                    upperBoundValue = parseFloat(upperBoundValue);
+                                                }
+                                                if (lowerBoundValue !== null) {
+                                                    lowerBoundValue = parseFloat(lowerBoundValue);
+                                                }
+                                                // temp: NUMBER
+                                                let temp = me.DeleteRTMPDataUserRelation({
+                                                    parameter_id: parameterId /* INTEGER */
+                                                });
+                                                // let picList = "";
+                                                // pic = (pic === null || pic === undefined) ? "" : pic;
+                                                // if (pic.length > 0) {
+                                                //         logger.info(loggerBeginning + "Pic length is "+pic.length);
+                                                //     for (var i = 0; i < pic.length; i++) {
+                                                //         // temp2: NUMBER
+                                                //         let temp2 = me.InsertRTMPDataUserRelation({
+                                                //             parameter_id: parameterId /* INTEGER */,
+                                                //             pic_name: pic[i].dropdown_value /* STRING */
+                                                //         });
+                                                //     }
+                                                // }
+                                                status = null;
+                                                parameterStatus = (parameterStatus === null || parameterStatus === undefined) ? "" : parameterStatus;
+                                                if (parameterStatus.length > 0) {
+                                                    status = parameterStatus[0].dropdown_value;
+                                                }
+                                                
+                                                logger.info(loggerBeginning + "Updated details are as below in UpdateMachineParameter  parameter_desc is "+parameter_desc+" unit is "+unit+" lower_bound is "+lower_bound+
+                                                            " parameter_id is "+parameter_id+" upper_bound is "+upper_bound+" message is "+message+" status is "+status+" pic length is "+pic.length);
+                                                me.UpdateMachineParameterConnector({
+                                                    parameter_desc: parameterDesc /* STRING */,
+                                                    unit: unit /* STRING */,
+                                                    lower_bound: lowerBoundValue /* INTEGER */,
+                                                    parameter_id: parameterId /* INTEGER */,
+                                                    upper_bound: upperBoundValue /* INTEGER */,
+                                                    message: message /* STRING */,
+                                                    status: status /* STRING */
+                                                });
+                                                result = status;
+                                                
+                                            	logger.info(loggerBeginning + "success to update machine parameter data. ");
+                                            } catch(error){
+                                            	logger.error(loggerBeginning + "failed to update machine parameter data - [ERROR]: " + error);
+                                            }
+                                        }());
+                                        ]]>
+                                        </code>
+                                        <editorSettings>
+                                            <json>
+                                            <![CDATA[
+                                            {"viewState":{"viewState":{"firstPositionDeltaTop":-5,"scrollLeft":0,"firstPosition":{"column":1,"lineNumber":65}},"cursorState":[{"inSelectionMode":true,"selectionStart":{"column":12,"lineNumber":72},"position":{"column":43,"lineNumber":72}}],"contributionsState":{"editor.contrib.wordHighlighter":true,"editor.contrib.folding":{"provider":"indent","lineCount":87,"foldedImports":false}}}}
+                                            ]]>
+                                            </json>
+                                        </editorSettings>
+                                    </Row>
+                                </Rows>
+                            </ConfigurationTable>
+                        </ConfigurationTables>
+                    </ServiceImplementation>
+                    <ServiceImplementation
+                     description=""
+                     handlerName="Script"
+                     name="UpdateMachineParameter1">
+                        <ConfigurationTables>
+                            <ConfigurationTable
+                             dataShapeName=""
+                             description=""
+                             isMultiRow="false"
+                             name="Script"
+                             ordinal="0">
+                                <DataShape>
+                                    <FieldDefinitions>
+                                        <FieldDefinition
+                                         baseType="STRING"
+                                         description="code"
+                                         name="code"
+                                         ordinal="0"></FieldDefinition>
+                                        <FieldDefinition
+                                         baseType="JSON"
+                                         description=""
+                                         name="editorSettings"
+                                         ordinal="0"></FieldDefinition>
+                                    </FieldDefinitions>
+                                </DataShape>
+                                <Rows>
+                                    <Row>
+                                        <code>
+                                        <![CDATA[
+                                        //result=parameterDesc;
+                                        logger.info("UpdateMachineParameter1 Line 2 "+ parameterStatus.length);
+                                        logger.info("UpdateMachineParameter1 Line 3 "+ pic);
+                                        logger.info("UpdateMachineParameter1 Line 4 "+ unit);
+                                        logger.info("UpdateMachineParameter1 Line 5 "+ upperBoundCheck);
+                                        logger.info("UpdateMachineParameter1 Line 6 "+ lowerBoundCheck);
+                                        logger.info("UpdateMachineParameter1 Line 7 "+ upperBoundValue);
+                                        logger.info("UpdateMachineParameter1 Line 8 "+ lowerBoundValue);
+                                        logger.info("UpdateMachineParameter1 Line 9 "+ message);
+                                        logger.info("UpdateMachineParameter1 Line 10 "+ parameterDesc);
+                                        logger.info("UpdateMachineParameter1 Line 11 "+ parameterId);
+                                        
+                                        var result;
+                                        var loggerBeginning = "["+me.name+":UpdateMachineParameter1]";
+                                        (function(){
+                                            "use strict";
+                                            logger.info(loggerBeginning + "start to update machine parameter data. ");
+                                            try{
+                                                if (upperBoundCheck === false) {
+                                                    upperBoundValue = null;
+                                                }
+                                                if (lowerBoundCheck === false) {
+                                                    lowerBoundValue = null;
+                                                }
+                                                if (upperBoundValue === undefined || upperBoundValue === "") {
+                                                    upperBoundValue = null;
+                                                }
+                                                if (lowerBoundValue === undefined || lowerBoundValue === "") {
+                                                    lowerBoundValue = null;
+                                                }
+                                                if (upperBoundValue !== null) {
+                                                    upperBoundValue = parseFloat(upperBoundValue);
+                                                }
+                                                if (lowerBoundValue !== null) {
+                                                    lowerBoundValue = parseFloat(lowerBoundValue);
+                                                }
+                                                logger.info(loggerBeginning +  "Line 37 After nested if else ");
+                                                // temp: NUMBER
+                                                let temp = me.DeleteRTMPDataUserRelation({
+                                                    parameter_id: parameterId /* INTEGER */
+                                                });
+                                          		  logger.info(loggerBeginning + "Line 41 after DeleteRTMPDataUserRelation  ");
+                                                // let picList = "";
+                                                // pic = (pic === null || pic === undefined) ? "" : pic;
+                                                // if (pic.length > 0) {
+                                                //         logger.info(loggerBeginning + "Line 45 Pic length is "+pic.length);
+                                                //     for (var i = 0; i < pic.length; i++) {
+                                                //         // temp2: NUMBER
+                                                //         let temp2 = me.InsertRTMPDataUserRelation({
+                                                //             parameter_id: parameterId /* INTEGER */,
+                                                //             pic_name: pic[i].dropdown_value /* STRING */
+                                                //         });
+                                                //         logger.info(loggerBeginning + "Line 52 after InsertRTMPDataUserRelation  ");
+                                                //     }
+                                                // }
+                                                status = null;
+                                                parameterStatus = (parameterStatus === null || parameterStatus === undefined) ? "" : parameterStatus;
+                                                if (parameterStatus.length > 0) {
+                                                    status = parameterStatus[0].dropdown_value;
+                                                }
+                                                
+                                                logger.info(loggerBeginning + "Updated details are as below in UpdateMachineParameter  parameter_desc is "+parameterDesc+" unit is "+unit+" lower_bound is "+lowerBoundValue+
+                                                            " parameter_id is "+parameterId+" upper_bound is "+upperBoundValue+" message is "+message+" status is "+status+" pic length is "+pic);
+                                                me.UpdateMachineParameterConnector({
+                                                    parameter_desc: parameterDesc /* STRING */,
+                                                    unit: unit /* STRING */,
+                                                    lower_bound: lowerBoundValue /* INTEGER */,
+                                                    parameter_id: parameterId /* INTEGER */,
+                                                    upper_bound: upperBoundValue /* INTEGER */,
+                                                    message: message /* STRING */,
+                                                    status: status /* STRING */,
+                                                    pic:pic
+                                                });
+                                                  logger.info(loggerBeginning + "Line 72 after UpdateMachineParameterConnector  ");
+                                                result = status;
+                                                
+                                            	logger.info(loggerBeginning + "success to update machine parameter data. ");
+                                            } catch(error){
+                                            	logger.error(loggerBeginning + "failed to update machine parameter data - [ERROR]: " + error);
+                                            }
+                                        }());
+                                        ]]>
+                                        </code>
+                                        <editorSettings>
+                                            <json>
+                                            <![CDATA[
+                                            {"viewState":{"viewState":{"firstPositionDeltaTop":-5,"scrollLeft":0,"firstPosition":{"column":1,"lineNumber":59}},"cursorState":[{"inSelectionMode":true,"selectionStart":{"column":12,"lineNumber":64},"position":{"column":43,"lineNumber":64}}],"contributionsState":{"editor.contrib.wordHighlighter":true,"editor.contrib.folding":{"provider":"indent","lineCount":81,"foldedImports":false}}}}
+                                            ]]>
+                                            </json>
+                                        </editorSettings>
+                                    </Row>
+                                </Rows>
+                            </ConfigurationTable>
+                        </ConfigurationTables>
+                    </ServiceImplementation>
+                    <ServiceImplementation
+                     description=""
+                     handlerName="Script"
+                     name="UpdateMachineParameterConnector">
+                        <ConfigurationTables>
+                            <ConfigurationTable
+                             dataShapeName=""
+                             description=""
+                             isMultiRow="false"
+                             name="Script"
+                             ordinal="0">
+                                <DataShape>
+                                    <FieldDefinitions>
+                                        <FieldDefinition
+                                         baseType="STRING"
+                                         description="code"
+                                         name="code"
+                                         ordinal="0"></FieldDefinition>
+                                        <FieldDefinition
+                                         baseType="JSON"
+                                         description=""
+                                         name="editorSettings"
+                                         ordinal="0"></FieldDefinition>
+                                    </FieldDefinitions>
+                                </DataShape>
+                                <Rows>
+                                    <Row>
+                                        <code>
+                                        <![CDATA[
+                                        // result: NUMBER
+                                        
+                                        const DB_Thing=Things["HPMC.Core.Manager"].GetDatabaseConnector();
+                                        let result = Things[DB_Thing].UpdateRTMPMasterData({
+                                        	parameter_desc: parameter_desc /* STRING */,
+                                        	unit: unit /* STRING */,
+                                        	lower_bound: lower_bound /* INTEGER */,
+                                        	parameter_id: parameter_id /* INTEGER */,
+                                        	upper_bound: upper_bound /* INTEGER */,
+                                        	message: message /* STRING */,
+                                        	status: status /* STRING */,
+                                        	pic:pic
+                                        });
+                                        ]]>
+                                        </code>
+                                        <editorSettings>
+                                            <json>
+                                            <![CDATA[
+                                            {"viewState":{"viewState":{"firstPositionDeltaTop":0,"scrollLeft":0,"firstPosition":{"column":1,"lineNumber":1}},"cursorState":[{"inSelectionMode":false,"selectionStart":{"column":9,"lineNumber":12},"position":{"column":9,"lineNumber":12}}],"contributionsState":{"editor.contrib.wordHighlighter":true,"editor.contrib.folding":{"provider":"indent","lineCount":13,"foldedImports":false}}}}
+                                            ]]>
+                                            </json>
+                                        </editorSettings>
+                                    </Row>
+                                </Rows>
+                            </ConfigurationTable>
+                        </ConfigurationTables>
+                    </ServiceImplementation>
+                    <ServiceImplementation
+                     description=""
+                     handlerName="Script"
+                     name="UpdateMachineParameterList">
+                        <ConfigurationTables>
+                            <ConfigurationTable
+                             dataShapeName=""
+                             description=""
+                             isMultiRow="false"
+                             name="Script"
+                             ordinal="0">
+                                <DataShape>
+                                    <FieldDefinitions>
+                                        <FieldDefinition
+                                         baseType="STRING"
+                                         description="code"
+                                         name="code"
+                                         ordinal="0"></FieldDefinition>
+                                        <FieldDefinition
+                                         baseType="JSON"
+                                         description=""
+                                         name="editorSettings"
+                                         ordinal="0"></FieldDefinition>
+                                    </FieldDefinitions>
+                                </DataShape>
+                                <Rows>
+                                    <Row>
+                                        <code>
+                                        <![CDATA[
+                                        /*
+                                        * @name UpdateMachineParameterList
+                                        * @date 31.10.2022
+                                        * @author Wilfrid Azariah CAD-IT
+                                        * @param selectedMachineName	INFOTABLE "HPMC.AddOn.DropdownData.DS"
+                                        * @param parameterName			STRING
+                                        * @param unit					STRING
+                                        * @param parameterStatus		INFOTABLE "HPMC.AddOn.RTMP.Management.DropdownData.DS"
+                                        * @param upperBoundCheck		BOOLEAN
+                                        * @param upperBoundValue		STRING
+                                        * @param lowerBoundCheck		BOOLEAN
+                                        * @param lowerBoundValue		STRING
+                                        * @param message				STRING
+                                        * @param parameterDesc			STRING
+                                        * @param pic					INFOTABLE "HPMC.AddOn.DropdownData.DS"
+                                        * info : service to update list of machine parameter
+                                        *
+                                        * [17.10.2022] [Wilfrid Azariah] initial development
+                                        */
+                                        
+                                        var result;
+                                        var loggerBeginning = "["+me.name+":UpdateMachineParameterList]";
+                                        (function(){
+                                            "use strict";
+                                            logger.info(loggerBeginning + "Line 25 start to update list of machine parameter data. ");
+                                            try{
+                                                 logger.info(loggerBeginning + "Line 27 Parameter name is  "+parameterName);
+                                                // Find machines that has specific parameter name
+                                                let filteredTable = Resources["InfoTableFunctions"].Query({
+                                                    t: parameterTable /* INFOTABLE */ ,
+                                                    query: 
+                                                    {
+                                                        "filters": {
+                                                            "type": "EQ",
+                                                            "fieldName": "ParameterName",
+                                                            "value": parameterName
+                                                        }	
+                                                    } /* QUERY */
+                                                });
+                                                 
+                                                logger.info(loggerBeginning + "Line 41 filteredTable length  is  "+filteredTable.length); // getting length as 7 
+                                                logger.info(loggerBeginning + "Line 42 selectedMachineName  length is  "+selectedMachineName.length); // getting length as 1 it is infotable
+                                           
+                                                let selectedMachineList = selectedMachineName.rows.toArray();
+                                        //       logger.info(loggerBeginning + " Line 45 selectedMachineList length: " + (selectedMachineList ? selectedMachineList.length : "undefined"));
+                                        
+                                                for (var i = 0; i < selectedMachineList.length; i++) {
+                                                   let machineName = selectedMachineList[i].dropdown_value;
+                                                   logger.info(loggerBeginning + " Line 59 inside for  "+machineName);
+                                                   logger.info(loggerBeginning + " Line 60 inside for  ");
+                                                    
+                                                   // Find machine that has specific machine name
+                                                   let finalTable = Resources["InfoTableFunctions"].Query({
+                                                      t: filteredTable /* INFOTABLE */ ,
+                                                        query: 
+                                                        {
+                                                            "filters": {
+                                                                "type": "EQ",
+                                                                "fieldName": "MachineName",
+                                                                "value": selectedMachineName[i].dropdown_value
+                                                            }	
+                                                        } /* QUERY */
+                                                     });
+                                                    logger.info("UpdateMachineParameterList Line 64 finalTable length: " + finalTable[0].MachineName);
+                                                  //  logger.info("UpdateMachineParameterList Line 65 finalTable pic: " + pic[0].dropdown_value);
+                                                    logger.info("UpdateMachineParameterList Line 68 finalTable length: " + finalTable.length);
+                                        			logger.info(loggerBeginning + "UpdateMachineParameterList Line 69 After for loop parameterId is  "+finalTable[0].ParameterId);
+                                        		    parameterId = finalTable[0].ParameterId;
+                                                    
+                                                                    // result: STRING
+                                        //                let result = me.UpdateMachineParameter1({
+                                        //                 //   parameterDesc: parameterDesc /* STRING */
+                                        //                     parameterStatus: parameterStatus /* INFOTABLE {"dataShape":"HPMC.AddOn.RTMP.Management.DropdownData.DS"} */,
+                                        //                     pic: pic /* INFOTABLE {"dataShape":"HPMC.AddOn.DropdownData.DS"} */
+                                        //                });
+                                                    
+                                                    // result: INFOTABLE dataShape: "HPMC.AddOn.RTMP.Management.DS"
+                                                    let result = me.UpdateMachineParameter1({
+                                                        parameterDesc: parameterDesc /* STRING */,
+                                                        unit: unit /* STRING */,
+                                                        lowerBoundCheck: lowerBoundCheck /* BOOLEAN */,
+                                                        parameterId: parameterId /* INTEGER */,
+                                                        upperBoundCheck: upperBoundCheck /* BOOLEAN */,
+                                                        lowerBoundValue: lowerBoundValue /* STRING */,
+                                                        upperBoundValue: upperBoundValue /* STRING */,
+                                                        parameterStatus: parameterStatus /* INFOTABLE {"dataShape":"HPMC.AddOn.RTMP.Management.DropdownData.DS"} */,
+                                                      //  pic: pic /* INFOTABLE {"dataShape":"HPMC.AddOn.DropdownData.DS"} */,
+                                                        pic:pic,
+                                                        message: message /* STRING */
+                                                    });
+                                                }
+                                        
+                                        
+                                                logger.info(loggerBeginning + "success to update list of machine parameter data. ");
+                                            } catch(error){
+                                            	logger.error(loggerBeginning + "failed to update list of machine parameter data - [ERROR]: " + error);
+                                            }
+                                        }());
+                                        ]]>
+                                        </code>
+                                        <editorSettings>
+                                            <json>
+                                            <![CDATA[
+                                            {"viewState":{"viewState":{"firstPositionDeltaTop":-23,"scrollLeft":0,"firstPosition":{"column":1,"lineNumber":72}},"cursorState":[{"inSelectionMode":true,"selectionStart":{"column":29,"lineNumber":78},"position":{"column":52,"lineNumber":78}}],"contributionsState":{"editor.contrib.wordHighlighter":true,"editor.contrib.folding":{"provider":"indent","lineCount":98,"foldedImports":false}}}}
+                                            ]]>
+                                            </json>
+                                        </editorSettings>
+                                    </Row>
+                                </Rows>
+                            </ConfigurationTable>
+                        </ConfigurationTables>
+                    </ServiceImplementation>
+                </ServiceImplementations>
+                <Subscriptions></Subscriptions>
+            </ThingShape>
+            <ImplementedShapes></ImplementedShapes>
+            <SharedConfigurationTables></SharedConfigurationTables>
+            <InstanceDesignTimePermissions>
+                <Create></Create>
+                <Read></Read>
+                <Update></Update>
+                <Delete></Delete>
+                <Metadata></Metadata>
+            </InstanceDesignTimePermissions>
+            <InstanceRunTimePermissions></InstanceRunTimePermissions>
+            <InstanceVisibilityPermissions>
+                <Visibility></Visibility>
+            </InstanceVisibilityPermissions>
+        </ThingTemplate>
+    </ThingTemplates>
+</Entities>

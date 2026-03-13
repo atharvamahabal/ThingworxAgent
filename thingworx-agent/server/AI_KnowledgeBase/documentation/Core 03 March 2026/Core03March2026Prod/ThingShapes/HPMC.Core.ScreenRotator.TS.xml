@@ -1,0 +1,509 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Entities
+ majorVersion="9"
+ minorVersion="5"
+ universal="password">
+    <ThingShapes>
+        <ThingShape
+         aspect.isExtension="true"
+         className=""
+         description="Perform ScreenRotation"
+         documentationContent=""
+         homeMashup=""
+         name="HPMC.Core.ScreenRotator.TS"
+         projectName="HPMC.Core"
+         tags="">
+            <PropertyDefinitions>
+                <PropertyDefinition
+                 aspect.cacheTime="0.0"
+                 aspect.dataChangeType="VALUE"
+                 aspect.defaultValue="&lt;Please define URL in Core.Manager&gt;"
+                 aspect.isPersistent="true"
+                 baseType="STRING"
+                 category=""
+                 description=""
+                 isLocalOnly="false"
+                 name="serverRootUrl"
+                 ordinal="2"></PropertyDefinition>
+                <PropertyDefinition
+                 aspect.cacheTime="0.0"
+                 aspect.dataChangeType="VALUE"
+                 aspect.defaultValue="HPMC.Core.Master"
+                 aspect.isPersistent="true"
+                 baseType="STRING"
+                 category=""
+                 description=""
+                 isLocalOnly="false"
+                 name="solutionMaster"
+                 ordinal="3"></PropertyDefinition>
+            </PropertyDefinitions>
+            <ServiceDefinitions>
+                <ServiceDefinition
+                 aspect.isAsync="false"
+                 category="ScreenRotation"
+                 description=""
+                 isAllowOverride="false"
+                 isLocalOnly="false"
+                 isOpen="false"
+                 isPrivate="false"
+                 name="GetMachineGroupById">
+                    <ResultType
+                     aspect.dataShape="HPMC.Core.Dropdown.DS"
+                     baseType="INFOTABLE"
+                     description=""
+                     name="result"
+                     ordinal="0"></ResultType>
+                    <ParameterDefinitions>
+                        <FieldDefinition
+                         aspect.thingTemplate="HPMC.Core.Location.TT"
+                         baseType="THINGNAME"
+                         description=""
+                         name="locationEntity"
+                         ordinal="2"></FieldDefinition>
+                        <FieldDefinition
+                         baseType="STRING"
+                         description=""
+                         name="machineGroup"
+                         ordinal="1"></FieldDefinition>
+                    </ParameterDefinitions>
+                </ServiceDefinition>
+                <ServiceDefinition
+                 aspect.isAsync="false"
+                 category="ScreenRotation"
+                 description=""
+                 isAllowOverride="false"
+                 isLocalOnly="false"
+                 isOpen="false"
+                 isPrivate="false"
+                 name="GetMachineTypeByType">
+                    <ResultType
+                     aspect.dataShape="HPMC.Core.Dropdown.DS"
+                     baseType="INFOTABLE"
+                     description=""
+                     name="result"
+                     ordinal="0"></ResultType>
+                    <ParameterDefinitions>
+                        <FieldDefinition
+                         baseType="STRING"
+                         description=""
+                         name="machineType"
+                         ordinal="1"></FieldDefinition>
+                    </ParameterDefinitions>
+                </ServiceDefinition>
+                <ServiceDefinition
+                 aspect.isAsync="false"
+                 category="ScreenRotation"
+                 description="During an active screen rotation: Initiate session variables for next screen, Return: Link for next screen, Duration of current screen"
+                 isAllowOverride="false"
+                 isLocalOnly="false"
+                 isOpen="false"
+                 isPrivate="false"
+                 name="HandleScreenRotation">
+                    <ResultType
+                     aspect.dataShape="HPMC.Core.ScreenRotator.DS"
+                     baseType="INFOTABLE"
+                     description=""
+                     name="result"
+                     ordinal="0"></ResultType>
+                    <ParameterDefinitions>
+                        <FieldDefinition
+                         baseType="STRING"
+                         description=""
+                         name="currentLink"
+                         ordinal="1"></FieldDefinition>
+                    </ParameterDefinitions>
+                </ServiceDefinition>
+                <ServiceDefinition
+                 aspect.isAsync="false"
+                 category="ScreenRotation"
+                 description="default: False"
+                 isAllowOverride="false"
+                 isLocalOnly="false"
+                 isOpen="false"
+                 isPrivate="false"
+                 name="ToggleScreenRotation">
+                    <ResultType
+                     baseType="NOTHING"
+                     description=""
+                     name="result"
+                     ordinal="0"></ResultType>
+                    <ParameterDefinitions>
+                        <FieldDefinition
+                         aspect.defaultValue="false"
+                         baseType="BOOLEAN"
+                         description=""
+                         name="screenRotationStatus"
+                         ordinal="1"></FieldDefinition>
+                    </ParameterDefinitions>
+                </ServiceDefinition>
+            </ServiceDefinitions>
+            <EventDefinitions></EventDefinitions>
+            <ServiceMappings></ServiceMappings>
+            <ServiceImplementations>
+                <ServiceImplementation
+                 description=""
+                 handlerName="Script"
+                 name="GetMachineGroupById">
+                    <ConfigurationTables>
+                        <ConfigurationTable
+                         dataShapeName=""
+                         description=""
+                         isMultiRow="false"
+                         name="Script"
+                         ordinal="0">
+                            <DataShape>
+                                <FieldDefinitions>
+                                    <FieldDefinition
+                                     baseType="STRING"
+                                     description="code"
+                                     name="code"
+                                     ordinal="0"></FieldDefinition>
+                                    <FieldDefinition
+                                     baseType="JSON"
+                                     description=""
+                                     name="editorSettings"
+                                     ordinal="0"></FieldDefinition>
+                                </FieldDefinitions>
+                            </DataShape>
+                            <Rows>
+                                <Row>
+                                    <code>
+                                    <![CDATA[
+                                    let result = Resources["InfoTableFunctions"].CreateInfoTableFromDataShape({
+                                      dataShapeName: "HPMC.Core.Dropdown.DS",
+                                    });
+                                    
+                                    if (locationEntity && machineGroup) {
+                                      const existingGroups = Things[locationEntity].assetGroups;
+                                    
+                                      existingGroups.Filter({ groupId: machineGroup });
+                                    
+                                      existingGroups.rows.toArray().forEach((filteredRow) => {
+                                        result.AddRow({
+                                          value: filteredRow.groupId,
+                                          displayValue: filteredRow.groupCaption,
+                                        });
+                                      });
+                                    }
+                                    ]]>
+                                    </code>
+                                    <editorSettings>
+                                        <json>
+                                        <![CDATA[
+                                        {"viewState":{"viewState":{"firstPositionDeltaTop":0,"scrollLeft":0,"firstPosition":{"column":1,"lineNumber":1}},"cursorState":[{"inSelectionMode":false,"selectionStart":{"column":6,"lineNumber":15},"position":{"column":6,"lineNumber":15}}],"contributionsState":{"editor.contrib.wordHighlighter":false,"editor.contrib.folding":{"provider":"indent","lineCount":17,"foldedImports":false}}}}
+                                        ]]>
+                                        </json>
+                                    </editorSettings>
+                                </Row>
+                            </Rows>
+                        </ConfigurationTable>
+                    </ConfigurationTables>
+                </ServiceImplementation>
+                <ServiceImplementation
+                 description=""
+                 handlerName="Script"
+                 name="GetMachineTypeByType">
+                    <ConfigurationTables>
+                        <ConfigurationTable
+                         dataShapeName=""
+                         description=""
+                         isMultiRow="false"
+                         name="Script"
+                         ordinal="0">
+                            <DataShape>
+                                <FieldDefinitions>
+                                    <FieldDefinition
+                                     baseType="STRING"
+                                     description="code"
+                                     name="code"
+                                     ordinal="0"></FieldDefinition>
+                                    <FieldDefinition
+                                     baseType="JSON"
+                                     description=""
+                                     name="editorSettings"
+                                     ordinal="0"></FieldDefinition>
+                                </FieldDefinitions>
+                            </DataShape>
+                            <Rows>
+                                <Row>
+                                    <code>
+                                    <![CDATA[
+                                    // CreateInfoTableFromDataShape(infoTableName:STRING("InfoTable"), dataShapeName:STRING):INFOTABLE(HPMC.Core.Dropdown.DS)
+                                    let result = Resources["InfoTableFunctions"].CreateInfoTableFromDataShape({
+                                      dataShapeName: "HPMC.Core.Dropdown.DS",
+                                    });
+                                    
+                                    if (machineType) {
+                                      result.AddRow({
+                                        value: machineType, // STRING [Primary Key]
+                                        displayValue: machineType, // STRING
+                                      });
+                                    }
+                                    ]]>
+                                    </code>
+                                    <editorSettings>
+                                        <json>
+                                        <![CDATA[
+                                        {"viewState":{"viewState":{"firstPositionDeltaTop":0,"scrollLeft":0,"firstPosition":{"column":1,"lineNumber":1}},"cursorState":[{"inSelectionMode":false,"selectionStart":{"column":19,"lineNumber":6},"position":{"column":19,"lineNumber":6}}],"contributionsState":{"editor.contrib.wordHighlighter":false,"editor.contrib.folding":{"provider":"indent","lineCount":12,"foldedImports":false}}}}
+                                        ]]>
+                                        </json>
+                                    </editorSettings>
+                                </Row>
+                            </Rows>
+                        </ConfigurationTable>
+                    </ConfigurationTables>
+                </ServiceImplementation>
+                <ServiceImplementation
+                 description=""
+                 handlerName="Script"
+                 name="HandleScreenRotation">
+                    <ConfigurationTables>
+                        <ConfigurationTable
+                         dataShapeName=""
+                         description=""
+                         isMultiRow="false"
+                         name="Script"
+                         ordinal="0">
+                            <DataShape>
+                                <FieldDefinitions>
+                                    <FieldDefinition
+                                     baseType="STRING"
+                                     description="code"
+                                     name="code"
+                                     ordinal="0"></FieldDefinition>
+                                    <FieldDefinition
+                                     baseType="JSON"
+                                     description=""
+                                     name="editorSettings"
+                                     ordinal="0"></FieldDefinition>
+                                </FieldDefinitions>
+                            </DataShape>
+                            <Rows>
+                                <Row>
+                                    <code>
+                                    <![CDATA[
+                                    /*
+                                     * @name HandleScreenRotation
+                                     * @date 21.03.2024
+                                     * @author Marc Aurel Büttner
+                                     * @return IT: URL of next screen, duration current screen, isActive
+                                     */
+                                    
+                                    const getNextScreenOrder = (configuredPageCount) => {
+                                      const currentScreenOrder = Number(currentLink ? currentLink.split("reloadIndicator=")[1] : 0) || 0;
+                                      return configuredPageCount <= currentScreenOrder + 1 ? 0 : currentScreenOrder + 1;
+                                    };
+                                    
+                                    const getDefaultResult = () => {
+                                      const emptyResult = Resources["InfoTableFunctions"].CreateInfoTableFromDataShape({
+                                        dataShapeName: "HPMC.Core.ScreenRotator.DS"
+                                      });
+                                      emptyResult.AddRow({
+                                        forwardUrl: undefined, // STRING
+                                        currentDuration: undefined, // NUMBER
+                                        isActive: false // BOOLEAN
+                                      });
+                                      return emptyResult;
+                                    };
+                                    
+                                    try {
+                                      const updateSessionAndGetRotationData = () => {
+                                        const currentSessionValues = Resources["CurrentSessionInfo"].GetGlobalSessionValues();
+                                    
+                                        if (!currentSessionValues.screenRotationEnabled) {
+                                          return getDefaultResult();
+                                        }
+                                    
+                                        const { selectedLocations: locationContext, screenRotationCollection: collectionContext } = currentSessionValues;
+                                    
+                                        const currentRotationScreenCollection = Things["HPMC.Core.RotatingScreen.DT"].QueryDataTableEntries({
+                                          maxItems: undefined /* NUMBER {"defaultValue":500} */,
+                                          values: Things["HPMC.Core.RotatingScreen.DT"].CreateValuesWithData({
+                                            values: {
+                                              locId: locationContext.locId,
+                                              ucId: locationContext.ucId,
+                                              collection: collectionContext
+                                            } /* JSON */
+                                          }) /* INFOTABLE */
+                                        });
+                                    
+                                        const { datasetConfiguration: configuredPages, duration: collectionDuration } = currentRotationScreenCollection;
+                                    
+                                        const nextScreenOrder = getNextScreenOrder(configuredPages.getRowCount());
+                                        // const nextScreenOrder = configuredPages.getRowCount() == currentSessionValues.screenRotationOrder + 1 ? 0 : currentSessionValues.screenRotationOrder + 1;
+                                        const nextPageConfig = configuredPages.getRow(nextScreenOrder);
+                                    
+                                        Resources["CurrentSessionInfo"].SetGlobalSessionNumberValue({
+                                          name: "screenRotationOrder" /* STRING */,
+                                          value: nextScreenOrder /* NUMBER */
+                                        });
+                                          
+                                          logger.info("HandleScreenRotation Line 56 "+nextScreenOrder);
+                                    
+                                        Resources["CurrentSessionInfo"].SetGlobalSessionInfoTableValue({
+                                          name: "selectedMachineGroups" /* STRING */,
+                                          value: nextPageConfig.machineGroups
+                                        });
+                                          logger.info("HandleScreenRotation Line 63 " + nextPageConfig.selectedAssets.getRowCount());
+                                    
+                                        Resources["CurrentSessionInfo"].SetGlobalSessionInfoTableValue({
+                                          name: "selectedMachineTypes" /* STRING */,
+                                          value: me.GetMachineTypeByType({
+                                            machineType: nextPageConfig.machineType /* STRING */
+                                          }) /* INFOTABLE */
+                                        });
+                                    
+                                        Resources["CurrentSessionInfo"].SetGlobalSessionInfoTableValue({
+                                          name: "selectedAssets" /* STRING */,
+                                          value: nextPageConfig.selectedAssets /* INFOTABLE */
+                                        });
+                                    
+                                        Resources["CurrentSessionInfo"].SetGlobalSessionStringValue({
+                                          name: "screenRotationTimePeriod" /* STRING */,
+                                          value: nextPageConfig.period /* STRING */
+                                        });
+                                        Resources["CurrentSessionInfo"].SetGlobalSessionStringValue({
+                                          name: "screenRotationChangeDuration" /* STRING */,
+                                          value: nextPageConfig.duration ? nextPageConfig.duration : collectionDuration /* STRING */
+                                        });
+                                    
+                                        Resources["CurrentSessionInfo"].SetGlobalSessionBooleanValue({
+                                          name: "is24hView" /* STRING */,
+                                          value: nextPageConfig.is24hView /* STRING */
+                                        });
+                                        Resources["CurrentSessionInfo"].SetGlobalSessionBooleanValue({
+                                          name: "isGroupView" /* STRING */,
+                                          value: nextPageConfig.isGroupView /* STRING */
+                                        });
+                                    
+                                        const correspondingLocation = me.GetLocationById({
+                                          locId: locationContext.locId /* STRING */
+                                        });
+                                        // logger.error(me.name + ".HandleScreenRotation: nextGroup[" + nextPageConfig.machineGroup + "] nextMzu[" + nextPageConfig.mashup + "]");
+                                    
+                                        const rotationData = Resources["InfoTableFunctions"].CreateInfoTableFromDataShape({
+                                          dataShapeName: "HPMC.Core.ScreenRotator.DS"
+                                        });
+                                        rotationData.AddRow({
+                                          forwardUrl:
+                                            me.serverRootUrl +
+                                            "/Runtime/index.html?#master=" +
+                                            me.solutionMaster +
+                                            "&__applyThemeName=HPMC.Core.Default.Black.Style&mashup=" +
+                                            nextPageConfig.mashup +
+                                            "&reloadIndicator=" +
+                                            nextScreenOrder +
+                                            (!nextPageConfig.staticContent
+                                              ? ""
+                                              : "&imageURL=/Thingworx/FileRepositories/HPMC.Core.Repository/StaticScreen/" +
+                                                correspondingLocation.locId +
+                                                "_" +
+                                                correspondingLocation.ucId +
+                                                "/" +
+                                                nextPageConfig.staticContent), // STRING
+                                          currentDuration: configuredPages[currentSessionValues.screenRotationOrder].duration ? configuredPages[currentSessionValues.screenRotationOrder].duration : collectionDuration, // NUMBER
+                                          isActive: true // BOOLEAN
+                                        });
+                                        return rotationData;
+                                      };
+                                    
+                                      /* BEGIN SERVICE */
+                                      // Pause code is necessary for the dropdown filters to work properly
+                                      //Pause is updated from 2000 to 13000 as the service execution and mashup loading time was not matching 
+                                      pause(13000);
+                                      result = updateSessionAndGetRotationData();
+                                    } catch (err) {
+                                      logger.error("Error at " + me.name + ".HandleScreenRotation [" + err.lineNumber + "]:" + err.message);
+                                      result = getDefaultResult();
+                                    }
+                                    ]]>
+                                    </code>
+                                    <editorSettings>
+                                        <json>
+                                        <![CDATA[
+                                        {"viewState":{"viewState":{"firstPositionDeltaTop":-10,"scrollLeft":0,"firstPosition":{"column":1,"lineNumber":117}},"cursorState":[{"inSelectionMode":false,"selectionStart":{"column":107,"lineNumber":128},"position":{"column":107,"lineNumber":128}}],"contributionsState":{"editor.contrib.wordHighlighter":false,"editor.contrib.folding":{"provider":"indent","lineCount":135,"foldedImports":false}}}}
+                                        ]]>
+                                        </json>
+                                    </editorSettings>
+                                </Row>
+                            </Rows>
+                        </ConfigurationTable>
+                    </ConfigurationTables>
+                </ServiceImplementation>
+                <ServiceImplementation
+                 description=""
+                 handlerName="Script"
+                 name="ToggleScreenRotation">
+                    <ConfigurationTables>
+                        <ConfigurationTable
+                         dataShapeName=""
+                         description=""
+                         isMultiRow="false"
+                         name="Script"
+                         ordinal="0">
+                            <DataShape>
+                                <FieldDefinitions>
+                                    <FieldDefinition
+                                     baseType="STRING"
+                                     description="code"
+                                     name="code"
+                                     ordinal="0"></FieldDefinition>
+                                    <FieldDefinition
+                                     baseType="JSON"
+                                     description=""
+                                     name="editorSettings"
+                                     ordinal="0"></FieldDefinition>
+                                </FieldDefinitions>
+                            </DataShape>
+                            <Rows>
+                                <Row>
+                                    <code>
+                                    <![CDATA[
+                                    Resources["CurrentSessionInfo"].SetGlobalSessionBooleanValue({
+                                    	name: "screenRotationEnabled" /* STRING */,
+                                    	value: screenRotationStatus /* BOOLEAN */
+                                    });
+                                    ]]>
+                                    </code>
+                                    <editorSettings>
+                                        <json>
+                                        <![CDATA[
+                                        {"viewState":{"viewState":{"firstPositionDeltaTop":0,"scrollLeft":0,"firstPosition":{"column":1,"lineNumber":1}},"cursorState":[{"inSelectionMode":false,"selectionStart":{"column":4,"lineNumber":4},"position":{"column":4,"lineNumber":4}}],"contributionsState":{"editor.contrib.wordHighlighter":false,"editor.contrib.folding":{"provider":"indent","lineCount":4,"foldedImports":false}}}}
+                                        ]]>
+                                        </json>
+                                    </editorSettings>
+                                </Row>
+                            </Rows>
+                        </ConfigurationTable>
+                    </ConfigurationTables>
+                </ServiceImplementation>
+            </ServiceImplementations>
+            <Subscriptions></Subscriptions>
+            <avatar></avatar>
+            <DesignTimePermissions>
+                <Create></Create>
+                <Read></Read>
+                <Update></Update>
+                <Delete></Delete>
+                <Metadata></Metadata>
+            </DesignTimePermissions>
+            <RunTimePermissions></RunTimePermissions>
+            <VisibilityPermissions>
+                <Visibility></Visibility>
+            </VisibilityPermissions>
+            <ConfigurationTableDefinitions></ConfigurationTableDefinitions>
+            <ConfigurationTables></ConfigurationTables>
+            <PropertyBindings></PropertyBindings>
+            <RemotePropertyBindings></RemotePropertyBindings>
+            <RemoteServiceBindings></RemoteServiceBindings>
+            <RemoteEventBindings></RemoteEventBindings>
+            <AlertConfigurations>
+                <AlertDefinitions
+                 name="serverRootUrl"></AlertDefinitions>
+                <AlertDefinitions
+                 name="solutionMaster"></AlertDefinitions>
+            </AlertConfigurations>
+            <InstanceRunTimePermissions></InstanceRunTimePermissions>
+        </ThingShape>
+    </ThingShapes>
+</Entities>

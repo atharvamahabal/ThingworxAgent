@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Entities
+ majorVersion="9"
+ minorVersion="5"
+ universal="password">
+    <StyleThemes>
+        <StyleTheme
+         aspect.isExtension="true"
+         description=""
+         documentationContent=""
+         homeMashup=""
+         name="HPMC.Core.Default.Black.Style"
+         projectName="HPMC.Core"
+         tags="">
+            <avatar></avatar>
+            <DesignTimePermissions>
+                <Create></Create>
+                <Read>
+                    <Principal
+                     isPermitted="true"
+                     name="HPMC.Core.Users.UG"
+                     type="Group"></Principal>
+                </Read>
+                <Update></Update>
+                <Delete></Delete>
+                <Metadata></Metadata>
+            </DesignTimePermissions>
+            <RunTimePermissions></RunTimePermissions>
+            <VisibilityPermissions>
+                <Visibility>
+                    <Principal
+                     isPermitted="true"
+                     name="HPMC.Voestalpine.Orga"
+                     type="Organization"></Principal>
+                </Visibility>
+            </VisibilityPermissions>
+            <ConfigurationTableDefinitions></ConfigurationTableDefinitions>
+            <ConfigurationTables></ConfigurationTables>
+            <content>
+            <![CDATA[
+            {
+              "CustomCss" : {
+                "value" : "/* PIE CHART */\nptcs-chart-pie {\n  padding: 10px !important;\n  min-width: 100px !important;\n  min-height: 100px !important;\n}\nptcs-chart-pie::part(chart-layout) {\n  padding-top: 5px !important;\n  padding-left: 5px !important;\n  padding-bottom: 5px !important;\n  padding-right: 5px !important;\n}\n\n\n.qtip-content{ /*tooltip in pie chart on MS,MHR screen*/\n    font-size:20px !important;\n    color : #3e3e3e !important;\n    background-color : #d5d5d5 !important;\n    padding-top : 5px !important;\n    padding-bottom :  10px !important;\n    padding-left : 10px !important;\n    padding-right : 10px !important;\n    line-height : 34px !important;\n}\n#tiptip_content { /* tooltip in grid  */\n    font-size: 20px !important;\n    background: #d5d5d5 !important;\n    color : #3e3e3e !important;\n    border-color: #d5d5d5 !important;\n    border: none !important;\n    text-shadow: none !important;\n    line-height : 34px !important;\n}\n.TitleLine {\n    background-color: #3e3e3e !important;\n    color : #3e3e3e !important\n}\n.TitleLine .widget-content {\n    background :  #3e3e3e !important;\n    color : #3e3e3e !important\n}\n.titleLine {\n    background-color: #3e3e3e !important;\n    color : #3e3e3e !important\n}\nptcs-tooltip-overlay#ptcs-tooltip-overlay {\n    content-visibility: auto !important;\n}\n\nptcs-focus-overlay {\n\tvisibility: hidden;\n}\n\n.ptcs-wrapper:not([no-wc-style]):focus:not(.dummy):not(.dummy):not(.dummy) { \n    /* box-shadow: inset 0 0 0 1px #eff0f3; */ \n    box-shadow: none; \n}\n\n.ptcs-wrapper:not([no-wc-style]):focus:not(.dummy):not(.dummy):not(.dummy) {\n\tbox-shadow: none;\n}\n/*machine group dropdown*/\nptcs-list[id*='root_pagemashupcontainer-1_mashupcontainer-'][id$='_ptcsdropdown-14-external-wc'] {\n    transform: translate(0px, 0px) !important;\n    top: 0px !important;\n    left: 0px !important;\n}\n/*equipment no dropdown*/\nptcs-list[id*='root_pagemashupcontainer-1_mashupcontainer-'][id$='_ptcsdropdown-16-external-wc'] {\n    transform: translate(0px, 0px) !important;\n    top: 0px !important;\n    left: 0px !important;\n}\n\n@media only screen and (max-width: 1280px) {    \n    body {\n        zoom: 58% !important;\n    }\n    ptcs-tooltip-overlay#ptcs-tooltip-overlay {\n        zoom: 130% !important;\n        transform: translate(100px, -80px);\n    }\n    \n    /*machine group dropdown*/\n    ptcs-list[id*='root_pagemashupcontainer-1_mashupcontainer-'][id$='_ptcsdropdown-14-external-wc'] {\n        top: 170px !important;\n        left: 1070px !important;\n    }\n    /*equipment no dropdown*/\n    ptcs-list[id*='root_pagemashupcontainer-1_mashupcontainer-'][id$='_ptcsdropdown-16-external-wc'] {\n        top: 170px !important;\n        left: 1750px !important;\n    }\n    \n}\n@media only screen and (min-width: 1280px) {    \n    @media only screen and (min-height: 570px) {    \n    \tbody {\n        \tzoom: 61% !important;\n    \t}\n        ptcs-tooltip-overlay#ptcs-tooltip-overlay {\n            zoom: 130% !important;\n            transform: translate(100px, -75px);\n        }\n        \n        /*machine group dropdown*/\n        ptcs-list[id*='root_pagemashupcontainer-1_mashupcontainer-'][id$='_ptcsdropdown-14-external-wc'] {\n            top: 170px !important;\n    \t\tleft: 1405px !important;\n        }\n        /*equipment no dropdown*/\n        ptcs-list[id*='root_pagemashupcontainer-1_mashupcontainer-'][id$='_ptcsdropdown-16-external-wc'] {\n            top: 170px !important;\n            left: 1750px !important;\n        }\n\n\t}\n    @media only screen and (min-height: 600px) {    \n        body {\n            zoom: 64% !important;\n        }\n        ptcs-tooltip-overlay#ptcs-tooltip-overlay {\n            zoom: 124% !important;\n            transform: translate(100px, -70px);\n        }\n        \n        /*machine group dropdown*/\n        ptcs-list[id*='root_pagemashupcontainer-1_mashupcontainer-'][id$='_ptcsdropdown-14-external-wc'] {\n            top: 170px !important;\n    \t\tleft: 1335px !important;\n        }\n        /*equipment no dropdown*/\n        ptcs-list[id*='root_pagemashupcontainer-1_mashupcontainer-'][id$='_ptcsdropdown-16-external-wc'] {\n            top: 170px !important;\n    \t\tleft: 1660px !important;\n        }\n\t}\n}\n\n@media only screen and (min-width: 1366px) {    \n    @media only screen and (min-height: 620px) {    \n    \tbody {\n        \tzoom: 66% !important;\n    \t}\n        ptcs-tooltip-overlay#ptcs-tooltip-overlay {\n            zoom: 126% !important;\n            transform: translate(80px, -75px);\n        }\n        \n        /*machine group dropdown*/\n        ptcs-list[id*='root_pagemashupcontainer-1_mashupcontainer-'][id$='_ptcsdropdown-14-external-wc'] {\n            top: 170px !important;\n            left: 1385px !important;\n        }\n        /*equipment no dropdown*/\n        ptcs-list[id*='root_pagemashupcontainer-1_mashupcontainer-'][id$='_ptcsdropdown-16-external-wc'] {\n            top: 170px !important;\n            left: 1725px !important;\n        }\n\t}\n    @media only screen and (min-height: 654px) {    \n        body {\n            zoom: 70% !important;\n        }\n        ptcs-tooltip-overlay#ptcs-tooltip-overlay {\n            zoom: 120% !important;\n            transform: translate(70px, -65px);\n        }\n        \n        /*machine group dropdown*/\n        ptcs-list[id*='root_pagemashupcontainer-1_mashupcontainer-'][id$='_ptcsdropdown-14-external-wc'] {\n            top: 170px !important;\n            left: 1385px !important;\n        }\n        /*equipment no dropdown*/\n        ptcs-list[id*='root_pagemashupcontainer-1_mashupcontainer-'][id$='_ptcsdropdown-16-external-wc'] {\n            top: 170px !important;\n            left: 1725px !important;\n        }\n\t}\n\n    @media only screen and (min-height: 700px) {    \n        body {\n            zoom: 74% !important;\n        }\n        ptcs-tooltip-overlay#ptcs-tooltip-overlay {\n            zoom: 115% !important;\n            transform: translate(70px, -50px);\n        }\n\t\t\n        \n        /*machine group dropdown*/\n        ptcs-list[id*='root_pagemashupcontainer-1_mashupcontainer-'][id$='_ptcsdropdown-14-external-wc'] {\n            top: 170px !important;\n            left: 1215px !important;\n        }\n        /*equipment no dropdown*/\n        ptcs-list[id*='root_pagemashupcontainer-1_mashupcontainer-'][id$='_ptcsdropdown-16-external-wc'] {\n            top: 170px !important;\n            left: 1520px !important;\n        }\n\t}\n}\n\n@media only screen and (min-width: 1400px) {    \n    @media only screen and (min-height: 600px) {    \n        /*machine group dropdown*/\n        ptcs-list[id*='root_pagemashupcontainer-1_mashupcontainer-'][id$='_ptcsdropdown-14-external-wc'] {\n            top: 170px !important;\n            left: 1290px !important;\n        }\n        /*equipment no dropdown*/\n        ptcs-list[id*='root_pagemashupcontainer-1_mashupcontainer-'][id$='_ptcsdropdown-16-external-wc'] {\n            top: 170px !important;\n            left: 1615px !important;\n        }\n\t}\n    @media only screen and (min-height: 800px) {    \n        /*machine group dropdown*/\n        ptcs-list[id*='root_pagemashupcontainer-1_mashupcontainer-'][id$='_ptcsdropdown-14-external-wc'] {\n            top: 170px !important;\n            left: 1290px !important;\n        }\n        /*equipment no dropdown*/\n        ptcs-list[id*='root_pagemashupcontainer-1_mashupcontainer-'][id$='_ptcsdropdown-16-external-wc'] {\n            top: 170px !important;\n            left: 1615px !important;\n        }\n\t}\n}\n\n\n@media only screen and (min-width: 1500px) {    \n    @media only screen and (min-height: 690px) {    \n    \tbody {\n        \tzoom: 73% !important;\n    \t}\n        ptcs-tooltip-overlay#ptcs-tooltip-overlay {\n            zoom: 114% !important;\n            transform: translate(80px, -70px);\n        }\n        \n\t}\n    @media only screen and (min-height: 720px) {    \n    \tbody {\n        \tzoom: 76% !important;\n    \t}\n        ptcs-tooltip-overlay#ptcs-tooltip-overlay {\n            zoom: 108% !important;\n            transform: translate(70px, -40px);\n        }\n        \n\t}\n    @media only screen and (min-height: 750px) {    \n    \tbody {\n        \tzoom: 80% !important;\n    \t}\n        ptcs-tooltip-overlay#ptcs-tooltip-overlay {\n            zoom: 108% !important;\n            transform: translate(70px, -50px);\n        }\n        \n\t}\n    @media only screen and (min-height: 780px) {    \n    \tbody {\n        \tzoom: 83% !important;\n    \t}\n        ptcs-tooltip-overlay#ptcs-tooltip-overlay {\n            zoom: 105% !important;\n            transform: translate(70px, -35px);\n        }\n        \n\t}\n    @media only screen and (min-height: 825px) {    \n    \tbody {\n        \tzoom: 87.5% !important;\n    \t}\n        ptcs-tooltip-overlay#ptcs-tooltip-overlay {\n            zoom: 103% !important;\n            transform: translate(70px, -25px);\n        }\n        \n\t}\n}\n\n@media only screen and (min-width: 1740px) {   \n    @media only screen and (min-height: 834px) {    \n    \tbody {\n        \tzoom: 90% !important;\n    \t}\n        ptcs-tooltip-overlay#ptcs-tooltip-overlay {\n            zoom: 101% !important;\n            transform: translate(70px, -5px);\n        }\n        \n        /*machine group dropdown*/\n        ptcs-list[id*='root_pagemashupcontainer-1_mashupcontainer-'][id$='_ptcsdropdown-14-external-wc'] {\n            top: 170px !important;\n            left: 1435px !important;\n        }\n        /*equipment no dropdown*/\n        ptcs-list[id*='root_pagemashupcontainer-1_mashupcontainer-'][id$='_ptcsdropdown-16-external-wc'] {\n            top: 170px !important;\n            left: 1785px !important;\n        }\n\t}\n    @media only screen and (min-height: 875px) {    \n    \tbody {\n        \tzoom: 91% !important;\n    \t}\n        ptcs-tooltip-overlay#ptcs-tooltip-overlay {\n            zoom: 100% !important;\n            transform: translate(50px, 0px);\n        }\n        \n        /*machine group dropdown*/\n        ptcs-list[id*='root_pagemashupcontainer-1_mashupcontainer-'][id$='_ptcsdropdown-14-external-wc'] {\n            top: 170px !important;\n            left: 1435px !important;\n        }\n        /*equipment no dropdown*/\n        ptcs-list[id*='root_pagemashupcontainer-1_mashupcontainer-'][id$='_ptcsdropdown-16-external-wc'] {\n            top: 170px !important;\n            left: 1785px !important;\n        }\n\t}\n    @media only screen and (min-height: 930px) {    \n    \tbody {\n        \tzoom: 97% !important;\n    \t}\n        ptcs-tooltip-overlay#ptcs-tooltip-overlay {\n            zoom: 100% !important;\n            transform: translate(30px, 0px);\n        }\n        \n        /*machine group dropdown*/\n        ptcs-list[id*='root_pagemashupcontainer-1_mashupcontainer-'][id$='_ptcsdropdown-14-external-wc'] {\n            top: 170px !important;\n\t\t    left: 1315px !important;\n        }\n        /*equipment no dropdown*/\n        ptcs-list[id*='root_pagemashupcontainer-1_mashupcontainer-'][id$='_ptcsdropdown-16-external-wc'] {\n            top: 170px !important;\n    \t\tleft: 1645px !important;\n        }\n\t}\n    @media only screen and (min-height: 938px) {    \n    \tbody {\n        \tzoom: 100% !important;\n    \t}\n        ptcs-tooltip-overlay#ptcs-tooltip-overlay {\n            zoom: 100% !important;\n            transform: translate(0px, 0px);\n        }\n        \n        /*machine group dropdown*/\n        ptcs-list[id*='root_pagemashupcontainer-1_mashupcontainer-'][id$='_ptcsdropdown-14-external-wc'] {\n            top: 170px !important;\n            left: 1270px !important;\n        }\n        /*equipment no dropdown*/\n        ptcs-list[id*='root_pagemashupcontainer-1_mashupcontainer-'][id$='_ptcsdropdown-16-external-wc'] {\n            top: 170px !important;\n            left: 1590px !important;\n        }\n\t}\n}\n"
+              },
+              "props" : [ {
+                "name" : "global-color-core-danger",
+                "value" : ""
+              }, {
+                "name" : "global-color-bg-hover",
+                "value" : "#fff"
+              }, {
+                "name" : "global-color-bg-disabled",
+                "value" : "#fff"
+              }, {
+                "name" : "global-color-text-body",
+                "value" : "#000000"
+              }, {
+                "name" : "global-color-line-border",
+                "value" : "#e3e3e3"
+              }, {
+                "name" : "global-color-line-divider",
+                "value" : "#e3e3e3"
+              }, {
+                "name" : "global-color-line-interior",
+                "value" : "#e3e3e3"
+              }, {
+                "name" : "global-text-body-fontsize",
+                "value" : "16px"
+              }, {
+                "name" : "e-grid-row-backgroundcolor",
+                "value" : "#ffffff"
+              }, {
+                "name" : "e-grid-header-label-fontcolor",
+                "value" : "#ffffff"
+              }, {
+                "name" : "e-textfield-text-label-color",
+                "value" : "#000000"
+              }, {
+                "name" : "global-color-bg-selected",
+                "value" : "#ffffff"
+              }, {
+                "name" : "e-button-tertiary-backgroundcolor",
+                "value" : "#e3e3e3"
+              }, {
+                "name" : "e-button-tertiary-bordercolor",
+                "value" : "#e3e3e3"
+              }, {
+                "name" : "e-button-transparent-hover-backgroundcolor",
+                "value" : ""
+              }, {
+                "name" : "e-button-transparent-hover-bordercolor",
+                "value" : ""
+              }, {
+                "name" : "e-button-transparent-pressed-backgroundcolor",
+                "value" : ""
+              }, {
+                "name" : "e-button-transparent-pressed-bordercolor",
+                "value" : ""
+              }, {
+                "name" : "e-button-primary-fontsize",
+                "value" : "18px"
+              }, {
+                "name" : "e-button-secondary-fontsize",
+                "value" : "18px"
+              }, {
+                "name" : "e-button-tertiary-fontsize",
+                "value" : "18px"
+              }, {
+                "name" : "e-button-primary-fontcolor",
+                "value" : "#ffffff"
+              }, {
+                "name" : "e-button-secondary-fontcolor",
+                "value" : "#ffffff"
+              }, {
+                "name" : "global-text-label-fontsize",
+                "value" : "18px"
+              }, {
+                "name" : "e-list-text-text-fontsize-selected",
+                "value" : "18px"
+              }, {
+                "name" : "e-list-row-backgroundcolor-selected",
+                "value" : "#e3e3e3"
+              }, {
+                "name" : "e-list-text-text-fontcolor",
+                "value" : "#000000"
+              }, {
+                "name" : "e-button-primary-fontweight",
+                "value" : "600"
+              }, {
+                "name" : "e-button-secondary-fontweight",
+                "value" : "600"
+              }, {
+                "name" : "e-button-tertiary-fontweight",
+                "value" : "600"
+              }, {
+                "name" : "e-button-transparent-borderthickness",
+                "value" : "0px"
+              }, {
+                "name" : "e-button-transparent-radius",
+                "value" : "0px"
+              }, {
+                "name" : "e-button-transparent-hover-borderthickness",
+                "value" : "0px"
+              }, {
+                "name" : "e-button-transparent-hover-radius",
+                "value" : "0px"
+              }, {
+                "name" : "e-button-transparent-pressed-borderthickness",
+                "value" : "0px"
+              }, {
+                "name" : "e-button-transparent-pressed-radius",
+                "value" : "0px"
+              }, {
+                "name" : "e-button-tertiary-pressed-fontcolor",
+                "value" : "#ffffff"
+              }, {
+                "name" : "e-button-tertiary-hover-fontcolor",
+                "value" : "#ffffff"
+              }, {
+                "name" : "e-button-transparent-disabled-backgroundcolor",
+                "value" : ""
+              }, {
+                "name" : "e-button-transparent-disabled-bordercolor",
+                "value" : ""
+              }, {
+                "name" : "e-button-tertiary-disabled-borderthickness",
+                "value" : "0px"
+              }, {
+                "name" : "e-button-tertiary-disabled-radius",
+                "value" : "0px"
+              }, {
+                "name" : "e-button-danger-disabled-borderthickness",
+                "value" : "0px"
+              }, {
+                "name" : "e-button-danger-disabled-radius",
+                "value" : "0px"
+              }, {
+                "name" : "e-button-secondary-hover-bordercolor",
+                "value" : "#19507c"
+              }, {
+                "name" : "e-button-secondary-pressed-bordercolor",
+                "value" : "#004965"
+              }, {
+                "name" : "e-button-secondary-hover-borderthickness",
+                "value" : "1px"
+              }, {
+                "name" : "e-button-secondary-hover-radius",
+                "value" : "4px"
+              }, {
+                "name" : "e-button-secondary-pressed-borderthickness",
+                "value" : "1px"
+              }, {
+                "name" : "e-button-secondary-pressed-radius",
+                "value" : "4px"
+              }, {
+                "name" : "e-button-primary-hover-bordercolor",
+                "value" : "#19507c"
+              }, {
+                "name" : "e-button-primary-pressed-bordercolor",
+                "value" : "#004965"
+              }, {
+                "name" : "e-button-primary-hover-borderthickness",
+                "value" : "1px"
+              }, {
+                "name" : "e-button-primary-hover-radius",
+                "value" : "4px"
+              }, {
+                "name" : "e-button-primary-pressed-borderthickness",
+                "value" : "1px"
+              }, {
+                "name" : "e-button-primary-pressed-radius",
+                "value" : "4px"
+              }, {
+                "name" : "e-button-primary-disabled-borderthickness",
+                "value" : "1px"
+              }, {
+                "name" : "e-button-primary-disabled-radius",
+                "value" : "4px"
+              }, {
+                "name" : "e-button-tertiary-hover-borderthickness",
+                "value" : "1px"
+              }, {
+                "name" : "e-button-tertiary-hover-radius",
+                "value" : "4px"
+              }, {
+                "name" : "e-button-tertiary-pressed-borderthickness",
+                "value" : "1px"
+              }, {
+                "name" : "e-button-tertiary-pressed-radius",
+                "value" : "4px"
+              }, {
+                "name" : "e-button-danger-hover-borderthickness",
+                "value" : "1px"
+              }, {
+                "name" : "e-button-danger-hover-radius",
+                "value" : "4px"
+              }, {
+                "name" : "e-button-danger-pressed-borderthickness",
+                "value" : "1px"
+              }, {
+                "name" : "e-button-danger-pressed-radius",
+                "value" : "4px"
+              }, {
+                "name" : "tooltip-text-fontsize",
+                "value" : "16px"
+              }, {
+                "name" : "tooltip-backgroundcolor",
+                "value" : "#d5d5d5"
+              }, {
+                "name" : "e-textfield-backgroundcolor",
+                "value" : "#ffffff"
+              }, {
+                "name" : "e-button-primary-disabled-backgroundcolor",
+                "value" : ""
+              }, {
+                "name" : "e-button-primary-disabled-bordercolor",
+                "value" : ""
+              }, {
+                "name" : "e-list-row-backgroundcolor",
+                "value" : "#e3e3e3"
+              }, {
+                "name" : "global-text-subheader-fontweight",
+                "value" : "400"
+              }, {
+                "name" : "global-text-subheader-fontsize",
+                "value" : "26px"
+              }, {
+                "name" : "global-color-text-subheader",
+                "value" : "#3E3E3E"
+              }, {
+                "name" : "tooltip-maxwidth",
+                "value" : "410px"
+              }, {
+                "name" : "global-color-core-primary",
+                "value" : "#3E3E3E"
+              }, {
+                "name" : "global-color-text-header",
+                "value" : "#3E3E3E"
+              }, {
+                "name" : "global-color-text-label",
+                "value" : "#3E3E3E"
+              }, {
+                "name" : "e-button-tertiary-fontcolor",
+                "value" : "#3E3E3E"
+              }, {
+                "name" : "e-button-tertiary-hover-bordercolor",
+                "value" : "#3E3E3E"
+              }, {
+                "name" : "e-button-tertiary-hover-backgroundcolor",
+                "value" : "#3E3E3E"
+              }, {
+                "name" : "e-button-tertiary-pressed-backgroundcolor",
+                "value" : "#3E3E3E"
+              }, {
+                "name" : "e-button-tertiary-pressed-bordercolor",
+                "value" : "#3E3E3E"
+              }, {
+                "name" : "e-button-transparent-hover-fontcolor",
+                "value" : "#000000"
+              }, {
+                "name" : "e-button-transparent-pressed-fontcolor",
+                "value" : "#000000"
+              }, {
+                "name" : "e-button-transparent-pressed-fontsize",
+                "value" : "18px"
+              }, {
+                "name" : "e-grid-header-backgroundcolor",
+                "value" : "#3E3E3E"
+              }, {
+                "name" : "flexcontainer-bg-color",
+                "value" : "#ffffff"
+              }, {
+                "name" : "global-color-core-secondary1",
+                "value" : "#848399"
+              }, {
+                "name" : "e-grid-row-backgroundcolor-selected",
+                "value" : ""
+              }, {
+                "name" : "e-grid-row-backgroundcolor-hover",
+                "value" : ""
+              }, {
+                "name" : "e-list-text-text-fontsize",
+                "value" : "18px"
+              }, {
+                "name" : "e-grid-cell-bordercolor",
+                "value" : "#ffffff"
+              }, {
+                "name" : "global-text-header-fontsize",
+                "value" : "36px"
+              }, {
+                "name" : "global-text-header-fontweight",
+                "value" : "400"
+              }, {
+                "name" : "e-list-bordercolor",
+                "value" : "rgba(36,36,36,1)"
+              }, {
+                "name" : "e-grid-text-fontstyle-hover",
+                "value" : "normal"
+              }, {
+                "name" : "e-grid-text-fontweight-selected",
+                "value" : "600"
+              }, {
+                "name" : "global-color-bg-secondary",
+                "value" : "#f5f5f5"
+              }, {
+                "name" : "e-chart-series-1-color",
+                "value" : "#006666"
+              }, {
+                "name" : "e-chart-series-5-color",
+                "value" : "#f2a900"
+              }, {
+                "name" : "e-chart-series-2-color",
+                "value" : "#88D5C8"
+              }, {
+                "name" : "e-chart-series-3-color",
+                "value" : "#7FB2B2"
+              } ],
+              "version" : "0.1"
+            }
+            ]]>
+            </content>
+            <preview></preview>
+        </StyleTheme>
+    </StyleThemes>
+</Entities>

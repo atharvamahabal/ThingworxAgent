@@ -1,0 +1,1985 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Entities
+ majorVersion="9"
+ minorVersion="5"
+ universal="password">
+    <ThingShapes>
+        <ThingShape
+         aspect.isExtension="true"
+         className=""
+         description="Interface for location functions."
+         documentationContent=""
+         homeMashup=""
+         name="HPMC.Core.LocationInterface.TS"
+         projectName="HPMC.Core"
+         tags="">
+            <PropertyDefinitions></PropertyDefinitions>
+            <ServiceDefinitions>
+                <ServiceDefinition
+                 aspect.isAsync="false"
+                 category="Location"
+                 description=""
+                 isAllowOverride="false"
+                 isLocalOnly="false"
+                 isOpen="false"
+                 isPrivate="false"
+                 name="AddOrUpdateLocation">
+                    <ResultType
+                     aspect.dataShape="HPMC.Core.Location.DS"
+                     baseType="INFOTABLE"
+                     description=""
+                     name="result"
+                     ordinal="0"></ResultType>
+                    <ParameterDefinitions>
+                        <FieldDefinition
+                         baseType="STRING"
+                         description=""
+                         name="address"
+                         ordinal="7"></FieldDefinition>
+                        <FieldDefinition
+                         baseType="STRING"
+                         description=""
+                         name="companyName"
+                         ordinal="7"></FieldDefinition>
+                        <FieldDefinition
+                         baseType="STRING"
+                         description=""
+                         name="coordinate"
+                         ordinal="3"></FieldDefinition>
+                        <FieldDefinition
+                         baseType="BOOLEAN"
+                         description=""
+                         name="hasDST"
+                         ordinal="9"></FieldDefinition>
+                        <FieldDefinition
+                         baseType="STRING"
+                         description=""
+                         name="locationDescription"
+                         ordinal="5"></FieldDefinition>
+                        <FieldDefinition
+                         baseType="STRING"
+                         description=""
+                         name="locationName"
+                         ordinal="4"></FieldDefinition>
+                        <FieldDefinition
+                         baseType="STRING"
+                         description=""
+                         name="locId"
+                         ordinal="2"></FieldDefinition>
+                        <FieldDefinition
+                         baseType="NUMBER"
+                         description=""
+                         name="standardTimezoneOffset"
+                         ordinal="10"></FieldDefinition>
+                        <FieldDefinition
+                         aspect.defaultValue="0"
+                         baseType="INTEGER"
+                         description=""
+                         name="timezoneOffset"
+                         ordinal="8"></FieldDefinition>
+                        <FieldDefinition
+                         baseType="STRING"
+                         description=""
+                         name="ucId"
+                         ordinal="1"></FieldDefinition>
+                    </ParameterDefinitions>
+                </ServiceDefinition>
+                <ServiceDefinition
+                 aspect.isAsync="false"
+                 category="Location"
+                 description=""
+                 isAllowOverride="false"
+                 isLocalOnly="false"
+                 isOpen="false"
+                 isPrivate="false"
+                 name="CreateLocation">
+                    <ResultType
+                     baseType="THINGNAME"
+                     description=""
+                     name="result"
+                     ordinal="0"></ResultType>
+                    <ParameterDefinitions></ParameterDefinitions>
+                </ServiceDefinition>
+                <ServiceDefinition
+                 aspect.isAsync="false"
+                 category="Location"
+                 description="creates the user groups and assigns them to the OU.&#xA;See Roles and Rights document.&#xA;&#xA;[region][.subRegion].UC[ucId].[companyName].LOC[locId].[locationName]"
+                 isAllowOverride="false"
+                 isLocalOnly="false"
+                 isOpen="false"
+                 isPrivate="false"
+                 name="GenerateUserGroups">
+                    <ResultType
+                     baseType="NOTHING"
+                     description=""
+                     name="result"
+                     ordinal="0"></ResultType>
+                    <ParameterDefinitions>
+                        <FieldDefinition
+                         aspect.isRequired="true"
+                         baseType="STRING"
+                         description=""
+                         name="companyName"
+                         ordinal="6"></FieldDefinition>
+                        <FieldDefinition
+                         aspect.isRequired="true"
+                         baseType="STRING"
+                         description=""
+                         name="locationName"
+                         ordinal="5"></FieldDefinition>
+                        <FieldDefinition
+                         aspect.isRequired="true"
+                         baseType="STRING"
+                         description=""
+                         name="locId"
+                         ordinal="3"></FieldDefinition>
+                        <FieldDefinition
+                         aspect.isRequired="true"
+                         baseType="STRING"
+                         description=""
+                         name="region"
+                         ordinal="1"></FieldDefinition>
+                        <FieldDefinition
+                         baseType="STRING"
+                         description=""
+                         name="subRegion"
+                         ordinal="2"></FieldDefinition>
+                        <FieldDefinition
+                         aspect.isRequired="true"
+                         baseType="STRING"
+                         description=""
+                         name="ucId"
+                         ordinal="4"></FieldDefinition>
+                    </ParameterDefinitions>
+                </ServiceDefinition>
+                <ServiceDefinition
+                 aspect.isAsync="false"
+                 category=""
+                 description="Return properties of given location"
+                 isAllowOverride="false"
+                 isLocalOnly="false"
+                 isOpen="false"
+                 isPrivate="false"
+                 name="GetLocationById">
+                    <ResultType
+                     aspect.dataShape="HPMC.Core.Location.DS"
+                     baseType="INFOTABLE"
+                     description=""
+                     name="result"
+                     ordinal="0"></ResultType>
+                    <ParameterDefinitions>
+                        <FieldDefinition
+                         baseType="STRING"
+                         description=""
+                         name="locId"
+                         ordinal="1"></FieldDefinition>
+                    </ParameterDefinitions>
+                </ServiceDefinition>
+                <ServiceDefinition
+                 aspect.isAsync="false"
+                 category=""
+                 description="Return properties of given location"
+                 isAllowOverride="false"
+                 isLocalOnly="false"
+                 isOpen="false"
+                 isPrivate="false"
+                 name="GetLocationByUcIdAndLocId">
+                    <ResultType
+                     aspect.dataShape="HPMC.Core.Location.DS"
+                     baseType="INFOTABLE"
+                     description=""
+                     name="result"
+                     ordinal="0"></ResultType>
+                    <ParameterDefinitions>
+                        <FieldDefinition
+                         baseType="STRING"
+                         description=""
+                         name="locId"
+                         ordinal="1"></FieldDefinition>
+                        <FieldDefinition
+                         baseType="STRING"
+                         description=""
+                         name="ucId"
+                         ordinal="2"></FieldDefinition>
+                    </ParameterDefinitions>
+                </ServiceDefinition>
+                <ServiceDefinition
+                 aspect.isAsync="false"
+                 category="Administration"
+                 description=""
+                 isAllowOverride="false"
+                 isLocalOnly="false"
+                 isOpen="false"
+                 isPrivate="false"
+                 name="GetLocationThing">
+                    <ResultType
+                     baseType="THINGNAME"
+                     description=""
+                     name="result"
+                     ordinal="0"></ResultType>
+                    <ParameterDefinitions>
+                        <FieldDefinition
+                         baseType="STRING"
+                         description=""
+                         name="locId"
+                         ordinal="1"></FieldDefinition>
+                    </ParameterDefinitions>
+                </ServiceDefinition>
+                <ServiceDefinition
+                 aspect.isAsync="false"
+                 category=""
+                 description=""
+                 isAllowOverride="false"
+                 isLocalOnly="false"
+                 isOpen="false"
+                 isPrivate="false"
+                 name="GetLocationTimezoneOffset">
+                    <ResultType
+                     baseType="NUMBER"
+                     description=""
+                     name="result"
+                     ordinal="0"></ResultType>
+                    <ParameterDefinitions>
+                        <FieldDefinition
+                         aspect.thingTemplate="HPMC.Core.Location.TT"
+                         baseType="THINGNAME"
+                         description=""
+                         name="locationEntity"
+                         ordinal="1"></FieldDefinition>
+                    </ParameterDefinitions>
+                </ServiceDefinition>
+                <ServiceDefinition
+                 aspect.isAsync="false"
+                 category="Timezoneoffset"
+                 description=""
+                 isAllowOverride="false"
+                 isLocalOnly="false"
+                 isOpen="false"
+                 isPrivate="false"
+                 name="GetLocationTimezoneOffsetByUcIdAndLocId">
+                    <ResultType
+                     baseType="NUMBER"
+                     description=""
+                     name="result"
+                     ordinal="0"></ResultType>
+                    <ParameterDefinitions>
+                        <FieldDefinition
+                         baseType="STRING"
+                         description=""
+                         name="loc_id"
+                         ordinal="2"></FieldDefinition>
+                        <FieldDefinition
+                         baseType="STRING"
+                         description=""
+                         name="uc_id"
+                         ordinal="1"></FieldDefinition>
+                    </ParameterDefinitions>
+                </ServiceDefinition>
+                <ServiceDefinition
+                 aspect.isAsync="false"
+                 category="Timezone"
+                 description=""
+                 isAllowOverride="false"
+                 isLocalOnly="false"
+                 isOpen="false"
+                 isPrivate="false"
+                 name="HasLocationDSTByUcIdAndLocId">
+                    <ResultType
+                     baseType="BOOLEAN"
+                     description=""
+                     name="result"
+                     ordinal="0"></ResultType>
+                    <ParameterDefinitions>
+                        <FieldDefinition
+                         baseType="STRING"
+                         description=""
+                         name="loc_id"
+                         ordinal="2"></FieldDefinition>
+                        <FieldDefinition
+                         baseType="STRING"
+                         description=""
+                         name="uc_id"
+                         ordinal="1"></FieldDefinition>
+                    </ParameterDefinitions>
+                </ServiceDefinition>
+                <ServiceDefinition
+                 aspect.isAsync="false"
+                 category="Location"
+                 description=""
+                 isAllowOverride="false"
+                 isLocalOnly="false"
+                 isOpen="false"
+                 isPrivate="false"
+                 name="QueryLocationByCity">
+                    <ResultType
+                     aspect.dataShape="HPMC.Core.Location.DS"
+                     baseType="THINGNAME"
+                     description=""
+                     name="result"
+                     ordinal="0"></ResultType>
+                    <ParameterDefinitions>
+                        <FieldDefinition
+                         baseType="STRING"
+                         description=""
+                         name="caption"
+                         ordinal="2"></FieldDefinition>
+                    </ParameterDefinitions>
+                </ServiceDefinition>
+                <ServiceDefinition
+                 aspect.isAsync="false"
+                 category="Location"
+                 description=""
+                 isAllowOverride="false"
+                 isLocalOnly="false"
+                 isOpen="false"
+                 isPrivate="false"
+                 name="QueryLocationByCompanyID">
+                    <ResultType
+                     aspect.dataShape="HPMC.Core.Location.DS"
+                     baseType="INFOTABLE"
+                     description=""
+                     name="result"
+                     ordinal="0"></ResultType>
+                    <ParameterDefinitions>
+                        <FieldDefinition
+                         baseType="STRING"
+                         description=""
+                         name="company_id"
+                         ordinal="1"></FieldDefinition>
+                    </ParameterDefinitions>
+                </ServiceDefinition>
+                <ServiceDefinition
+                 aspect.isAsync="false"
+                 category="Location"
+                 description=""
+                 isAllowOverride="false"
+                 isLocalOnly="false"
+                 isOpen="false"
+                 isPrivate="false"
+                 name="QueryLocationByRegion">
+                    <ResultType
+                     baseType="INFOTABLE"
+                     description=""
+                     name="result"
+                     ordinal="0"></ResultType>
+                    <ParameterDefinitions>
+                        <FieldDefinition
+                         baseType="STRING"
+                         description=""
+                         name="region"
+                         ordinal="1"></FieldDefinition>
+                    </ParameterDefinitions>
+                </ServiceDefinition>
+                <ServiceDefinition
+                 aspect.isAsync="false"
+                 category="Location"
+                 description=""
+                 isAllowOverride="false"
+                 isLocalOnly="false"
+                 isOpen="false"
+                 isPrivate="false"
+                 name="QueryLocationByUcIDAndLocId">
+                    <ResultType
+                     aspect.dataShape="HPMC.Core.Location.DS"
+                     baseType="INFOTABLE"
+                     description=""
+                     name="result"
+                     ordinal="0"></ResultType>
+                    <ParameterDefinitions>
+                        <FieldDefinition
+                         baseType="STRING"
+                         description=""
+                         name="company_id"
+                         ordinal="1"></FieldDefinition>
+                        <FieldDefinition
+                         baseType="STRING"
+                         description=""
+                         name="locId"
+                         ordinal="2"></FieldDefinition>
+                    </ParameterDefinitions>
+                </ServiceDefinition>
+                <ServiceDefinition
+                 aspect.isAsync="false"
+                 category="Location"
+                 description="creates the user groups and assigns them to the OU.&#xA;See Roles and Rights document.&#xA;&#xA;[region][.subRegion].UC[ucId].[companyName].LOC[locId].[locationName]"
+                 isAllowOverride="false"
+                 isLocalOnly="false"
+                 isOpen="false"
+                 isPrivate="false"
+                 name="SetRolesAndRightsForAssets">
+                    <ResultType
+                     baseType="NOTHING"
+                     description=""
+                     name="result"
+                     ordinal="0"></ResultType>
+                    <ParameterDefinitions>
+                        <FieldDefinition
+                         aspect.isRequired="true"
+                         baseType="STRING"
+                         description=""
+                         name="locId"
+                         ordinal="3"></FieldDefinition>
+                        <FieldDefinition
+                         aspect.isRequired="true"
+                         baseType="STRING"
+                         description=""
+                         name="ucId"
+                         ordinal="4"></FieldDefinition>
+                    </ParameterDefinitions>
+                </ServiceDefinition>
+                <ServiceDefinition
+                 aspect.isAsync="false"
+                 category="Location"
+                 description=""
+                 isAllowOverride="false"
+                 isLocalOnly="false"
+                 isOpen="false"
+                 isPrivate="false"
+                 name="TransferLocationToOtherProject">
+                    <ResultType
+                     baseType="NOTHING"
+                     description=""
+                     name="result"
+                     ordinal="0"></ResultType>
+                    <ParameterDefinitions>
+                        <FieldDefinition
+                         baseType="STRING"
+                         description=""
+                         name="newTemplateName"
+                         ordinal="1"></FieldDefinition>
+                        <FieldDefinition
+                         baseType="STRING"
+                         description=""
+                         name="oldTemplateName"
+                         ordinal="2"></FieldDefinition>
+                        <FieldDefinition
+                         baseType="STRING"
+                         description=""
+                         name="projectName"
+                         ordinal="3"></FieldDefinition>
+                    </ParameterDefinitions>
+                </ServiceDefinition>
+                <ServiceDefinition
+                 aspect.isAsync="false"
+                 category="Location"
+                 description=""
+                 isAllowOverride="false"
+                 isLocalOnly="false"
+                 isOpen="false"
+                 isPrivate="false"
+                 name="UpdateLocations">
+                    <ResultType
+                     baseType="NOTHING"
+                     description=""
+                     name="result"
+                     ordinal="0"></ResultType>
+                    <ParameterDefinitions>
+                        <FieldDefinition
+                         aspect.dataShape="HPMC.Core.Location.DS"
+                         baseType="INFOTABLE"
+                         description=""
+                         name="editedLocationTable"
+                         ordinal="1"></FieldDefinition>
+                    </ParameterDefinitions>
+                </ServiceDefinition>
+            </ServiceDefinitions>
+            <EventDefinitions></EventDefinitions>
+            <ServiceMappings></ServiceMappings>
+            <ServiceImplementations>
+                <ServiceImplementation
+                 description=""
+                 handlerName="Script"
+                 name="AddOrUpdateLocation">
+                    <ConfigurationTables>
+                        <ConfigurationTable
+                         dataShapeName=""
+                         description=""
+                         isMultiRow="false"
+                         name="Script"
+                         ordinal="0">
+                            <DataShape>
+                                <FieldDefinitions>
+                                    <FieldDefinition
+                                     baseType="STRING"
+                                     description="code"
+                                     name="code"
+                                     ordinal="0"></FieldDefinition>
+                                    <FieldDefinition
+                                     baseType="JSON"
+                                     description=""
+                                     name="editorSettings"
+                                     ordinal="0"></FieldDefinition>
+                                </FieldDefinitions>
+                            </DataShape>
+                            <Rows>
+                                <Row>
+                                    <code>
+                                    <![CDATA[
+                                    /*
+                                        * @name AddOrUpdateLocation
+                                        * @date 19.01.2021
+                                        * @author Isro Syaeful
+                                        * @param ucId (STRING)
+                                        * @param locId (STRING)
+                                        * @param coordinate (STRING)
+                                        * @param locationName (STRING)
+                                        * @param locationDescription (STRING)
+                                        * @param companyName (STRING)
+                                        * @return location thing infotable
+                                        *
+                                        * add or update location thing based on locId and ucId
+                                        */
+                                        var result;
+                                        var loggerBeginning = "[HPMC.Core.Manager:AddOrUpdateLocation] ";
+                                        
+                                        (function(){
+                                            "use strict";
+                                            try{
+                                                logger.info(loggerBeginning + " Start to Add or update location thing ");
+                                                timezoneOffset = (timezoneOffset===undefined)?0:timezoneOffset;
+                                                let locationThingName;
+                                                let locationFiltered = ThingTemplates["HPMC.Core.Location.TT"].QueryImplementingThingsWithData({
+                                                    maxItems: undefined /* NUMBER */,
+                                                    tags: undefined /* TAGS */,
+                                                    nameMask: undefined /* STRING */,
+                                                    query: {
+                                                        "filters": {
+                                                            "type": "And",
+                                                            "filters": [
+                                                                {
+                                                                    "type": "LIKE",
+                                                                    "fieldName": "locId",
+                                                                    "value": locId
+                                                                },
+                                                                {
+                                                                    "type": "LIKE",
+                                                                    "fieldName": "ucId",
+                                                                    "value": ucId
+                                                                }
+                                                            ]
+                                                        }
+                                        			} /* QUERY */
+                                                });//QueryImplementingThingsWithData({}); 
+                                                if (locationFiltered.length<1){
+                                                    try{
+                                                        logger.info (loggerBeginning + " create location thing");
+                                                    	locationThingName = me.CreateLocation();
+                                                    }catch(err1){
+                                                        locationThingName = "";
+                                                        logger.error (loggerBeginning + " cant create location thing - [ERROR]:"+err1);
+                                                    }
+                                                } else{
+                                                    locationThingName=locationFiltered.name;
+                                                }        
+                                                //logger.info(loggerBeginning + " new thing name = " + locationThingName);
+                                    
+                                                Things[locationThingName].caption = locationName;
+                                                Things[locationThingName].companyName = companyName;
+                                                Things[locationThingName].location = coordinate;
+                                                Things[locationThingName].ucId = ucId;
+                                                Things[locationThingName].locId = locId;
+                                                Things[locationThingName].address = address;
+                                                Things[locationThingName].timezoneOffset = timezoneOffset;
+                                                Things[locationThingName].hasDST = hasDST;
+                                                Things[locationThingName].standardTimezoneOffset = standardTimezoneOffset;
+                                                let tempDesc = Things[locationThingName].description.split(':')[0];
+                                                Things[locationThingName].SetDescription({
+                                                        description: tempDesc+ " : "+locationDescription /* STRING */
+                                                    });
+                                                result = Things[locationThingName].GetPropertyValues();
+                                        
+                                            }catch(e){
+                                                logger.error(loggerBeginning +"Failed to add/update the location - [ERROR]: "+e);   
+                                            }
+                                        }());
+                                    ]]>
+                                    </code>
+                                    <editorSettings>
+                                        <json>
+                                        <![CDATA[
+                                        {"viewState":{"viewState":{"firstPositionDeltaTop":0,"scrollLeft":0,"firstPosition":{"column":1,"lineNumber":1}},"cursorState":[{"inSelectionMode":false,"selectionStart":{"column":1,"lineNumber":1},"position":{"column":1,"lineNumber":1}}],"contributionsState":{"editor.contrib.wordHighlighter":false,"editor.contrib.folding":{"provider":"indent","lineCount":74,"foldedImports":false}}}}
+                                        ]]>
+                                        </json>
+                                    </editorSettings>
+                                </Row>
+                            </Rows>
+                        </ConfigurationTable>
+                    </ConfigurationTables>
+                </ServiceImplementation>
+                <ServiceImplementation
+                 description=""
+                 handlerName="Script"
+                 name="CreateLocation">
+                    <ConfigurationTables>
+                        <ConfigurationTable
+                         dataShapeName=""
+                         description=""
+                         isMultiRow="false"
+                         name="Script"
+                         ordinal="0">
+                            <DataShape>
+                                <FieldDefinitions>
+                                    <FieldDefinition
+                                     baseType="STRING"
+                                     description="code"
+                                     name="code"
+                                     ordinal="0"></FieldDefinition>
+                                    <FieldDefinition
+                                     baseType="JSON"
+                                     description=""
+                                     name="editorSettings"
+                                     ordinal="0"></FieldDefinition>
+                                </FieldDefinitions>
+                            </DataShape>
+                            <Rows>
+                                <Row>
+                                    <code>
+                                    <![CDATA[
+                                    /*
+                                        * @name CreateLocation
+                                        * @date 03.09.2020
+                                        * @author Georg Reckendorfer
+                                        * @return thingname - name of the thing(location) which have been created
+                                        *
+                                        * Create a asset at the given location in the given group.
+                                        */
+                                        var loggerBeginning = "[HPMC.Core.Manager:CreateLocation] ";
+                                        
+                                        logger.info(loggerBeginning + "Create new location.");
+                                        
+                                        var projectName = "HPMC.DynamicData";
+                                        var locationTemplatename = "HPMC.Core.Location.TT";
+                                        
+                                        var dateTime = dateFormat(new Date(), "yyyy-MM-dd HH:mm 'GMT'Z");
+                                        var descriptionText = "created in ThingWorx on "+ dateTime +" by " +Resources["CurrentSessionInfo"].GetCurrentUser();
+                                        var locationThingname = "HPMC.Location." + generateGUID(); //me.CreateGUID();
+                                        
+                                        var newCreatedCaption = "New Location (" + dateTime +")";
+                                        
+                                        var newLocationThing;
+                                        var result; //THINGNAME - HPMC.Core.Location.DS
+                                        
+                                        //check if locationThingname does already exist
+                                        newLocationThing = Things[locationThingname];
+                                        while(newLocationThing !== null){
+                                            logger.info(loggerBeginning + "Create new locationname, because location with name " + locationThingname + "does already exist.");
+                                            locationThingname = "HPMC.Location." + generateGUID(); //me.CreateGUID();
+                                            newLocationThing = Things[locationThingname];
+                                        }
+                                        
+                                        try{
+                                            Resources["EntityServices"].CreateThing({
+                                                name: locationThingname /* STRING */,
+                                                description: descriptionText /* STRING */,
+                                                thingTemplateName: locationTemplatename /* THINGTEMPLATENAME */,
+                                                tags: undefined /* TAGS */
+                                            });
+                                        	logger.info(loggerBeginning + " AFTER CREATETHING - new locatinThingname = " + locationThingname);
+                                            //newLocationThing = Things[locationThingname];
+                                        
+                                            Things[locationThingname].EnableThing();
+                                            Things[locationThingname].RestartThing();
+                                        
+                                            Things[locationThingname].SetProjectName({
+                                                projectName: projectName /* PROJECTNAME */
+                                            });
+                                        
+                                            Things[locationThingname].caption = newCreatedCaption;
+                                        	logger.info(loggerBeginning + " new thing caption = " + Things[locationThingname].name);
+                                            result = Things[locationThingname].name;
+                                        }catch(e){
+                                            Resources["EntityServices"].DeleteThing({
+                                                name: locationThingname /* STRING */
+                                            });
+                                        
+                                            logger.error(loggerBeginning +"Failed to create the location: " + e);   
+                                        }
+                                    ]]>
+                                    </code>
+                                    <editorSettings>
+                                        <json>
+                                        <![CDATA[
+                                        {"viewState":{"viewState":{"firstPositionDeltaTop":0,"scrollLeft":0,"firstPosition":{"column":1,"lineNumber":1}},"cursorState":[{"inSelectionMode":false,"selectionStart":{"column":42,"lineNumber":13},"position":{"column":42,"lineNumber":13}}],"contributionsState":{"editor.contrib.wordHighlighter":false,"editor.contrib.folding":{"provider":"indent","lineCount":59,"foldedImports":false}}}}
+                                        ]]>
+                                        </json>
+                                    </editorSettings>
+                                </Row>
+                            </Rows>
+                        </ConfigurationTable>
+                    </ConfigurationTables>
+                </ServiceImplementation>
+                <ServiceImplementation
+                 description=""
+                 handlerName="Script"
+                 name="CreateLocationCopy">
+                    <ConfigurationTables>
+                        <ConfigurationTable
+                         dataShapeName=""
+                         description=""
+                         isMultiRow="false"
+                         name="Script"
+                         ordinal="0">
+                            <DataShape>
+                                <FieldDefinitions>
+                                    <FieldDefinition
+                                     baseType="STRING"
+                                     description="code"
+                                     name="code"
+                                     ordinal="0"></FieldDefinition>
+                                </FieldDefinitions>
+                            </DataShape>
+                            <Rows>
+                                <Row>
+                                    <code>
+                                    <![CDATA[
+                                    /*
+                                        * @name CreateLocation
+                                        * @date 03.09.2020
+                                        * @author Georg Reckendorfer
+                                        * @return thingname - name of the thing(location) which have been created
+                                        *
+                                        * Create a asset at the given location in the given group.
+                                        */
+                                        var result;
+                                        var loggerBeginning = "[HPMC.Core.Manager:CreateLocation] ";
+                                        
+                                        (function(){
+                                            "use strict";
+                                            try{
+                                                logger.info(loggerBeginning + " Add or update location thing ");
+                                                
+                                                var locationThingName;
+                                                var locationList = ThingTemplates["HPMC.Core.Location.TT"].QueryImplementingThingsWithData({}); //  INFOTABLE dataShape: "RootEntityList"
+                                                var queryParam = {
+                                                   	t:locationList,
+                                                    query :{
+                                                        "filters": {
+                                                            "type": "And",
+                                                            "filters": [
+                                                                {
+                                                                    "type": "LIKE",
+                                                                    "fieldName": "locId",
+                                                                    "value": locId
+                                                                },
+                                                                {
+                                                                    "type": "LIKE",
+                                                                    "fieldName": "ucId",
+                                                                    "value": ucId
+                                                                }
+                                                            ]
+                                                        }
+                                        			}
+                                                };
+                                                var locationFiltered = Resources["InfoTableFunctions"].Query(queryParam);
+                                                if (locationFiltered.length<1){
+                                                    try{
+                                                        logger.info (loggerBeginning + " create location thing");
+                                                    	locationThingName = me.CreateLocation();
+                                                    }catch(err1){
+                                                        locationThingName = "";
+                                                        logger.error (loggerBeginning + " cant create location thing");
+                                                    }
+                                                    Things[locationThingName].caption = locationName;
+                                                    Things[locationThingName].companyName = companyName;
+                                                    Things[locationThingName].location = coordinate;
+                                                    Things[locationThingName].ucId = ucId;
+                                                    Things[locationThingName].locId = locId;
+                                                    Things[locationThingName].address = locationDescription;
+                                                }
+                                        
+                                                result = Things[locationThingName].GetPropertyValues();
+                                            }catch(e){
+                                                logger.error(loggerBeginning +"Failed to add/update the location ");   
+                                            }
+                                        }());
+                                    ]]>
+                                    </code>
+                                </Row>
+                            </Rows>
+                        </ConfigurationTable>
+                    </ConfigurationTables>
+                </ServiceImplementation>
+                <ServiceImplementation
+                 description=""
+                 handlerName="Script"
+                 name="GenerateUserGroups">
+                    <ConfigurationTables>
+                        <ConfigurationTable
+                         dataShapeName=""
+                         description=""
+                         isMultiRow="false"
+                         name="Script"
+                         ordinal="0">
+                            <DataShape>
+                                <FieldDefinitions>
+                                    <FieldDefinition
+                                     baseType="STRING"
+                                     description="code"
+                                     name="code"
+                                     ordinal="0"></FieldDefinition>
+                                    <FieldDefinition
+                                     baseType="JSON"
+                                     description=""
+                                     name="editorSettings"
+                                     ordinal="0"></FieldDefinition>
+                                </FieldDefinitions>
+                            </DataShape>
+                            <Rows>
+                                <Row>
+                                    <code>
+                                    <![CDATA[
+                                    /**
+                                     * @name generateUserGroups
+                                     * @date 18.03.2021
+                                     * @author Christian Krenkel
+                                     * creates the user groups and assigns them to the OU. See Roles and Rights document.
+                                     * 	e.g [region][.subRegion].UC[ucId].[companyName].LOC[locId].[locationName] and higher groups
+                                     *
+                                     * @param region			the region in the orgTree (e.g. CE, APAC)
+                                     * @param subRegion		subregion (ONLY in APAC, e.g. SC)
+                                     * @param locId			location id
+                                     * @param ucId			company id
+                                     * @param locationName	location name (e.g. Mitry, Dongguan)
+                                     * @param companyName	company name (e.g. BUF, ADG)
+                                     *
+                                     * @return NOTHING
+                                     */
+                                    
+                                    const UG_DESCRIPTION = "created by Service generateUserGroups (" + dateFormat(new Date(), "yyyy-MM-dd HH:mm 'GMT'Z") + ") by " + Resources["CurrentSessionInfo"].GetCurrentUser();
+                                    
+                                    (function () {
+                                        const UC_PREFIX = "UC";
+                                        const LOC_PREFIX = "LOC";
+                                        const withSubRegion = subRegion !== undefined && subRegion !== "";
+                                    
+                                        let groupArray = [
+                                            // group for location
+                                            region + (withSubRegion ? "." + subRegion : "") + "." + UC_PREFIX + ucId + "." + companyName + "." + LOC_PREFIX + locId + "." + locationName,
+                                            // group for company
+                                            region + (withSubRegion ? "." + subRegion : "") + "." + UC_PREFIX + ucId + "." + companyName
+                                        ];
+                                    
+                                        if (withSubRegion) {
+                                            groupArray.push(region + "." + subRegion);
+                                        }
+                                        // group for region
+                                        groupArray.push(region);
+                                    
+                                        var previouslyCreated = [];
+                                        for (let i = 0; i < groupArray.length; i++) {
+                                            previouslyCreated[i] = createGroup("HPMC." + groupArray[i] + ".UG");
+                                            // add group to parent if parent was created previously
+                                            logger.info("prev created: " + "HPMC." + groupArray[i] + ".UG" + " | " + previouslyCreated[i]);
+                                            if (i > 0 && previouslyCreated[i - 1] && previouslyCreated[i]) {
+                                                logger.info("child: " + "HPMC." + groupArray[i] + ".UG" + " parent: " + "HPMC." + groupArray[i - 1] + ".UG");
+                                                addGroupToParent("HPMC." + groupArray[i] + ".UG", "HPMC." + groupArray[i - 1] + ".UG");
+                                            }
+                                            if (previouslyCreated[i]) {
+                                                // generate base roles (Administrator, Supervisor, Operator, Display) for location UG
+                                                if (i == 0) {
+                                                    if (createGroup("HPMC." + groupArray[i] + ".Administrator.UG")) {
+                                                        // add location[role] group and add it to the OU
+                                                        addGroupToParent("HPMC." + groupArray[i] + ".Administrator.UG", "HPMC." + groupArray[i] + ".UG");
+                                                        addGroupToOrganization("HPMC." + groupArray[i] + ".Administrator.UG", groupArray[i]);
+                                                        // add location[role] group to the screengroup
+                                                        addGroupToParent("HPMC." + groupArray[i] + ".Administrator.UG", "HPMC.Administrator.UG");
+                                                    }
+                                                    if (createGroup("HPMC." + groupArray[i] + ".Supervisor.UG")) {
+                                                        // add location[role] group and add it to the OU
+                                                        addGroupToParent("HPMC." + groupArray[i] + ".Supervisor.UG", "HPMC." + groupArray[i] + ".UG");
+                                                        addGroupToOrganization("HPMC." + groupArray[i] + ".Supervisor.UG", groupArray[i]);
+                                                        // add location[role] group to the screengroup
+                                                        addGroupToParent("HPMC." + groupArray[i] + ".Supervisor.UG", "HPMC.Supervisor.UG");
+                                                    }
+                                                    if (createGroup("HPMC." + groupArray[i] + ".Operator.UG")) {
+                                                        // add location[role] group and add it to the OU
+                                                        addGroupToParent("HPMC." + groupArray[i] + ".Operator.UG", "HPMC." + groupArray[i] + ".UG");
+                                                        addGroupToOrganization("HPMC." + groupArray[i] + ".Operator.UG", groupArray[i]);
+                                                        // add location[role] group to the screengroup
+                                                        addGroupToParent("HPMC." + groupArray[i] + ".Operator.UG", "HPMC.Operator.UG");
+                                                    }
+                                                    if (createGroup("HPMC." + groupArray[i] + ".Display.UG")) {
+                                                        // add location[role] group and add it to the OU
+                                                        addGroupToParent("HPMC." + groupArray[i] + ".Display.UG", "HPMC." + groupArray[i] + ".UG");
+                                                        addGroupToOrganization("HPMC." + groupArray[i] + ".Display.UG", groupArray[i]);
+                                                        // add location[role] group to the screengroup
+                                                        addGroupToParent("HPMC." + groupArray[i] + ".Display.UG", "HPMC.Display.UG");
+                                                    }
+                                                } else {
+                                                    // Add all managers to their respective UGs
+                                                    if (createGroup("HPMC." + groupArray[i] + ".Manager.UG")) {
+                                                        addGroupToParent("HPMC." + groupArray[i] + ".Manager.UG", "HPMC." + groupArray[i] + ".UG");
+                                                    }
+                                    
+                                                    // add location[role] group to the screengroup & to OrgUnit depending there hirarchie
+                                                    if (i === 1) {
+                                                        addGroupToParent("HPMC." + groupArray[i] + ".Manager.UG", "HPMC.CompanyManager.UG");
+                                                        addGroupToOrganization("HPMC." + groupArray[i] + ".Manager.UG", groupArray[i]);
+                                                    } else if (i === 2 && withSubRegion) {
+                                                        addGroupToParent("HPMC." + groupArray[i] + ".Manager.UG", "HPMC.SubregionalManager.UG");
+                                                        addGroupToOrganization("HPMC." + groupArray[i] + ".Manager.UG", "Region." + groupArray[i]);
+                                                    } else {
+                                                        addGroupToParent("HPMC." + groupArray[i] + ".Manager.UG", "HPMC.RegionalManager.UG");
+                                                        addGroupToOrganization("HPMC." + groupArray[i] + ".Manager.UG", "Region." + groupArray[i]);
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    
+                                        // result: INFOTABLE dataShape: "RootEntityList"
+                                        const locations = ThingTemplates["HPMC.Core.Location.TT"].QueryImplementingThingsWithData({
+                                            query: {
+                                                filters: {
+                                                    type: "And",
+                                                    filters: [
+                                                        { type: "EQ", fieldName: "ucId", value: ucId },
+                                                        { type: "EQ", fieldName: "locId", value: locId }
+                                                    ]
+                                                }
+                                            }
+                                        });
+                                    
+                                        if (locations.rows.length !== 1) {
+                                            // error
+                                            logger.error("multiple or no Location found to assign groups");
+                                            return;
+                                        }
+                                        // set access group for later asset assignments
+                                        Things[locations[0].name].runtimeAccessGroup = "HPMC." + groupArray[0] + ".UG";
+                                    
+                                        addRuntimePermissionsToThing(locations[0].name, "HPMC." + groupArray[0] + ".UG");
+                                        //    Things[locations[0].name].AddVisibilityPermission({
+                                        //        principal: "HPMC.Voestalpine.Orga:" + groupArray[0] /* STRING */,
+                                        //        principalType: "OrganizationalUnit" /* STRING */
+                                        //    });
+                                    
+                                        locations[0].assetGroups.rows.toArray().forEach((assetGroup) => {
+                                            assetGroup.assets.rows.toArray().forEach((asset) => {
+                                                addRuntimePermissionsToThing(asset.assetThingname, "HPMC." + groupArray[0] + ".UG");
+                                            });
+                                        });
+                                    })();
+                                    
+                                    // creates group if not already exists
+                                    function createGroup(groupName) {
+                                        if (Groups[groupName] === null) {
+                                            try {
+                                                Resources["EntityServices"].CreateGroup({
+                                                    name: groupName /* STRING */,
+                                                    description: UG_DESCRIPTION /* STRING */,
+                                                    projectName: undefined /* PROJECTNAME */,
+                                                    tags: undefined /* TAGS */
+                                                });
+                                            } catch (err) {
+                                                Resources["EntityServices"].DeleteGroup({
+                                                    name: groupName /* STRING */
+                                                });
+                                                logger.error("Group " + groupName + " deleted: " + err);
+                                                return false;
+                                            }
+                                            logger.info(groupName + " | created");
+                                            return true;
+                                        } else {
+                                            logger.error(groupName + " | already exists" + Groups[groupName]);
+                                            return false;
+                                        }
+                                    }
+                                    
+                                    // adds group to parent group if this group not already exists
+                                    function addGroupToParent(groupName, parent) {
+                                        if (Groups[parent] !== null) {
+                                            Groups[parent].AddMember({
+                                                member: groupName /* STRING */,
+                                                type: "Group" /* STRING */
+                                            });
+                                        } else {
+                                            logger.error(groupName + " not added to parent " + parent);
+                                        }
+                                    }
+                                    
+                                    function addGroupToOrganization(groupName, org) {
+                                        let orgChange = org;
+                                        // region is the only part where the default construction of the org path is not unified with the org layout
+                                        // so we have to check here if only the region exists so we can add 'Region' before the region definition
+                                        if (org.split(".").length == 1) {
+                                            orgChange = "Region." + org;
+                                        }
+                                        Organizations[me.GetMainOrganizationName()].AddMember({
+                                          name: orgChange /* STRING */,
+                                          member: groupName /* STRING */,
+                                          type: "Group" /* STRING */
+                                        });
+                                    }
+                                    
+                                    function addRuntimePermissionsToThing(thingName, groupName) {
+                                        if (Things[thingName] === null) {
+                                            logger.warn("could not add runtime permissions to Thing {}", thingName);
+                                            return;
+                                        }
+                                    
+                                        Things[thingName].AddRunTimePermission({
+                                            principal: groupName /* STRING */,
+                                            allow: true /* BOOLEAN */,
+                                            resource: "*" /* STRING */,
+                                            type: "PropertyRead" /* STRING */,
+                                            principalType: "Group" /* STRING */
+                                        });
+                                        Things[thingName].AddRunTimePermission({
+                                            principal: groupName /* STRING */,
+                                            allow: true /* BOOLEAN */,
+                                            resource: "*" /* STRING */,
+                                            type: "ServiceInvoke" /* STRING */,
+                                            principalType: "Group" /* STRING */
+                                        });
+                                    }
+                                    ]]>
+                                    </code>
+                                    <editorSettings>
+                                        <json>
+                                        <![CDATA[
+                                        {"viewState":{"viewState":{"firstPositionDeltaTop":-8,"scrollLeft":0,"firstPosition":{"column":1,"lineNumber":47}},"cursorState":[{"inSelectionMode":false,"selectionStart":{"column":86,"lineNumber":76},"position":{"column":86,"lineNumber":76}}],"contributionsState":{"editor.contrib.wordHighlighter":true,"editor.contrib.folding":{"provider":"indent","lineCount":204,"foldedImports":false}}}}
+                                        ]]>
+                                        </json>
+                                    </editorSettings>
+                                </Row>
+                            </Rows>
+                        </ConfigurationTable>
+                    </ConfigurationTables>
+                </ServiceImplementation>
+                <ServiceImplementation
+                 description=""
+                 handlerName="Script"
+                 name="GetLocationById">
+                    <ConfigurationTables>
+                        <ConfigurationTable
+                         dataShapeName=""
+                         description=""
+                         isMultiRow="false"
+                         name="Script"
+                         ordinal="0">
+                            <DataShape>
+                                <FieldDefinitions>
+                                    <FieldDefinition
+                                     baseType="STRING"
+                                     description="code"
+                                     name="code"
+                                     ordinal="0"></FieldDefinition>
+                                    <FieldDefinition
+                                     baseType="JSON"
+                                     description=""
+                                     name="editorSettings"
+                                     ordinal="0"></FieldDefinition>
+                                </FieldDefinitions>
+                            </DataShape>
+                            <Rows>
+                                <Row>
+                                    <code>
+                                    <![CDATA[
+                                    /*
+                                     * @name GetLocationById
+                                     * @date 03.04.2024
+                                     * @author Dan Zielinsky
+                                     */
+                                    
+                                    const result = Resources["InfoTableFunctions"].CreateInfoTableFromDataShape({
+                                        dataShapeName: "HPMC.Core.Location.DS"
+                                    });
+                                    
+                                    // CreateInfoTableFromDataShape(infoTableName:STRING("InfoTable"), dataShapeName:STRING):INFOTABLE(EntityList)
+                                    const propertyNames = Resources["InfoTableFunctions"].CreateInfoTableFromDataShape({ dataShapeName: "EntityList" });
+                                    propertyNames.AddRow({ name: "locId" });
+                                    
+                                    // result: INFOTABLE dataShape: "RootEntityList"
+                                    const location = ThingTemplates["HPMC.Core.Location.TT"].QueryImplementingThingsOptimized({
+                                        networkName: undefined /* STRING */,
+                                        networkParentNode: undefined /* STRING */,
+                                        networkMaxDepth: undefined /* INTEGER {"defaultValue":0} */,
+                                        maxItems: 1 /* NUMBER {"defaultValue":500} */,
+                                        basicPropertyNames: undefined /* INFOTABLE {"dataShape":"EntityList"} */,
+                                        withPermissions: false /* BOOLEAN {"defaultValue":false} */,
+                                        offset: 0 /* NUMBER {"defaultValue":0} */,
+                                        nameMask: undefined /* STRING */,
+                                        propertyNames: propertyNames /* INFOTABLE {"dataShape":"EntityList"} */,
+                                        query: { filters: { type: "EQ", fieldName: "locId", value: locId } } /* QUERY */,
+                                        tags: undefined /* TAGS */
+                                    });
+                                    
+                                    if (Things[location.name]) {
+                                        // HPMC.Core.Location.DS entry object
+                                        result.AddRow({
+                                            address: Things[location.name].address, // STRING
+                                            caption: Things[location.name].caption, // STRING
+                                            location: Things[location.name].location, // LOCATION
+                                            locId: Things[location.name].locId, // STRING
+                                            ucId: Things[location.name].ucId, // STRING
+                                            assetGroups: Things[location.name].assetGroups, // INFOTABLE {"dataShape":"HPMC.Core.Asset.Group.DS"}
+                                            toolGroups: Things[location.name].toolGroups, // INFOTABLE {"dataShape":"HPMC.Core.Tool.Group.DS"}
+                                            materialGroups: Things[location.name].materialGroups, // INFOTABLE {"dataShape":"HPMC.Core.Material.Group.DS"}
+                                            name: Things[location.name].name, // STRING [Primary Key]
+                                            avatar: Things[location.name].avatar, // IMAGELINK
+                                            companyName: Things[location.name].companyName, // STRING
+                                            timezoneOffset: Things[location.name].timezoneOffset // INTEGER
+                                        });
+                                    }
+                                    ]]>
+                                    </code>
+                                    <editorSettings>
+                                        <json>
+                                        <![CDATA[
+                                        {"viewState":{"viewState":{"firstPositionDeltaTop":-16,"scrollLeft":0,"firstPosition":{"column":1,"lineNumber":14}},"cursorState":[{"inSelectionMode":false,"selectionStart":{"column":8,"lineNumber":45},"position":{"column":8,"lineNumber":45}}],"contributionsState":{"editor.contrib.wordHighlighter":false,"editor.contrib.folding":{"provider":"indent","lineCount":47,"foldedImports":false}}}}
+                                        ]]>
+                                        </json>
+                                    </editorSettings>
+                                </Row>
+                            </Rows>
+                        </ConfigurationTable>
+                    </ConfigurationTables>
+                </ServiceImplementation>
+                <ServiceImplementation
+                 description=""
+                 handlerName="Script"
+                 name="GetLocationByUcIdAndLocId">
+                    <ConfigurationTables>
+                        <ConfigurationTable
+                         dataShapeName=""
+                         description=""
+                         isMultiRow="false"
+                         name="Script"
+                         ordinal="0">
+                            <DataShape>
+                                <FieldDefinitions>
+                                    <FieldDefinition
+                                     baseType="STRING"
+                                     description="code"
+                                     name="code"
+                                     ordinal="0"></FieldDefinition>
+                                    <FieldDefinition
+                                     baseType="JSON"
+                                     description=""
+                                     name="editorSettings"
+                                     ordinal="0"></FieldDefinition>
+                                </FieldDefinitions>
+                            </DataShape>
+                            <Rows>
+                                <Row>
+                                    <code>
+                                    <![CDATA[
+                                    /*
+                                     * @name GetLocationById
+                                     * @date 03.04.2024
+                                     * @author Dan Zielinsky
+                                     *
+                                     * [ADAPTED 07.08.2024 by Georg Reckendorfer] copied other services and added uc_id
+                                     */
+                                    
+                                    const result = Resources["InfoTableFunctions"].CreateInfoTableFromDataShape({
+                                        dataShapeName: "HPMC.Core.Location.DS"
+                                    });
+                                    
+                                    // CreateInfoTableFromDataShape(infoTableName:STRING("InfoTable"), dataShapeName:STRING):INFOTABLE(EntityList)
+                                    const propertyNames = Resources["InfoTableFunctions"].CreateInfoTableFromDataShape({ dataShapeName: "EntityList" });
+                                    propertyNames.AddRow({ name: "locId" });
+                                    
+                                    // result: INFOTABLE dataShape: "RootEntityList"
+                                    const location = ThingTemplates["HPMC.Core.Location.TT"].QueryImplementingThingsOptimized({
+                                        networkName: undefined /* STRING */,
+                                        networkParentNode: undefined /* STRING */,
+                                        networkMaxDepth: undefined /* INTEGER {"defaultValue":0} */,
+                                        maxItems: 1 /* NUMBER {"defaultValue":500} */,
+                                        basicPropertyNames: undefined /* INFOTABLE {"dataShape":"EntityList"} */,
+                                        withPermissions: false /* BOOLEAN {"defaultValue":false} */,
+                                        offset: 0 /* NUMBER {"defaultValue":0} */,
+                                        nameMask: undefined /* STRING */,
+                                        propertyNames: propertyNames /* INFOTABLE {"dataShape":"EntityList"} */,
+                                        query: { filters: { type: "And", filters: [ { type: "EQ", fieldName: "locId", value: locId }, { type: "EQ", fieldName: "ucId", value: ucId } ] } } /* QUERY */,
+                                        tags: undefined /* TAGS */
+                                    });
+                                    
+                                    if (Things[location.name]) {
+                                        // HPMC.Core.Location.DS entry object
+                                        result.AddRow({
+                                            address: Things[location.name].address, // STRING
+                                            caption: Things[location.name].caption, // STRING
+                                            location: Things[location.name].location, // LOCATION
+                                            locId: Things[location.name].locId, // STRING
+                                            ucId: Things[location.name].ucId, // STRING
+                                            assetGroups: Things[location.name].assetGroups, // INFOTABLE {"dataShape":"HPMC.Core.Asset.Group.DS"}
+                                            toolGroups: Things[location.name].toolGroups, // INFOTABLE {"dataShape":"HPMC.Core.Tool.Group.DS"}
+                                            materialGroups: Things[location.name].materialGroups, // INFOTABLE {"dataShape":"HPMC.Core.Material.Group.DS"}
+                                            name: Things[location.name].name, // STRING [Primary Key]
+                                            avatar: Things[location.name].avatar, // IMAGELINK
+                                            companyName: Things[location.name].companyName, // STRING
+                                            timezoneOffset: Things[location.name].timezoneOffset // INTEGER
+                                        });
+                                    }
+                                    ]]>
+                                    </code>
+                                    <editorSettings>
+                                        <json>
+                                        <![CDATA[
+                                        {"viewState":{"viewState":{"firstPositionDeltaTop":-16,"scrollLeft":0,"firstPosition":{"column":1,"lineNumber":14}},"cursorState":[{"inSelectionMode":false,"selectionStart":{"column":8,"lineNumber":45},"position":{"column":8,"lineNumber":45}}],"contributionsState":{"editor.contrib.wordHighlighter":false,"editor.contrib.folding":{"provider":"indent","lineCount":47,"foldedImports":false}}}}
+                                        ]]>
+                                        </json>
+                                    </editorSettings>
+                                </Row>
+                            </Rows>
+                        </ConfigurationTable>
+                    </ConfigurationTables>
+                </ServiceImplementation>
+                <ServiceImplementation
+                 description=""
+                 handlerName="Script"
+                 name="GetLocationThing">
+                    <ConfigurationTables>
+                        <ConfigurationTable
+                         dataShapeName=""
+                         description=""
+                         isMultiRow="false"
+                         name="Script"
+                         ordinal="0">
+                            <DataShape>
+                                <FieldDefinitions>
+                                    <FieldDefinition
+                                     baseType="STRING"
+                                     description="code"
+                                     name="code"
+                                     ordinal="0"></FieldDefinition>
+                                    <FieldDefinition
+                                     baseType="JSON"
+                                     description=""
+                                     name="editorSettings"
+                                     ordinal="0"></FieldDefinition>
+                                </FieldDefinitions>
+                            </DataShape>
+                            <Rows>
+                                <Row>
+                                    <code>
+                                    <![CDATA[
+                                    /*
+                                     * @name GetLocationThing
+                                     * @date 31.01.2024
+                                     * @author Marc Aurel Büttner
+                                     * @return Location Entity by LocId
+                                     */
+                                    
+                                    // let result;
+                                    
+                                    let getLocationName = () => {
+                                      if (!locId) {
+                                        return;
+                                      }
+                                      
+                                      // INFOTABLE dataShape: "HPMC.Core.Location.DS"
+                                      let allLocations = me.QueryAllLocations();
+                                    
+                                      // result: INFOTABLE
+                                      let location = Resources["InfoTableFunctions"].Query({
+                                        t: allLocations /* INFOTABLE */,
+                                        query: {
+                                          filters: {
+                                            type: "EQ",
+                                            fieldName: "locId",
+                                            value: locId,
+                                          },
+                                        } /* QUERY */,
+                                      });
+                                    
+                                      if (location.getRowCount() > 0) {
+                                        return location.name;
+                                      }
+                                    };
+                                    
+                                    result = getLocationName();
+                                    ]]>
+                                    </code>
+                                    <editorSettings>
+                                        <json>
+                                        <![CDATA[
+                                        {"viewState":{"viewState":{"firstPositionDeltaTop":0,"scrollLeft":0,"firstPosition":{"column":1,"lineNumber":1}},"cursorState":[{"inSelectionMode":false,"selectionStart":{"column":3,"lineNumber":14},"position":{"column":3,"lineNumber":14}}],"contributionsState":{"editor.contrib.wordHighlighter":false,"editor.contrib.folding":{"provider":"indent","lineCount":36,"foldedImports":false}}}}
+                                        ]]>
+                                        </json>
+                                    </editorSettings>
+                                </Row>
+                            </Rows>
+                        </ConfigurationTable>
+                    </ConfigurationTables>
+                </ServiceImplementation>
+                <ServiceImplementation
+                 description=""
+                 handlerName="Script"
+                 name="GetLocationTimezoneOffset">
+                    <ConfigurationTables>
+                        <ConfigurationTable
+                         dataShapeName=""
+                         description=""
+                         isMultiRow="false"
+                         name="Script"
+                         ordinal="0">
+                            <DataShape>
+                                <FieldDefinitions>
+                                    <FieldDefinition
+                                     baseType="STRING"
+                                     description="code"
+                                     name="code"
+                                     ordinal="0"></FieldDefinition>
+                                    <FieldDefinition
+                                     baseType="JSON"
+                                     description=""
+                                     name="editorSettings"
+                                     ordinal="0"></FieldDefinition>
+                                </FieldDefinitions>
+                            </DataShape>
+                            <Rows>
+                                <Row>
+                                    <code>
+                                    <![CDATA[
+                                    result = Things[locationEntity].timezoneOffset;
+                                    ]]>
+                                    </code>
+                                    <editorSettings>
+                                        <json>
+                                        <![CDATA[
+                                        {"viewState":{"viewState":{"firstPositionDeltaTop":0,"scrollLeft":0,"firstPosition":{"column":1,"lineNumber":1}},"cursorState":[{"inSelectionMode":false,"selectionStart":{"column":48,"lineNumber":1},"position":{"column":48,"lineNumber":1}}],"contributionsState":{"editor.contrib.wordHighlighter":false,"editor.contrib.folding":{"provider":"indent","lineCount":1,"foldedImports":false}}}}
+                                        ]]>
+                                        </json>
+                                    </editorSettings>
+                                </Row>
+                            </Rows>
+                        </ConfigurationTable>
+                    </ConfigurationTables>
+                </ServiceImplementation>
+                <ServiceImplementation
+                 description=""
+                 handlerName="Script"
+                 name="GetLocationTimezoneOffsetByUcIdAndLocId">
+                    <ConfigurationTables>
+                        <ConfigurationTable
+                         dataShapeName=""
+                         description=""
+                         isMultiRow="false"
+                         name="Script"
+                         ordinal="0">
+                            <DataShape>
+                                <FieldDefinitions>
+                                    <FieldDefinition
+                                     baseType="STRING"
+                                     description="code"
+                                     name="code"
+                                     ordinal="0"></FieldDefinition>
+                                </FieldDefinitions>
+                            </DataShape>
+                            <Rows>
+                                <Row>
+                                    <code>
+                                    <![CDATA[
+                                    /**
+                                    * @name GetLocationTimezoneOffsetByUcIdAndLocId
+                                    * @param uc_id company id
+                                    * @param loc_id location id
+                                    * @return timezoneoffset from the given location
+                                    */
+                                    
+                                    let location = me.GetLocationByUcIdAndLocId({
+                                    	locId: loc_id /* STRING */,
+                                    	ucId: uc_id /* STRING */
+                                    });
+                                    
+                                    result = Things[location.name].timezoneOffset;
+                                    ]]>
+                                    </code>
+                                </Row>
+                            </Rows>
+                        </ConfigurationTable>
+                    </ConfigurationTables>
+                </ServiceImplementation>
+                <ServiceImplementation
+                 description=""
+                 handlerName="Script"
+                 name="HasLocationDSTByUcIdAndLocId">
+                    <ConfigurationTables>
+                        <ConfigurationTable
+                         dataShapeName=""
+                         description=""
+                         isMultiRow="false"
+                         name="Script"
+                         ordinal="0">
+                            <DataShape>
+                                <FieldDefinitions>
+                                    <FieldDefinition
+                                     baseType="STRING"
+                                     description="code"
+                                     name="code"
+                                     ordinal="0"></FieldDefinition>
+                                </FieldDefinitions>
+                            </DataShape>
+                            <Rows>
+                                <Row>
+                                    <code>
+                                    <![CDATA[
+                                    /**
+                                    * @author Georg Reckendorfer
+                                    * @date 07.08.2024
+                                    *
+                                    * @name HasLocationDSTByUcIdAndLocId
+                                    * @param uc_id company id
+                                    * @param loc_id location id
+                                    * @return hasDST based on uc_id and locId
+                                    */
+                                    
+                                    let location = me.GetLocationByUcIdAndLocId({
+                                    	locId: loc_id /* STRING */,
+                                    	ucId: uc_id /* STRING */
+                                    });
+                                    
+                                    result = Things[location.name].hasDST;
+                                    ]]>
+                                    </code>
+                                </Row>
+                            </Rows>
+                        </ConfigurationTable>
+                    </ConfigurationTables>
+                </ServiceImplementation>
+                <ServiceImplementation
+                 description=""
+                 handlerName="Script"
+                 name="QueryLocationByCity">
+                    <ConfigurationTables>
+                        <ConfigurationTable
+                         dataShapeName=""
+                         description=""
+                         isMultiRow="false"
+                         name="Script"
+                         ordinal="0">
+                            <DataShape>
+                                <FieldDefinitions>
+                                    <FieldDefinition
+                                     baseType="STRING"
+                                     description="code"
+                                     name="code"
+                                     ordinal="0"></FieldDefinition>
+                                    <FieldDefinition
+                                     baseType="JSON"
+                                     description=""
+                                     name="editorSettings"
+                                     ordinal="0"></FieldDefinition>
+                                </FieldDefinitions>
+                            </DataShape>
+                            <Rows>
+                                <Row>
+                                    <code>
+                                    <![CDATA[
+                                    /**
+                                        * @name QueryLocationByCity
+                                        * @date 11.12.2020
+                                        * @author Isro Syaeful Iman
+                                        * @return infotable
+                                        *
+                                        * [COMPLETED] [11/12/2020] Query all locations based on City or caption of the location thing
+                                        */
+                                        logger.info("[HPMC.Core.Manager: QueryLocationByCompanyID]: Query all locations based on Company ID and sorts it by the caption of the locations.");
+                                        // result: INFOTABLE dataShape: "HPMC.Core.Location.DS"
+                                        let result = me.QueryAllLocations();
+                                        result.Sort({name: 'caption'});
+                                        result.Filter({caption:caption});
+                                        result = result.name;
+                                    ]]>
+                                    </code>
+                                    <editorSettings>
+                                        <json>
+                                        <![CDATA[
+                                        {"viewState":{"viewState":{"firstPositionDeltaTop":0,"scrollLeft":0,"firstPosition":{"column":1,"lineNumber":1}},"cursorState":[{"inSelectionMode":false,"selectionStart":{"column":1,"lineNumber":1},"position":{"column":1,"lineNumber":1}}],"contributionsState":{"editor.contrib.wordHighlighter":false,"editor.contrib.folding":{"provider":"indent","lineCount":14,"foldedImports":false}}}}
+                                        ]]>
+                                        </json>
+                                    </editorSettings>
+                                </Row>
+                            </Rows>
+                        </ConfigurationTable>
+                    </ConfigurationTables>
+                </ServiceImplementation>
+                <ServiceImplementation
+                 description=""
+                 handlerName="Script"
+                 name="QueryLocationByCompanyID">
+                    <ConfigurationTables>
+                        <ConfigurationTable
+                         dataShapeName=""
+                         description=""
+                         isMultiRow="false"
+                         name="Script"
+                         ordinal="0">
+                            <DataShape>
+                                <FieldDefinitions>
+                                    <FieldDefinition
+                                     baseType="STRING"
+                                     description="code"
+                                     name="code"
+                                     ordinal="0"></FieldDefinition>
+                                    <FieldDefinition
+                                     baseType="JSON"
+                                     description=""
+                                     name="editorSettings"
+                                     ordinal="0"></FieldDefinition>
+                                </FieldDefinitions>
+                            </DataShape>
+                            <Rows>
+                                <Row>
+                                    <code>
+                                    <![CDATA[
+                                    /**
+                                        * @name QueryLocationByCompanyID
+                                        * @date 11.12.2020
+                                        * @author Isro Syaeful Iman
+                                        * @return infotable "HPMC.Core.Location.DS"
+                                        *
+                                        * [COMPLETED] [11/12/2020] Query all locations based on Company ID and sorts it by the caption of the locations.
+                                        */
+                                        // logger.info("[HPMC.Core.Manager: QueryLocationByCompanyID]: Query all locations based on Company ID and sorts it by the caption of the locations.");
+                                        // result: INFOTABLE dataShape: "HPMC.Core.Location.DS"
+                                        var result = me.QueryAllLocations();
+                                        result.Sort({name: 'caption'});
+                                        result.Filter({ucId:company_id});
+                                    ]]>
+                                    </code>
+                                    <editorSettings>
+                                        <json>
+                                        <![CDATA[
+                                        {"viewState":{"viewState":{"firstPositionDeltaTop":0,"scrollLeft":0,"firstPosition":{"column":1,"lineNumber":1}},"cursorState":[{"inSelectionMode":false,"selectionStart":{"column":10,"lineNumber":9},"position":{"column":10,"lineNumber":9}}],"contributionsState":{"editor.contrib.wordHighlighter":false,"editor.contrib.folding":{"provider":"indent","lineCount":13,"foldedImports":false}}}}
+                                        ]]>
+                                        </json>
+                                    </editorSettings>
+                                </Row>
+                            </Rows>
+                        </ConfigurationTable>
+                    </ConfigurationTables>
+                </ServiceImplementation>
+                <ServiceImplementation
+                 description=""
+                 handlerName="Script"
+                 name="QueryLocationByRegion">
+                    <ConfigurationTables>
+                        <ConfigurationTable
+                         dataShapeName=""
+                         description=""
+                         isMultiRow="false"
+                         name="Script"
+                         ordinal="0">
+                            <DataShape>
+                                <FieldDefinitions>
+                                    <FieldDefinition
+                                     baseType="STRING"
+                                     description="code"
+                                     name="code"
+                                     ordinal="0"></FieldDefinition>
+                                    <FieldDefinition
+                                     baseType="JSON"
+                                     description=""
+                                     name="editorSettings"
+                                     ordinal="0"></FieldDefinition>
+                                </FieldDefinitions>
+                            </DataShape>
+                            <Rows>
+                                <Row>
+                                    <code>
+                                    <![CDATA[
+                                    // result: INFOTABLE dataShape: ""
+                                    let countries = Things["HPMC.Core.Country.DT"].QueryCountryByRegion({
+                                        region: region /* STRING */
+                                    });
+                                    
+                                    // CreateInfoTableFromDataShape(infoTableName:STRING("InfoTable"), dataShapeName:STRING):INFOTABLE(HPMC.Core.Company.DS)
+                                    let companyList = Resources["InfoTableFunctions"].CreateInfoTableFromDataShape({
+                                        dataShapeName: "HPMC.Core.Company.DS"
+                                    });
+                                    
+                                    for (let i = 0; i < countries.length; i++) {
+                                        let company = Things["HPMC.Core.Company.DT"].QueryCompanyByCountryID({
+                                            country_id: countries[i].country_id /* STRING */
+                                        });
+                                        companyList = Resources["InfoTableFunctions"].Union({
+                                            t1: companyList /* INFOTABLE */,
+                                            t2: company /* INFOTABLE */
+                                        });
+                                    }
+                                    
+                                    // CreateInfoTableFromDataShape(infoTableName:STRING("InfoTable"), dataShapeName:STRING):INFOTABLE(HPMC.Core.Company.DS)
+                                    let locationList = Resources["InfoTableFunctions"].CreateInfoTableFromDataShape({
+                                        dataShapeName: "HPMC.Core.Location.DS"
+                                    });
+                                    
+                                    for (let i = 0; i < companyList.length; i++) {
+                                        let location = me.QueryLocationByCompanyID({
+                                            company_id: companyList[i].company_id /* STRING */
+                                        });
+                                        locationList = Resources["InfoTableFunctions"].Union({
+                                            t1: locationList /* INFOTABLE */,
+                                            t2: location /* INFOTABLE */
+                                        });
+                                    }
+                                    
+                                    result = locationList;
+                                    ]]>
+                                    </code>
+                                    <editorSettings>
+                                        <json>
+                                        <![CDATA[
+                                        {"viewState":{"viewState":{"firstPositionDeltaTop":0,"scrollLeft":0,"firstPosition":{"column":1,"lineNumber":1}},"cursorState":[{"inSelectionMode":false,"selectionStart":{"column":39,"lineNumber":16},"position":{"column":39,"lineNumber":16}}],"contributionsState":{"editor.contrib.wordHighlighter":false,"editor.contrib.folding":{"provider":"indent","lineCount":37,"foldedImports":false}}}}
+                                        ]]>
+                                        </json>
+                                    </editorSettings>
+                                </Row>
+                            </Rows>
+                        </ConfigurationTable>
+                    </ConfigurationTables>
+                </ServiceImplementation>
+                <ServiceImplementation
+                 description=""
+                 handlerName="Script"
+                 name="QueryLocationByUcIDAndLocId">
+                    <ConfigurationTables>
+                        <ConfigurationTable
+                         dataShapeName=""
+                         description=""
+                         isMultiRow="false"
+                         name="Script"
+                         ordinal="0">
+                            <DataShape>
+                                <FieldDefinitions>
+                                    <FieldDefinition
+                                     baseType="STRING"
+                                     description="code"
+                                     name="code"
+                                     ordinal="0"></FieldDefinition>
+                                    <FieldDefinition
+                                     baseType="JSON"
+                                     description=""
+                                     name="editorSettings"
+                                     ordinal="0"></FieldDefinition>
+                                </FieldDefinitions>
+                            </DataShape>
+                            <Rows>
+                                <Row>
+                                    <code>
+                                    <![CDATA[
+                                    /**
+                                     * @name QueryLocationByUcIDAndLocId
+                                     * @date 11.12.2020
+                                     * @author Isro Syaeful Iman
+                                     * @return infotable "HPMC.Core.Location.DS"
+                                     *
+                                     * [COMPLETED] [11/12/2020] Query all locations based on Company ID and sorts it by the caption of the locations.
+                                     */
+                                    // result: INFOTABLE dataShape: "HPMC.Core.Location.DS"
+                                    var result = me.QueryAllLocations();
+                                    result.Sort({ name: "caption" });
+                                    result.Filter({ ucId: company_id, locId: locId });
+                                    ]]>
+                                    </code>
+                                    <editorSettings>
+                                        <json>
+                                        <![CDATA[
+                                        {"viewState":{"viewState":{"firstPositionDeltaTop":0,"scrollLeft":0,"firstPosition":{"column":1,"lineNumber":1}},"cursorState":[{"inSelectionMode":false,"selectionStart":{"column":1,"lineNumber":13},"position":{"column":1,"lineNumber":13}}],"contributionsState":{"editor.contrib.wordHighlighter":false,"editor.contrib.folding":{"provider":"indent","lineCount":13,"foldedImports":false}}}}
+                                        ]]>
+                                        </json>
+                                    </editorSettings>
+                                </Row>
+                            </Rows>
+                        </ConfigurationTable>
+                    </ConfigurationTables>
+                </ServiceImplementation>
+                <ServiceImplementation
+                 description=""
+                 handlerName="Script"
+                 name="SetRolesAndRightsForAssets">
+                    <ConfigurationTables>
+                        <ConfigurationTable
+                         dataShapeName=""
+                         description=""
+                         isMultiRow="false"
+                         name="Script"
+                         ordinal="0">
+                            <DataShape>
+                                <FieldDefinitions>
+                                    <FieldDefinition
+                                     baseType="STRING"
+                                     description="code"
+                                     name="code"
+                                     ordinal="0"></FieldDefinition>
+                                    <FieldDefinition
+                                     baseType="JSON"
+                                     description=""
+                                     name="editorSettings"
+                                     ordinal="0"></FieldDefinition>
+                                </FieldDefinitions>
+                            </DataShape>
+                            <Rows>
+                                <Row>
+                                    <code>
+                                    <![CDATA[
+                                    /**
+                                        * @name SetRolesAndRightsForAssets
+                                        * @date 29.04.2021
+                                        * @author Christian Krenkel
+                                        * assigns the Usergroup to all assigned assets
+                                        * 
+                                        * @param locId			location id
+                                        * @param ucId			company id
+                                        *
+                                        * @return NOTHING
+                                        */
+                                        
+                                        (function() {
+                                            // result: INFOTABLE dataShape: "RootEntityList"
+                                            const locations = ThingTemplates["HPMC.Core.Location.TT"].QueryImplementingThingsWithData({
+                                                query:  {"filters": {
+                                                    "type": "And",
+                                                    "filters": [
+                                                        {"type":"EQ","fieldName":"ucId","value":ucId},
+                                                        {"type":"EQ","fieldName":"locId","value":locId}
+                                                    ]
+                                                }}
+                                            });
+                                        
+                                            if (locations.rows.length !== 1) {
+                                                // error
+                                                logger.error("multiple or no Location found to assign permissions to assets");
+                                                throw "multiple or no Location found to assign permissions to assets";
+                                            }
+                                            
+                                            if (locations[0].runtimeAccessGroup === null || locations[0].runtimeAccessGroup === undefined || locations[0].runtimeAccessGroup === "") {
+                                                logger.error("unknown usergroup to set for the asset runtime permissions");
+                                                throw "unknown usergroup to set for the asset runtime permissions";
+                                            }
+                                            
+                                            locations[0].assetGroups.rows.toArray().forEach(assetGroup => {
+                                                assetGroup.assets.rows.toArray().forEach(asset => {
+                                                    addRuntimePermissionsToThing(asset.assetThingname, locations[0].runtimeAccessGroup);
+                                                });
+                                            });
+                                        })();
+                                        
+                                        function addRuntimePermissionsToThing(thingName, groupName) {
+                                            if (Things[thingName] === null) {
+                                                logger.warn("could not add runtime permissions to Thing {}", thingName);
+                                                return;
+                                            }
+                                        
+                                            Things[thingName].AddRunTimePermission({
+                                                principal: groupName /* STRING */,
+                                                allow: true /* BOOLEAN */,
+                                                resource: "*" /* STRING */,
+                                                type: "PropertyRead" /* STRING */,
+                                                principalType: "Group" /* STRING */
+                                            });
+                                            Things[thingName].AddRunTimePermission({
+                                                principal: groupName /* STRING */,
+                                                allow: true /* BOOLEAN */,
+                                                resource: "*" /* STRING */,
+                                                type: "ServiceInvoke" /* STRING */,
+                                                principalType: "Group" /* STRING */
+                                            });
+                                        }
+                                    ]]>
+                                    </code>
+                                    <editorSettings>
+                                        <json>
+                                        <![CDATA[
+                                        {"viewState":{"viewState":{"firstPositionDeltaTop":0,"scrollLeft":0,"firstPosition":{"column":1,"lineNumber":1}},"cursorState":[{"inSelectionMode":false,"selectionStart":{"column":1,"lineNumber":1},"position":{"column":1,"lineNumber":1}}],"contributionsState":{"editor.contrib.wordHighlighter":false,"editor.contrib.folding":{"provider":"indent","lineCount":63,"foldedImports":false}}}}
+                                        ]]>
+                                        </json>
+                                    </editorSettings>
+                                </Row>
+                            </Rows>
+                        </ConfigurationTable>
+                    </ConfigurationTables>
+                </ServiceImplementation>
+                <ServiceImplementation
+                 description=""
+                 handlerName="Script"
+                 name="TransferLocationToOtherProject">
+                    <ConfigurationTables>
+                        <ConfigurationTable
+                         dataShapeName=""
+                         description=""
+                         isMultiRow="false"
+                         name="Script"
+                         ordinal="0">
+                            <DataShape>
+                                <FieldDefinitions>
+                                    <FieldDefinition
+                                     baseType="STRING"
+                                     description="code"
+                                     name="code"
+                                     ordinal="0"></FieldDefinition>
+                                    <FieldDefinition
+                                     baseType="JSON"
+                                     description=""
+                                     name="editorSettings"
+                                     ordinal="0"></FieldDefinition>
+                                </FieldDefinitions>
+                            </DataShape>
+                            <Rows>
+                                <Row>
+                                    <code>
+                                    <![CDATA[
+                                    // TT HPMC.Template.Asset.ManagementThing & HPMC.Template.Tool.ManagementThing not extisting but creating dependencies
+                                        
+                                        // var allLocations =  ThingTemplates[oldTemplateName].GetImplementingThingsWithData();
+                                        // var assetManagement = Things["HPMC.Template.Asset.ManagementThing"];
+                                        // var toolManagement = Things["HPMC.Template.Tool.ManagementThing"];
+                                        
+                                        // for (var i = 1; i < allLocations.getRowCount(); i++){
+                                        //     var locationThing = Things[allLocations[i].name];
+                                        //     var name = locationThing.name;
+                                            
+                                        //     // fit name for new location thing
+                                        //     var newName = name.replace("TS.HPMc", "HPMC");
+                                             
+                                        //     try{
+                                        //         logger.info("Create New Thing [" + newName + "] with template [" + newTemplateName + "]");
+                                        //     	// no return
+                                        //         Resources["EntityServices"].CreateThing({
+                                        //             name: newName /* STRING */,
+                                        //             description: locationThing.description /* STRING */,
+                                        //             thingTemplateName: newTemplateName /* THINGTEMPLATENAME */,
+                                        //             tags: undefined /* TAGS */
+                                        //         });
+                                        
+                                        //         newThing = Things[newName];
+                                        
+                                        //         newThing.EnableThing();
+                                        //         newThing.RestartThing();
+                                        
+                                        //         newThing.SetProjectName({
+                                        //             projectName: projectName /* PROJECTNAME */
+                                        //         });
+                                        
+                                        //         newThing.SetAvatar({
+                                        //             content: locationThing.GetAvatar() // Avatar: IMAGE
+                                        //         });
+                                        
+                                        //         newThing.address = locationThing.address;
+                                        //         newThing.assetGroups = assetManagement.ChangeTemplateForAssets({assetGroups: locationThing.assetGroups, projectName: projectName});
+                                        //         newThing.location = locationThing.location;
+                                        //         newThing.caption = locationThing.caption;
+                                        //         newThing.locId = locationThing.locId;
+                                        //         newThing.materialGroups = locationThing.materialGroups;
+                                        //         newThing.toolGroups = toolManagement.ChangeTemplateForSawbands({toolGroups: locationThing.toolGroups, projectName: projectName});
+                                        //         newThing.ucId = locationThing.ucId;
+                                        //     } catch(err){
+                                        //      	// If an exception is caught, we need to delete the entity 
+                                        // 		// that was created to prevent it from becoming a Ghost Entity
+                                        //         logger.error("HPMC.Core.Manager - ChangeTemplate: " + err);
+                                                
+                                        // 		var params = { 
+                                        // 			name: newName /* THINGNAME */ 
+                                        // 		}; 
+                                        // 		Resources["EntityServices"].DeleteThing(params);    
+                                        //     }
+                                        // }
+                                    ]]>
+                                    </code>
+                                    <editorSettings>
+                                        <json>
+                                        <![CDATA[
+                                        {"viewState":{"viewState":{"firstPositionDeltaTop":0,"scrollLeft":0,"firstPosition":{"column":1,"lineNumber":1}},"cursorState":[{"inSelectionMode":false,"selectionStart":{"column":9,"lineNumber":3},"position":{"column":9,"lineNumber":3}}],"contributionsState":{"editor.contrib.wordHighlighter":false,"editor.contrib.folding":{"lineCount":57,"foldedImports":false}}}}
+                                        ]]>
+                                        </json>
+                                    </editorSettings>
+                                </Row>
+                            </Rows>
+                        </ConfigurationTable>
+                    </ConfigurationTables>
+                </ServiceImplementation>
+                <ServiceImplementation
+                 description=""
+                 handlerName="Script"
+                 name="UpdateLocations">
+                    <ConfigurationTables>
+                        <ConfigurationTable
+                         dataShapeName=""
+                         description=""
+                         isMultiRow="false"
+                         name="Script"
+                         ordinal="0">
+                            <DataShape>
+                                <FieldDefinitions>
+                                    <FieldDefinition
+                                     baseType="STRING"
+                                     description="code"
+                                     name="code"
+                                     ordinal="0"></FieldDefinition>
+                                    <FieldDefinition
+                                     baseType="JSON"
+                                     description=""
+                                     name="editorSettings"
+                                     ordinal="0"></FieldDefinition>
+                                </FieldDefinitions>
+                            </DataShape>
+                            <Rows>
+                                <Row>
+                                    <code>
+                                    <![CDATA[
+                                    /*
+                                        * @name UpdateLocations
+                                        * @date 18.08.2020
+                                        * @author Georg Reckendorfer
+                                        * Takes an infotable as input and updates all locations based on the information from the input-infoTable.
+                                        */
+                                        
+                                        logger.info("[HPMC.Core.Manager:UpdateLocations]: Update all locations which are includeed in the input-infotable.");
+                                        
+                                        var editedLocationThingname;
+                                        
+                                        try{
+                                            for(var i = 0; i < editedLocationTable.getRowCount(); i++){
+                                                editedLocationThing = Things[editedLocationTable[i].name];
+                                        
+                                                editedLocationThing.address = editedLocationTable[i].address;
+                                                editedLocationThing.caption = editedLocationTable[i].caption;
+                                                editedLocationThing.location = editedLocationTable[i].location;
+                                                editedLocationThing.locId = editedLocationTable[i].locId;
+                                                editedLocationThing.ucId = editedLocationTable[i].ucId;
+                                                editedLocationThing.companyName = editedLocationTable[i].companyName;
+                                            }
+                                        } catch(e){
+                                         	logger.error(e);   
+                                        }
+                                    ]]>
+                                    </code>
+                                    <editorSettings>
+                                        <json>
+                                        <![CDATA[
+                                        {"viewState":{"viewState":{"firstPositionDeltaTop":0,"scrollLeft":0,"firstPosition":{"column":1,"lineNumber":1}},"cursorState":[{"inSelectionMode":false,"selectionStart":{"column":1,"lineNumber":1},"position":{"column":1,"lineNumber":1}}],"contributionsState":{"editor.contrib.wordHighlighter":false,"editor.contrib.folding":{"provider":"indent","lineCount":25,"foldedImports":false}}}}
+                                        ]]>
+                                        </json>
+                                    </editorSettings>
+                                </Row>
+                            </Rows>
+                        </ConfigurationTable>
+                    </ConfigurationTables>
+                </ServiceImplementation>
+            </ServiceImplementations>
+            <Subscriptions></Subscriptions>
+            <avatar></avatar>
+            <DesignTimePermissions>
+                <Create></Create>
+                <Read></Read>
+                <Update></Update>
+                <Delete></Delete>
+                <Metadata></Metadata>
+            </DesignTimePermissions>
+            <RunTimePermissions></RunTimePermissions>
+            <VisibilityPermissions>
+                <Visibility></Visibility>
+            </VisibilityPermissions>
+            <ConfigurationTableDefinitions></ConfigurationTableDefinitions>
+            <ConfigurationTables></ConfigurationTables>
+            <PropertyBindings></PropertyBindings>
+            <RemotePropertyBindings></RemotePropertyBindings>
+            <RemoteServiceBindings></RemoteServiceBindings>
+            <RemoteEventBindings></RemoteEventBindings>
+            <AlertConfigurations></AlertConfigurations>
+            <InstanceRunTimePermissions></InstanceRunTimePermissions>
+        </ThingShape>
+    </ThingShapes>
+</Entities>
